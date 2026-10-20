@@ -1,0 +1,61 @@
+name: English long recording and reference accuracy on macOS
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/english-macos.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  english:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-15, macos-15-intel]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 110
+    defaults:
+      run:
+        shell: bash -el {0}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: conda-incubator/setup-miniconda@v3
+        with:
+          miniforge-version: latest
+          environment-file: environment.yml
+          activate-environment: local-transcriber
+          auto-activate-base: false
+      - name: Test final code and acquire public reference samples
+        run: |
+          conda install -n local-transcriber -c conda-forge ffmpeg -y
+          mkdir -p english-results/long
+          python -m unittest discover -s tests -v 2>&1 | tee english-results/unit-tests.txt
+          shasum -a 256 transcribe.py > english-results/source-sha256.txt
+          python -m pip freeze > english-results/dependencies.txt
+          python -u accuracy/english/prepare.py
+          python -c "from huggingface_hub import snapshot_download; import os; snapshot_download(repo_id='dropbox-dash/faster-whisper-large-v3-turbo', revision='0a363e9161cbc7ed1431c9597a8ceaf0c4f78fcf', local_dir=os.environ['RUNNER_TEMP']+'/models/turbo', allow_patterns=['model.bin','config.json','tokenizer.json','preprocessor_config.json','vocabulary.*'])"
+      - name: Score 32 English clips against independently supplied references
+        run: python -u accuracy/english/benchmark.py --app transcribe.py --model "$RUNNER_TEMP/models/turbo" --results-dir english-results/accuracy --threads 4
+      - name: Acquire full public human-read English chapter
+        run: |
+          curl -fL --retry 2 --max-time 600 'https://archive.org/download/timemachine_sjm_librivox/timemachine_05_wells.mp3' -o "$RUNNER_TEMP/en.mp3"
+          python accuracy/english/verify_long_input.py "$RUNNER_TEMP/en.mp3"
+          ffmpeg -v error -i "$RUNNER_TEMP/en.mp3" -c:a copy "$RUNNER_TEMP/en.mkv"
+          ffprobe -v quiet -show_format -show_streams -of json "$RUNNER_TEMP/en.mkv" > english-results/long/input-probe.json
+      - name: Transcribe full English chapter with local model and Python network guard
+        run: |
+          python -u tests/benchmark.py "$RUNNER_TEMP/en.mkv" "$RUNNER_TEMP/models/turbo" en english-results/long/en.txt english-results/long/metrics.json &
+          transcription_pid=$!
+          while kill -0 "$transcription_pid" 2>/dev/null; do
+            tail -n 1 english-results/long/en.txt.log 2>/dev/null || true
+            sleep 60
+          done
+          wait "$transcription_pid"
+          test -s english-results/long/en.txt
+          python tests/analyze_transcript.py english-results/long/en.txt 2556.41 > english-results/long/coverage.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: english-${{ matrix.os }}
+          path: english-results/
+          retention-days: 1

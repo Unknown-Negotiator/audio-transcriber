@@ -10,3 +10,5 @@ transcripts/
 *.mp4
 *.wav
 *.mkv
+accuracy/english/data/
+english-results/
