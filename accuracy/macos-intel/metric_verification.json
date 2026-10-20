@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "jiwer_version": "4.0.0",
+  "rapidfuzz_version": "3.14.6",
+  "per_clip_pairs_checked": 24,
+  "language_aggregates_checked": 2,
+  "tolerance": 1e-12,
+  "checks": [
+    "Actual artifact metadata identifies Darwin/macOS with architecture recorded dynamically",
+    "All 24 original sample IDs, paired references and reported audio hashes match the fixed manifest",
+    "Source snapshot SHA-256 matches the Linux-tested application; scorer and runner SHA-256 match original scripts",
+    "All five reported model-file hashes and pinned model revision match Linux",
+    "Recorded package versions and decoding settings match Linux",
+    "All saved transcript files agree with full-result hypotheses and per_clip.jsonl",
+    "Recomputed score.py results agree with all recorded scores",
+    "jiwer independently agrees with every word/character error total and all aggregate WER/CER values",
+    "Aggregate values, run.json, aggregate.json and full results.json are mutually consistent"
+  ],
+  "scope_note": "This verifies saved run artifacts. Model/audio hashes were checked on the Mac by the runner and are compared here with the original manifest and Linux result; large model/audio files are not included in the downloaded CI artifact."
+}

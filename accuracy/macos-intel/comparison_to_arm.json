@@ -1,0 +1,213 @@
+{
+  "arm_environment": {
+    "is_macos": true,
+    "system": "Darwin",
+    "release": "24.6.0",
+    "version": "Darwin Kernel Version 24.6.0: Tue Jul 21 20:51:34 PDT 2026; root:xnu-11417.140.69.711.44~1/RELEASE_ARM64_VMAPPLE",
+    "platform": "macOS-15.7.9-arm64-arm-64bit",
+    "machine": "arm64",
+    "processor": "arm",
+    "macos_version": "15.7.9",
+    "python": "3.11.17 (main, Oct 13 2026, 16:38:53) [Clang 21.1.8 ]",
+    "packages": {
+      "faster-whisper": "1.2.1",
+      "ctranslate2": "4.8.3",
+      "av": "18.1.0",
+      "numpy": "2.4.6",
+      "huggingface-hub": "1.33.0"
+    },
+    "github_actions": true,
+    "github_sha": "d010817a4be599ef39354b441d21ef354741822c",
+    "github_run_id": "39502317919",
+    "runner_os": "macOS",
+    "runner_arch": "ARM64"
+  },
+  "intel_environment": {
+    "is_macos": true,
+    "system": "Darwin",
+    "release": "24.6.0",
+    "version": "Darwin Kernel Version 24.6.0: Tue Jul 21 20:50:07 PDT 2026; root:xnu-11417.140.69.711.44~1/RELEASE_X86_64",
+    "platform": "macOS-15.7.9-x86_64-i386-64bit",
+    "machine": "x86_64",
+    "processor": "i386",
+    "macos_version": "15.7.9",
+    "python": "3.11.17 (main, Oct 13 2026, 17:06:54) [Clang 21.1.8 ]",
+    "packages": {
+      "faster-whisper": "1.2.1",
+      "ctranslate2": "4.8.3",
+      "av": "18.1.0",
+      "numpy": "2.4.6",
+      "huggingface-hub": "1.33.0"
+    },
+    "github_actions": true,
+    "github_sha": "d010817a4be599ef39354b441d21ef354741822c",
+    "github_run_id": "39502317919",
+    "runner_os": "macOS",
+    "runner_arch": "X64"
+  },
+  "identical_normalized_hypotheses": 20,
+  "different_normalized_hypotheses": 4,
+  "differences_by_language": {
+    "ru_ru": 1,
+    "fr_fr": 3
+  },
+  "aggregate_arm": {
+    "ru_ru": {
+      "word": {
+        "substitutions": 2,
+        "deletions": 1,
+        "insertions": 0,
+        "correct": 203,
+        "reference_units": 206,
+        "hypothesis_units": 205,
+        "errors": 3,
+        "error_rate": 0.014563106796116505
+      },
+      "character": {
+        "substitutions": 1,
+        "deletions": 11,
+        "insertions": 0,
+        "correct": 1404,
+        "reference_units": 1416,
+        "hypothesis_units": 1405,
+        "errors": 12,
+        "error_rate": 0.00847457627118644
+      },
+      "clips": 12,
+      "audio_seconds": 121.68,
+      "cli_wall_seconds": 231.64855558499985,
+      "normalized_exact_match_clips": 9,
+      "real_time_factor_including_cli_startup": 1.9037521004684406
+    },
+    "fr_fr": {
+      "word": {
+        "substitutions": 16,
+        "deletions": 2,
+        "insertions": 2,
+        "correct": 320,
+        "reference_units": 338,
+        "hypothesis_units": 338,
+        "errors": 20,
+        "error_rate": 0.05917159763313609
+      },
+      "character": {
+        "substitutions": 19,
+        "deletions": 17,
+        "insertions": 8,
+        "correct": 1918,
+        "reference_units": 1954,
+        "hypothesis_units": 1945,
+        "errors": 44,
+        "error_rate": 0.022517911975435005
+      },
+      "clips": 12,
+      "audio_seconds": 133.02,
+      "cli_wall_seconds": 254.54099904200012,
+      "normalized_exact_match_clips": 4,
+      "real_time_factor_including_cli_startup": 1.9135543455269892
+    }
+  },
+  "aggregate_intel": {
+    "ru_ru": {
+      "word": {
+        "substitutions": 3,
+        "deletions": 1,
+        "insertions": 0,
+        "correct": 202,
+        "reference_units": 206,
+        "hypothesis_units": 205,
+        "errors": 4,
+        "error_rate": 0.019417475728155338
+      },
+      "character": {
+        "substitutions": 2,
+        "deletions": 11,
+        "insertions": 0,
+        "correct": 1403,
+        "reference_units": 1416,
+        "hypothesis_units": 1405,
+        "errors": 13,
+        "error_rate": 0.009180790960451978
+      },
+      "clips": 12,
+      "audio_seconds": 121.68,
+      "cli_wall_seconds": 430.84347625599986,
+      "normalized_exact_match_clips": 9,
+      "real_time_factor_including_cli_startup": 3.540791224983562
+    },
+    "fr_fr": {
+      "word": {
+        "substitutions": 14,
+        "deletions": 2,
+        "insertions": 1,
+        "correct": 322,
+        "reference_units": 338,
+        "hypothesis_units": 337,
+        "errors": 17,
+        "error_rate": 0.05029585798816568
+      },
+      "character": {
+        "substitutions": 14,
+        "deletions": 17,
+        "insertions": 5,
+        "correct": 1923,
+        "reference_units": 1954,
+        "hypothesis_units": 1942,
+        "errors": 36,
+        "error_rate": 0.01842374616171955
+      },
+      "clips": 12,
+      "audio_seconds": 133.02,
+      "cli_wall_seconds": 335.9371995870001,
+      "normalized_exact_match_clips": 4,
+      "real_time_factor_including_cli_startup": 2.525463836919261
+    }
+  },
+  "changed_clips": [
+    {
+      "config": "ru_ru",
+      "filename": "14683943316916260440.wav",
+      "reference_raw": "Шпалы начали применяться довольно давно для того, чтобы удерживать рельсы на месте. Однако впоследствии стало ясно, что пути были более эффективны при полосе из железа сверху.",
+      "arm_hypothesis": "шпалы начали применяться довольно давно для того чтобы удерживать рельсы на месте однако\nвпоследствии стало ясно что пути были более эффективны при полосе и железа сверху",
+      "intel_hypothesis": "шпалы начали применяться довольно давно для того чтобы удерживать рельсы на месте однако\nвпоследствии стало ясно что пути были более эффективны при полосе и железо сверху",
+      "arm_word_errors": 1,
+      "intel_word_errors": 2,
+      "arm_character_errors": 1,
+      "intel_character_errors": 2
+    },
+    {
+      "config": "fr_fr",
+      "filename": "12463754265383123135.wav",
+      "reference_raw": "Sundarbans est une réserve naturelle depuis 1966, vous pourrez y trouver environ 400 tigres du Bengale royal et 30 000 cerfs tachetés.",
+      "arm_hypothesis": "Sundarban est une réserve naturelle depuis 1966, vous pourrez y trouver environ 400\ntigres du mengal royal et 30 000 serres d'acheter.",
+      "intel_hypothesis": "Sundarban est une réserve naturelle depuis 1966, vous pourrez y trouver environ 400\ntigres du bengal royal et 30 000 serres d'acheter.",
+      "arm_word_errors": 5,
+      "intel_word_errors": 5,
+      "arm_character_errors": 10,
+      "intel_character_errors": 9
+    },
+    {
+      "config": "fr_fr",
+      "filename": "5826493659721141060.wav",
+      "reference_raw": "Pendant la guerre révolutionnaire, les treize États ont d’abord formé un gouvernement central faible — le Congrès étant sa seule composante — en vertu des articles de la Confédération.",
+      "arm_hypothesis": "Pendant la guerre révolutionnaire, les 13 Etats ont d'abord formé un gouvernement central faible,\nle Congrès étant sa seule composante, en vertu des articles de la Confédération.",
+      "intel_hypothesis": "Pendant la guerre révolutionnaire, les 13 états ont d'abord formé un\ngouvernement central faible, le congrès étant sa seule composante, en vertu des articles de la Confédération.",
+      "arm_word_errors": 2,
+      "intel_word_errors": 1,
+      "arm_character_errors": 7,
+      "intel_character_errors": 6
+    },
+    {
+      "config": "fr_fr",
+      "filename": "15226377368459496410.wav",
+      "reference_raw": "Bien que personne ne sache vraiment qui l'a rédigé, on sait qu'à un stade précoce de son existence, le grand parchemin (qui mesure environ 29 pouces trois quarts sur 24 pouces) était entreposé roulé.",
+      "arm_hypothesis": "Bien que personne ne sache vraiment qui l'a rédigé, on sait qu'à un stade précoce de son\nexistence, le grand parchemin, qui mesure environ 29 pouces 3 quarts sur 24 pouces,\nest être entreposé roulé.",
+      "intel_hypothesis": "Bien que personne ne sache vraiment qui l'a rédigé, on sait qu'à un stade précoce de son\nexistence, le grand parchemin, qui mesure environ 29 pouces 3 quarts sur 24 pouces,\nétait entreposé roulé.",
+      "arm_word_errors": 3,
+      "intel_word_errors": 1,
+      "arm_character_errors": 11,
+      "intel_character_errors": 5
+    }
+  ],
+  "interpretation": "Actual ARM and Intel results are not identical. This small fixed sample does not establish a general platform accuracy ranking."
+}

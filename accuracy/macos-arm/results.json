@@ -1,0 +1,1260 @@
+{
+  "schema_version": 1,
+  "started_utc": "2026-10-20T21:42:23.692344+00:00",
+  "status": "completed",
+  "inference_performed": true,
+  "dataset": {
+    "dataset": "google/fleurs",
+    "revision": "70bb2e84b976b7e960aa89f1c648e09c59f894dd",
+    "split": "test",
+    "license": "CC-BY-4.0",
+    "selection_rule": "Take the 12 lowest SHA-256 digests of UTF-8 seed + NUL + config + NUL + original filename, without content, duration, quality, or output filtering. Order is ascending digest.",
+    "selection_seed": "local-transcriber-accuracy-2026-10-20-v1"
+  },
+  "manifest_sha256": "1ac2675d6f73360315fffb3ca7baebf408443911f67f501bcd22cdeec57f2592",
+  "selected_clips": 24,
+  "application": {
+    "source_sha256": "d57234cdd27a55a79da2980e2a85e5797c9699d9bf2655f04b1868708de8eade",
+    "scorer_sha256": "fef7c57213f9a6a5aae81fead5d70e71c3e3de2fd963335f36231a7598c7d222",
+    "runner_sha256": "809fb145f249fe95a7876b56f17e8985d9399c8d208806d07f8a384b6f1f28d6",
+    "cli_template": "python transcribe.py transcribe AUDIO --model MODEL --language ru|fr --threads THREADS --output OUTPUT",
+    "settings": {
+      "device": "cpu",
+      "compute_type": "int8",
+      "cpu_threads": 4,
+      "beam_size": 5,
+      "vad_filter": false,
+      "condition_on_previous_text": false,
+      "task": "transcribe",
+      "language": "explicit known language"
+    }
+  },
+  "model": {
+    "name": "large-v3-turbo",
+    "repo_id": "dropbox-dash/faster-whisper-large-v3-turbo",
+    "revision": "0a363e9161cbc7ed1431c9597a8ceaf0c4f78fcf",
+    "files": {
+      "config.json": {
+        "sha256": "b0253ea6c0d3bea6b1e19e91a02acfd3b53f4467362efcb5a3e6b16c9b3a9b7e",
+        "bytes": 2263
+      },
+      "model.bin": {
+        "sha256": "e76620f83d5f5b69efd3d87e3dc180c1bd21df9fbebacfd4335e5e1efcc018da",
+        "bytes": 1617884929
+      },
+      "preprocessor_config.json": {
+        "sha256": "7ccc62c6f2765af1f3b46c00c9b5894426835a05021c8b9c01eecb6dfb542711",
+        "bytes": 340
+      },
+      "tokenizer.json": {
+        "sha256": "297b13372ac43916285644fb9687add3cc62ee2a1adb60da3dc25cc94c1871fd",
+        "bytes": 2710337
+      },
+      "vocabulary.json": {
+        "sha256": "c69260f2ab26d659b7c398f9a2b2b48ed0df16c3b47d7326782fd9cba71690c1",
+        "bytes": 1068114
+      }
+    }
+  },
+  "environment": {
+    "is_macos": true,
+    "system": "Darwin",
+    "release": "24.6.0",
+    "version": "Darwin Kernel Version 24.6.0: Tue Jul 21 20:51:34 PDT 2026; root:xnu-11417.140.69.711.44~1/RELEASE_ARM64_VMAPPLE",
+    "platform": "macOS-15.7.9-arm64-arm-64bit",
+    "machine": "arm64",
+    "processor": "arm",
+    "macos_version": "15.7.9",
+    "python": "3.11.17 (main, Oct 13 2026, 16:38:53) [Clang 21.1.8 ]",
+    "packages": {
+      "faster-whisper": "1.2.1",
+      "ctranslate2": "4.8.3",
+      "av": "18.1.0",
+      "numpy": "2.4.6",
+      "huggingface-hub": "1.33.0"
+    },
+    "github_actions": true,
+    "github_sha": "d010817a4be599ef39354b441d21ef354741822c",
+    "github_run_id": "39502317919",
+    "runner_os": "macOS",
+    "runner_arch": "ARM64"
+  },
+  "metric_definition": {
+    "WER": "Sum word substitutions + deletions + insertions, divided by summed reference words.",
+    "CER": "Same normalized-string minimum edit distance at character level, including single spaces.",
+    "normalization": "Identical score.py: Unicode NFKC/casefold; letters, marks and numbers retained; punctuation/symbols become spaces; collapse whitespace; accents and Cyrillic ё retained; no number-word conversion."
+  },
+  "execution": "Fresh CLI process per clip, sequential; no previous results reused; CPU int8; offline local model; wall time includes CLI/model startup.",
+  "limits": [
+    "Small fixed short-read-speech sample, not long-recording accuracy.",
+    "Languages explicitly supplied, not language-autodetection accuracy.",
+    "Public test partition is not proof of exclusion from model pretraining.",
+    "Punctuation, case and semantic correctness are not directly scored."
+  ],
+  "completed_clips": 24,
+  "completed_utc": "2026-10-20T21:50:30.170559+00:00",
+  "aggregate": {
+    "turbo": {
+      "ru_ru": {
+        "word": {
+          "substitutions": 2,
+          "deletions": 1,
+          "insertions": 0,
+          "correct": 203,
+          "reference_units": 206,
+          "hypothesis_units": 205,
+          "errors": 3,
+          "error_rate": 0.014563106796116505
+        },
+        "character": {
+          "substitutions": 1,
+          "deletions": 11,
+          "insertions": 0,
+          "correct": 1404,
+          "reference_units": 1416,
+          "hypothesis_units": 1405,
+          "errors": 12,
+          "error_rate": 0.00847457627118644
+        },
+        "clips": 12,
+        "audio_seconds": 121.68,
+        "cli_wall_seconds": 231.64855558499985,
+        "normalized_exact_match_clips": 9,
+        "real_time_factor_including_cli_startup": 1.9037521004684406
+      },
+      "fr_fr": {
+        "word": {
+          "substitutions": 16,
+          "deletions": 2,
+          "insertions": 2,
+          "correct": 320,
+          "reference_units": 338,
+          "hypothesis_units": 338,
+          "errors": 20,
+          "error_rate": 0.05917159763313609
+        },
+        "character": {
+          "substitutions": 19,
+          "deletions": 17,
+          "insertions": 8,
+          "correct": 1918,
+          "reference_units": 1954,
+          "hypothesis_units": 1945,
+          "errors": 44,
+          "error_rate": 0.022517911975435005
+        },
+        "clips": 12,
+        "audio_seconds": 133.02,
+        "cli_wall_seconds": 254.54099904200012,
+        "normalized_exact_match_clips": 4,
+        "real_time_factor_including_cli_startup": 1.9135543455269892
+      }
+    }
+  },
+  "clips": [
+    {
+      "config": "ru_ru",
+      "filename": "8054191241093707445.wav",
+      "id": 1878,
+      "reference_raw": "Центр церковной власти базировался в Риме на протяжении более тысячи лет, и такое сосредоточение могущества и богатства привело к тому, что многие усомнились, а соблюдается ли этот догмат.",
+      "reference_dataset_normalized": "центр церковной власти базировался в риме на протяжении более тысячи лет и такое сосредоточение могущества и богатства привело к тому что многие усомнились а соблюдается ли этот догмат",
+      "audio_sha256": "2e32d0ca84dca58112b16d18ecacf7627f64e6e6fecc768f7462bac07151c425",
+      "model": "turbo",
+      "hypothesis": "Центр церковной власти базировался в Риме на протяжении более тысячи лет, и такое сосредоточение могущества и богатства привело к тому, что многие усомнились, а соблюдается ли этот догмат.",
+      "audio_seconds": 13.32,
+      "wall_seconds": 21.61032804200002,
+      "returncode": 0,
+      "scores": {
+        "reference_normalized": "центр церковной власти базировался в риме на протяжении более тысячи лет и такое сосредоточение могущества и богатства привело к тому что многие усомнились а соблюдается ли этот догмат",
+        "hypothesis_normalized": "центр церковной власти базировался в риме на протяжении более тысячи лет и такое сосредоточение могущества и богатства привело к тому что многие усомнились а соблюдается ли этот догмат",
+        "word": {
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0,
+          "correct": 28,
+          "reference_units": 28,
+          "hypothesis_units": 28,
+          "errors": 0,
+          "error_rate": 0.0,
+          "operations": []
+        },
+        "character": {
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0,
+          "correct": 184,
+          "reference_units": 184,
+          "hypothesis_units": 184,
+          "errors": 0,
+          "error_rate": 0.0
+        }
+      }
+    },
+    {
+      "config": "ru_ru",
+      "filename": "14683943316916260440.wav",
+      "id": 1809,
+      "reference_raw": "Шпалы начали применяться довольно давно для того, чтобы удерживать рельсы на месте. Однако впоследствии стало ясно, что пути были более эффективны при полосе из железа сверху.",
+      "reference_dataset_normalized": "шпалы начали применяться довольно давно для того чтобы удерживать рельсы на месте однако впоследствии стало ясно что пути были более эффективны при полосе из железа сверху",
+      "audio_sha256": "1fe48719a9da7f4075b5b42d406742a556e4bdaad71232411e8699b2e672fb2d",
+      "model": "turbo",
+      "hypothesis": "шпалы начали применяться довольно давно для того чтобы удерживать рельсы на месте однако\nвпоследствии стало ясно что пути были более эффективны при полосе и железа сверху",
+      "audio_seconds": 13.74,
+      "wall_seconds": 25.216953332999992,
+      "returncode": 0,
+      "scores": {
+        "reference_normalized": "шпалы начали применяться довольно давно для того чтобы удерживать рельсы на месте однако впоследствии стало ясно что пути были более эффективны при полосе из железа сверху",
+        "hypothesis_normalized": "шпалы начали применяться довольно давно для того чтобы удерживать рельсы на месте однако впоследствии стало ясно что пути были более эффективны при полосе и железа сверху",
+        "word": {
+          "substitutions": 1,
+          "deletions": 0,
+          "insertions": 0,
+          "correct": 25,
+          "reference_units": 26,
+          "hypothesis_units": 26,
+          "errors": 1,
+          "error_rate": 0.038461538461538464,
+          "operations": [
+            {
+              "op": "substitution",
+              "reference_index": 23,
+              "hypothesis_index": 23,
+              "reference": "из",
+              "hypothesis": "и"
+            }
+          ]
+        },
+        "character": {
+          "substitutions": 0,
+          "deletions": 1,
+          "insertions": 0,
+          "correct": 170,
+          "reference_units": 171,
+          "hypothesis_units": 170,
+          "errors": 1,
+          "error_rate": 0.005847953216374269
+        }
+      }
+    },
+    {
+      "config": "ru_ru",
+      "filename": "15533548753796272197.wav",
+      "id": 1910,
+      "reference_raw": "Парижане слывут эгоцентричными, грубыми и надменными.",
+      "reference_dataset_normalized": "парижане слывут эгоцентричными грубыми и надменными",
+      "audio_sha256": "b537dbbebff2391d3c0252b23cab096d9383c0382f0b3d232624335dfc84a3eb",
+      "model": "turbo",
+      "hypothesis": "Парижане словут эгоцентричными, грубыми и надменными.",
+      "audio_seconds": 4.92,
+      "wall_seconds": 18.184354208000002,
+      "returncode": 0,
+      "scores": {
+        "reference_normalized": "парижане слывут эгоцентричными грубыми и надменными",
+        "hypothesis_normalized": "парижане словут эгоцентричными грубыми и надменными",
+        "word": {
+          "substitutions": 1,
+          "deletions": 0,
+          "insertions": 0,
+          "correct": 5,
+          "reference_units": 6,
+          "hypothesis_units": 6,
+          "errors": 1,
+          "error_rate": 0.16666666666666666,
+          "operations": [
+            {
+              "op": "substitution",
+              "reference_index": 1,
+              "hypothesis_index": 1,
+              "reference": "слывут",
+              "hypothesis": "словут"
+            }
+          ]
+        },
+        "character": {
+          "substitutions": 1,
+          "deletions": 0,
+          "insertions": 0,
+          "correct": 50,
+          "reference_units": 51,
+          "hypothesis_units": 51,
+          "errors": 1,
+          "error_rate": 0.0196078431372549
+        }
+      }
+    },
+    {
+      "config": "ru_ru",
+      "filename": "12912440371805876077.wav",
+      "id": 1739,
+      "reference_raw": "Пещера располагается на вершине горы к северу от Мекки и полностью изолирована от остального мира.",
+      "reference_dataset_normalized": "пещера располагается на вершине горы к северу от мекки и полностью изолирована от остального мира",
+      "audio_sha256": "c815b2b988e5d35d4e6a9e7b8d1ad57fce7e22f8b60a8668977ac006411df404",
+      "model": "turbo",
+      "hypothesis": "Пещера располагается на вершине горы к северу от Мекки и полностью изолирована от остального мира.",
+      "audio_seconds": 9.36,
+      "wall_seconds": 19.11687970899999,
+      "returncode": 0,
+      "scores": {
+        "reference_normalized": "пещера располагается на вершине горы к северу от мекки и полностью изолирована от остального мира",
+        "hypothesis_normalized": "пещера располагается на вершине горы к северу от мекки и полностью изолирована от остального мира",
+        "word": {
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0,
+          "correct": 15,
+          "reference_units": 15,
+          "hypothesis_units": 15,
+          "errors": 0,
+          "error_rate": 0.0,
+          "operations": []
+        },
+        "character": {
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0,
+          "correct": 97,
+          "reference_units": 97,
+          "hypothesis_units": 97,
+          "errors": 0,
+          "error_rate": 0.0
+        }
+      }
+    },
+    {
+      "config": "ru_ru",
+      "filename": "3983302451159686461.wav",
+      "id": 1717,
+      "reference_raw": "Обратный поток сосредоточен в нескольких более глубоких участках, где может образовываться быстрое течение, уходящее на большую глубину, из-за подобной подводной топологии.",
+      "reference_dataset_normalized": "обратный поток сосредоточен в нескольких более глубоких участках где может образовываться быстрое течение уходящее на большую глубину из-за подобной подводной топологии",
+      "audio_sha256": "79cce01b8735de2e980d279884e5dcc863aac6d7b7fe27268640c5a273185b15",
+      "model": "turbo",
+      "hypothesis": "Обратный поток сосредоточен в нескольких более глубоких участках, где может образовываться быстрое течение, уходящее на большую глубину из-за подобной подводной топологии.",
+      "audio_seconds": 15.36,
+      "wall_seconds": 25.737231667000003,
+      "returncode": 0,
+      "scores": {
+        "reference_normalized": "обратный поток сосредоточен в нескольких более глубоких участках где может образовываться быстрое течение уходящее на большую глубину из за подобной подводной топологии",
+        "hypothesis_normalized": "обратный поток сосредоточен в нескольких более глубоких участках где может образовываться быстрое течение уходящее на большую глубину из за подобной подводной топологии",
+        "word": {
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0,
+          "correct": 22,
+          "reference_units": 22,
+          "hypothesis_units": 22,
+          "errors": 0,
+          "error_rate": 0.0,
+          "operations": []
+        },
+        "character": {
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0,
+          "correct": 168,
+          "reference_units": 168,
+          "hypothesis_units": 168,
+          "errors": 0,
+          "error_rate": 0.0
+        }
+      }
+    },
+    {
+      "config": "ru_ru",
+      "filename": "14678861080247954797.wav",
+      "id": 1883,
+      "reference_raw": "Высота подмостового габарита составляет 15 метров. Строительство было завершено в августе 2011 года, его не открывали для движения до марта 2017 года.",
+      "reference_dataset_normalized": "высота подмостового габарита составляет 15 метров строительство было завершено в августе 2011 года его не открывали для движения до марта 2017 года",
+      "audio_sha256": "d6e6f7c6472c264ee89d69c9bcf7bd4fcaf30fa162f5a2b1feb95c7877e0b8e7",
+      "model": "turbo",
+      "hypothesis": "Высота подмостового габарита составляет 15 метров. Строительство было завершено в августе 2011 года. Его не открывали для движения до марта 2017 года.",
+      "audio_seconds": 13.2,
+      "wall_seconds": 19.329693583999983,
+      "returncode": 0,
+      "scores": {
+        "reference_normalized": "высота подмостового габарита составляет 15 метров строительство было завершено в августе 2011 года его не открывали для движения до марта 2017 года",
+        "hypothesis_normalized": "высота подмостового габарита составляет 15 метров строительство было завершено в августе 2011 года его не открывали для движения до марта 2017 года",
+        "word": {
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0,
+          "correct": 22,
+          "reference_units": 22,
+          "hypothesis_units": 22,
+          "errors": 0,
+          "error_rate": 0.0,
+          "operations": []
+        },
+        "character": {
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0,
+          "correct": 147,
+          "reference_units": 147,
+          "hypothesis_units": 147,
+          "errors": 0,
+          "error_rate": 0.0
+        }
+      }
+    },
+    {
+      "config": "ru_ru",
+      "filename": "10011799110630615565.wav",
+      "id": 1917,
+      "reference_raw": "В различных местах Рима были установлены большие телевизионные экраны, с помощью которых люди могли наблюдать за церемонией.",
+      "reference_dataset_normalized": "в различных местах рима были установлены большие телевизионные экраны с помощью которых люди могли наблюдать за церемонией",
+      "audio_sha256": "d327393251ecdea82bf7b09be85715b068b4ab1fabd2709be698ede923646a72",
+      "model": "turbo",
+      "hypothesis": "В различных местах Рима были установлены большие телевизионные экраны, с помощью которых люди могли наблюдать за церемонией.",
+      "audio_seconds": 7.92,
+      "wall_seconds": 16.340173666999988,
+      "returncode": 0,
+      "scores": {
+        "reference_normalized": "в различных местах рима были установлены большие телевизионные экраны с помощью которых люди могли наблюдать за церемонией",
+        "hypothesis_normalized": "в различных местах рима были установлены большие телевизионные экраны с помощью которых люди могли наблюдать за церемонией",
+        "word": {
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0,
+          "correct": 17,
+          "reference_units": 17,
+          "hypothesis_units": 17,
+          "errors": 0,
+          "error_rate": 0.0,
+          "operations": []
+        },
+        "character": {
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0,
+          "correct": 122,
+          "reference_units": 122,
+          "hypothesis_units": 122,
+          "errors": 0,
+          "error_rate": 0.0
+        }
+      }
+    },
+    {
+      "config": "ru_ru",
+      "filename": "13881264493319302920.wav",
+      "id": 1839,
+      "reference_raw": "Представьте, что лыжный маршрут — это пешеходный маршрут.",
+      "reference_dataset_normalized": "представьте что лыжный маршрут это пешеходный маршрут",
+      "audio_sha256": "2b2a7cbde97073c0dc47889cfe28a98646b19de227a81f7ee56212831f92a1df",
+      "model": "turbo",
+      "hypothesis": "Представьте, что лыжный маршрут это пешеходный маршрут.",
+      "audio_seconds": 6.18,
+      "wall_seconds": 18.11990687499997,
+      "returncode": 0,
+      "scores": {
+        "reference_normalized": "представьте что лыжный маршрут это пешеходный маршрут",
+        "hypothesis_normalized": "представьте что лыжный маршрут это пешеходный маршрут",
+        "word": {
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0,
+          "correct": 7,
+          "reference_units": 7,
+          "hypothesis_units": 7,
+          "errors": 0,
+          "error_rate": 0.0,
+          "operations": []
+        },
+        "character": {
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0,
+          "correct": 53,
+          "reference_units": 53,
+          "hypothesis_units": 53,
+          "errors": 0,
+          "error_rate": 0.0
+        }
+      }
+    },
+    {
+      "config": "ru_ru",
+      "filename": "12979664752579711480.wav",
+      "id": 1851,
+      "reference_raw": "Отбойное течение — течение, создаваемое волнами, которые разбиваются о берег, или иногда об риф или что-то подобное.",
+      "reference_dataset_normalized": "отбойное течение течение создаваемое волнами которые разбиваются о берег или иногда об риф или что-то подобное",
+      "audio_sha256": "a013ea9c15a7bb804d4f3738240ca6707eed2bdbcff0c2c4719d934afbe5f688",
+      "model": "turbo",
+      "hypothesis": "Отбойное течение – течение, создаваемое волнами, которые разбиваются о берег или иногда об риф или что-то подобное.",
+      "audio_seconds": 11.88,
+      "wall_seconds": 16.684000999999967,
+      "returncode": 0,
+      "scores": {
+        "reference_normalized": "отбойное течение течение создаваемое волнами которые разбиваются о берег или иногда об риф или что то подобное",
+        "hypothesis_normalized": "отбойное течение течение создаваемое волнами которые разбиваются о берег или иногда об риф или что то подобное",
+        "word": {
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0,
+          "correct": 17,
+          "reference_units": 17,
+          "hypothesis_units": 17,
+          "errors": 0,
+          "error_rate": 0.0,
+          "operations": []
+        },
+        "character": {
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0,
+          "correct": 110,
+          "reference_units": 110,
+          "hypothesis_units": 110,
+          "errors": 0,
+          "error_rate": 0.0
+        }
+      }
+    },
+    {
+      "config": "ru_ru",
+      "filename": "728239380900580834.wav",
+      "id": 1884,
+      "reference_raw": "В частности, утверждается, что можно определить, лжет ли человек, при помощи правильной интерпретации его микровыражений.",
+      "reference_dataset_normalized": "в частности утверждается что можно определить лжет ли человек при помощи правильной интерпретации его микровыражений",
+      "audio_sha256": "4b99286c24899676e41f0e8bb49124b3c1921b095ff5c73f87d9b4969534f8de",
+      "model": "turbo",
+      "hypothesis": "В частности, утверждается, что можно определить, лжет ли человек при помощи правильной интерпретации его микровыражений.",
+      "audio_seconds": 10.26,
+      "wall_seconds": 15.550736958000016,
+      "returncode": 0,
+      "scores": {
+        "reference_normalized": "в частности утверждается что можно определить лжет ли человек при помощи правильной интерпретации его микровыражений",
+        "hypothesis_normalized": "в частности утверждается что можно определить лжет ли человек при помощи правильной интерпретации его микровыражений",
+        "word": {
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0,
+          "correct": 15,
+          "reference_units": 15,
+          "hypothesis_units": 15,
+          "errors": 0,
+          "error_rate": 0.0,
+          "operations": []
+        },
+        "character": {
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0,
+          "correct": 116,
+          "reference_units": 116,
+          "hypothesis_units": 116,
+          "errors": 0,
+          "error_rate": 0.0
+        }
+      }
+    },
+    {
+      "config": "ru_ru",
+      "filename": "7149485524548132270.wav",
+      "id": 1756,
+      "reference_raw": "Поздно вечером в воскресенье президент США Дональд Трамп через пресс-секретаря заявил, что войска США покинут Сирию.",
+      "reference_dataset_normalized": "поздно вечером в воскресенье президент сша дональд трамп через пресс-секретаря заявил что войска сша покинут сирию",
+      "audio_sha256": "71eca346bc8c2c7e3d632ccaf5f61472c7bba28d605345fa8cfce461703c069d",
+      "model": "turbo",
+      "hypothesis": "Поздно вечером в воскресенье президент США Дональд Трамп через пресс-секретаря заявил, что войска США покинут Сирию.",
+      "audio_seconds": 8.22,
+      "wall_seconds": 18.978712624999957,
+      "returncode": 0,
+      "scores": {
+        "reference_normalized": "поздно вечером в воскресенье президент сша дональд трамп через пресс секретаря заявил что войска сша покинут сирию",
+        "hypothesis_normalized": "поздно вечером в воскресенье президент сша дональд трамп через пресс секретаря заявил что войска сша покинут сирию",
+        "word": {
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0,
+          "correct": 17,
+          "reference_units": 17,
+          "hypothesis_units": 17,
+          "errors": 0,
+          "error_rate": 0.0,
+          "operations": []
+        },
+        "character": {
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0,
+          "correct": 114,
+          "reference_units": 114,
+          "hypothesis_units": 114,
+          "errors": 0,
+          "error_rate": 0.0
+        }
+      }
+    },
+    {
+      "config": "ru_ru",
+      "filename": "14610734559188726108.wav",
+      "id": 1875,
+      "reference_raw": "Целые 20 процентов воды, поступаемой из рек нашей планеты в океаны, текут из Амазонки.",
+      "reference_dataset_normalized": "целые 20 процентов воды поступаемой из рек нашей планеты в океаны текут из амазонки",
+      "audio_sha256": "d7ad120d29c76662acbf414ae92626db5b52afe2348c4894a225813fa06e3f1f",
+      "model": "turbo",
+      "hypothesis": "Целые 20% воды, поступаемой из рек нашей планеты, в океаны текут из Амазонки.",
+      "audio_seconds": 7.32,
+      "wall_seconds": 16.779583916999968,
+      "returncode": 0,
+      "scores": {
+        "reference_normalized": "целые 20 процентов воды поступаемой из рек нашей планеты в океаны текут из амазонки",
+        "hypothesis_normalized": "целые 20 воды поступаемой из рек нашей планеты в океаны текут из амазонки",
+        "word": {
+          "substitutions": 0,
+          "deletions": 1,
+          "insertions": 0,
+          "correct": 13,
+          "reference_units": 14,
+          "hypothesis_units": 13,
+          "errors": 1,
+          "error_rate": 0.07142857142857142,
+          "operations": [
+            {
+              "op": "deletion",
+              "reference_index": 2,
+              "hypothesis_index": 2,
+              "reference": "процентов",
+              "hypothesis": ""
+            }
+          ]
+        },
+        "character": {
+          "substitutions": 0,
+          "deletions": 10,
+          "insertions": 0,
+          "correct": 73,
+          "reference_units": 83,
+          "hypothesis_units": 73,
+          "errors": 10,
+          "error_rate": 0.12048192771084337
+        }
+      }
+    },
+    {
+      "config": "fr_fr",
+      "filename": "12463754265383123135.wav",
+      "id": 1712,
+      "reference_raw": "Sundarbans est une réserve naturelle depuis 1966, vous pourrez y trouver environ 400 tigres du Bengale royal et 30 000 cerfs tachetés.",
+      "reference_dataset_normalized": "sundarbans est une réserve naturelle depuis 1966 vous pourrez y trouver environ 400 tigres du bengale royal et 30 000 cerfs tachetés",
+      "audio_sha256": "e9178d71c279e32bc0767e67a9c09ce34567a01a305078ced3bec4fb9687f2eb",
+      "model": "turbo",
+      "hypothesis": "Sundarban est une réserve naturelle depuis 1966, vous pourrez y trouver environ 400\ntigres du mengal royal et 30 000 serres d'acheter.",
+      "audio_seconds": 11.88,
+      "wall_seconds": 21.658505667000043,
+      "returncode": 0,
+      "scores": {
+        "reference_normalized": "sundarbans est une réserve naturelle depuis 1966 vous pourrez y trouver environ 400 tigres du bengale royal et 30 000 cerfs tachetés",
+        "hypothesis_normalized": "sundarban est une réserve naturelle depuis 1966 vous pourrez y trouver environ 400 tigres du mengal royal et 30 000 serres d acheter",
+        "word": {
+          "substitutions": 4,
+          "deletions": 0,
+          "insertions": 1,
+          "correct": 18,
+          "reference_units": 22,
+          "hypothesis_units": 23,
+          "errors": 5,
+          "error_rate": 0.22727272727272727,
+          "operations": [
+            {
+              "op": "substitution",
+              "reference_index": 0,
+              "hypothesis_index": 0,
+              "reference": "sundarbans",
+              "hypothesis": "sundarban"
+            },
+            {
+              "op": "substitution",
+              "reference_index": 15,
+              "hypothesis_index": 15,
+              "reference": "bengale",
+              "hypothesis": "mengal"
+            },
+            {
+              "op": "insertion",
+              "reference_index": 20,
+              "hypothesis_index": 20,
+              "reference": "",
+              "hypothesis": "serres"
+            },
+            {
+              "op": "substitution",
+              "reference_index": 20,
+              "hypothesis_index": 21,
+              "reference": "cerfs",
+              "hypothesis": "d"
+            },
+            {
+              "op": "substitution",
+              "reference_index": 21,
+              "hypothesis_index": 22,
+              "reference": "tachetés",
+              "hypothesis": "acheter"
+            }
+          ]
+        },
+        "character": {
+          "substitutions": 6,
+          "deletions": 2,
+          "insertions": 2,
+          "correct": 124,
+          "reference_units": 132,
+          "hypothesis_units": 132,
+          "errors": 10,
+          "error_rate": 0.07575757575757576
+        }
+      }
+    },
+    {
+      "config": "fr_fr",
+      "filename": "11868760808794373459.wav",
+      "id": 1790,
+      "reference_raw": "Son travail est d'une telle qualité et d'un tel niveau de détail qu'il est l'un des rares philatélistes bien connus du « grand public ». Certains collectionneurs consacrent leur attention uniquement à ses œuvres.",
+      "reference_dataset_normalized": "son travail est d'une telle qualité et d'un tel niveau de détail qu'il est l'un des rares philatélistes bien connus du « grand public ». certains collectionneurs consacrent leur attention uniquement à ses œuvres",
+      "audio_sha256": "041b5a3133653bf512592ac5b86c11c8dc1b88ef4162fcc93e739ee83e230ce9",
+      "model": "turbo",
+      "hypothesis": "Son travail est d'une telle qualité, d'un tel niveau de détail qu'il est l'un des rares philatélistes bien connus du grand public.\nCertains collectionneurs consacrent leur attention uniquement à ses œuvres.",
+      "audio_seconds": 10.26,
+      "wall_seconds": 25.400587125000015,
+      "returncode": 0,
+      "scores": {
+        "reference_normalized": "son travail est d une telle qualité et d un tel niveau de détail qu il est l un des rares philatélistes bien connus du grand public certains collectionneurs consacrent leur attention uniquement à ses œuvres",
+        "hypothesis_normalized": "son travail est d une telle qualité d un tel niveau de détail qu il est l un des rares philatélistes bien connus du grand public certains collectionneurs consacrent leur attention uniquement à ses œuvres",
+        "word": {
+          "substitutions": 0,
+          "deletions": 1,
+          "insertions": 0,
+          "correct": 35,
+          "reference_units": 36,
+          "hypothesis_units": 35,
+          "errors": 1,
+          "error_rate": 0.027777777777777776,
+          "operations": [
+            {
+              "op": "deletion",
+              "reference_index": 7,
+              "hypothesis_index": 7,
+              "reference": "et",
+              "hypothesis": ""
+            }
+          ]
+        },
+        "character": {
+          "substitutions": 0,
+          "deletions": 3,
+          "insertions": 0,
+          "correct": 203,
+          "reference_units": 206,
+          "hypothesis_units": 203,
+          "errors": 3,
+          "error_rate": 0.014563106796116505
+        }
+      }
+    },
+    {
+      "config": "fr_fr",
+      "filename": "11083144489197368524.wav",
+      "id": 1894,
+      "reference_raw": "Un curry est un plat à base d'herbes et d'épices, accompagné de viande ou de légumes.",
+      "reference_dataset_normalized": "un curry est un plat à base d'herbes et d'épices accompagné de viande ou de légumes",
+      "audio_sha256": "2b3b2fe2540e8e60313eb8b306c014386c87879081a4d042867cc8582adad78d",
+      "model": "turbo",
+      "hypothesis": "Un curry est un plat à base d'herbes et d'épices accompagné de viande ou de légumes.",
+      "audio_seconds": 8.64,
+      "wall_seconds": 19.160073082999986,
+      "returncode": 0,
+      "scores": {
+        "reference_normalized": "un curry est un plat à base d herbes et d épices accompagné de viande ou de légumes",
+        "hypothesis_normalized": "un curry est un plat à base d herbes et d épices accompagné de viande ou de légumes",
+        "word": {
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0,
+          "correct": 18,
+          "reference_units": 18,
+          "hypothesis_units": 18,
+          "errors": 0,
+          "error_rate": 0.0,
+          "operations": []
+        },
+        "character": {
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0,
+          "correct": 83,
+          "reference_units": 83,
+          "hypothesis_units": 83,
+          "errors": 0,
+          "error_rate": 0.0
+        }
+      }
+    },
+    {
+      "config": "fr_fr",
+      "filename": "1856585387483238980.wav",
+      "id": 1867,
+      "reference_raw": "Les plantes produisent de l’oxygène que les humains respirent, et elles absorbent le dioxyde de carbone que les humains exhalent (c’est-à-dire expirent).",
+      "reference_dataset_normalized": "les plantes produisent de l’oxygène que les humains respirent et elles absorbent le dioxyde de carbone que les humains exhalent c’est-à-dire expirent",
+      "audio_sha256": "5324f22dab4eae8e33d03e76a394cb987f4221f01e1cff7230ae54ea528a5bb6",
+      "model": "turbo",
+      "hypothesis": "Les plantes produisent de l'oxygène que les humains respirent, et elles absorbent le dioxyde de carbone que les humains exhalent, c'est-à-dire expirent.",
+      "audio_seconds": 12.84,
+      "wall_seconds": 17.516273082999987,
+      "returncode": 0,
+      "scores": {
+        "reference_normalized": "les plantes produisent de l oxygène que les humains respirent et elles absorbent le dioxyde de carbone que les humains exhalent c est à dire expirent",
+        "hypothesis_normalized": "les plantes produisent de l oxygène que les humains respirent et elles absorbent le dioxyde de carbone que les humains exhalent c est à dire expirent",
+        "word": {
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0,
+          "correct": 26,
+          "reference_units": 26,
+          "hypothesis_units": 26,
+          "errors": 0,
+          "error_rate": 0.0,
+          "operations": []
+        },
+        "character": {
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0,
+          "correct": 149,
+          "reference_units": 149,
+          "hypothesis_units": 149,
+          "errors": 0,
+          "error_rate": 0.0
+        }
+      }
+    },
+    {
+      "config": "fr_fr",
+      "filename": "8242393670634015978.wav",
+      "id": 1758,
+      "reference_raw": "L’archipel se trouve à 120 km au nord de la péninsule. L’île du Roi-George, avec le village de Villa Las Estrellas, est la plus grande.",
+      "reference_dataset_normalized": "l'archipel se trouve à 120 km au nord de la péninsule l'île du roi-george avec le village de villa las estrellas est la plus grande",
+      "audio_sha256": "abc7e7db1e5fe2234e04996fe9116148145c4b90e0b63de0ccdb4d42accef0c9",
+      "model": "turbo",
+      "hypothesis": "L'archipel se trouve à 120 km au nord de la péninsule, l'île du roi Georges, avec le village de Villalas-Esterrelas et la plus grande.",
+      "audio_seconds": 8.7,
+      "wall_seconds": 15.90959441700005,
+      "returncode": 0,
+      "scores": {
+        "reference_normalized": "l archipel se trouve à 120 km au nord de la péninsule l île du roi george avec le village de villa las estrellas est la plus grande",
+        "hypothesis_normalized": "l archipel se trouve à 120 km au nord de la péninsule l île du roi georges avec le village de villalas esterrelas et la plus grande",
+        "word": {
+          "substitutions": 4,
+          "deletions": 1,
+          "insertions": 0,
+          "correct": 23,
+          "reference_units": 28,
+          "hypothesis_units": 27,
+          "errors": 5,
+          "error_rate": 0.17857142857142858,
+          "operations": [
+            {
+              "op": "substitution",
+              "reference_index": 16,
+              "hypothesis_index": 16,
+              "reference": "george",
+              "hypothesis": "georges"
+            },
+            {
+              "op": "deletion",
+              "reference_index": 21,
+              "hypothesis_index": 21,
+              "reference": "villa",
+              "hypothesis": ""
+            },
+            {
+              "op": "substitution",
+              "reference_index": 22,
+              "hypothesis_index": 21,
+              "reference": "las",
+              "hypothesis": "villalas"
+            },
+            {
+              "op": "substitution",
+              "reference_index": 23,
+              "hypothesis_index": 22,
+              "reference": "estrellas",
+              "hypothesis": "esterrelas"
+            },
+            {
+              "op": "substitution",
+              "reference_index": 24,
+              "hypothesis_index": 23,
+              "reference": "est",
+              "hypothesis": "et"
+            }
+          ]
+        },
+        "character": {
+          "substitutions": 2,
+          "deletions": 2,
+          "insertions": 2,
+          "correct": 127,
+          "reference_units": 131,
+          "hypothesis_units": 131,
+          "errors": 6,
+          "error_rate": 0.04580152671755725
+        }
+      }
+    },
+    {
+      "config": "fr_fr",
+      "filename": "5826493659721141060.wav",
+      "id": 1673,
+      "reference_raw": "Pendant la guerre révolutionnaire, les treize États ont d’abord formé un gouvernement central faible — le Congrès étant sa seule composante — en vertu des articles de la Confédération.",
+      "reference_dataset_normalized": "pendant la guerre révolutionnaire les treize états ont d'abord formé un gouvernement central faible le congrès étant sa seule composante en vertu des articles de la confédération",
+      "audio_sha256": "eccb663adec780b78549ee2999af54529ed0f90785169c35dbbb728b369794f0",
+      "model": "turbo",
+      "hypothesis": "Pendant la guerre révolutionnaire, les 13 Etats ont d'abord formé un gouvernement central faible,\nle Congrès étant sa seule composante, en vertu des articles de la Confédération.",
+      "audio_seconds": 12.36,
+      "wall_seconds": 17.49077016700005,
+      "returncode": 0,
+      "scores": {
+        "reference_normalized": "pendant la guerre révolutionnaire les treize états ont d abord formé un gouvernement central faible le congrès étant sa seule composante en vertu des articles de la confédération",
+        "hypothesis_normalized": "pendant la guerre révolutionnaire les 13 etats ont d abord formé un gouvernement central faible le congrès étant sa seule composante en vertu des articles de la confédération",
+        "word": {
+          "substitutions": 2,
+          "deletions": 0,
+          "insertions": 0,
+          "correct": 26,
+          "reference_units": 28,
+          "hypothesis_units": 28,
+          "errors": 2,
+          "error_rate": 0.07142857142857142,
+          "operations": [
+            {
+              "op": "substitution",
+              "reference_index": 5,
+              "hypothesis_index": 5,
+              "reference": "treize",
+              "hypothesis": "13"
+            },
+            {
+              "op": "substitution",
+              "reference_index": 6,
+              "hypothesis_index": 6,
+              "reference": "états",
+              "hypothesis": "etats"
+            }
+          ]
+        },
+        "character": {
+          "substitutions": 3,
+          "deletions": 4,
+          "insertions": 0,
+          "correct": 171,
+          "reference_units": 178,
+          "hypothesis_units": 174,
+          "errors": 7,
+          "error_rate": 0.03932584269662921
+        }
+      }
+    },
+    {
+      "config": "fr_fr",
+      "filename": "16139714976212728807.wav",
+      "id": 1874,
+      "reference_raw": "Certains pensaient qu’il avait raison, mais beaucoup croyaient le contraire : que le système solaire se déplaçait autour de la Terre, y compris le Soleil (et même les autres étoiles).",
+      "reference_dataset_normalized": "certains pensaient qu’il avait raison mais beaucoup croyaient le contraire : que le système solaire se déplaçait autour de la terre y compris le soleil et même les autres étoiles",
+      "audio_sha256": "b4fda728f773733dc3a327989170081dfc9d8fb95de8366650bf87012c21cebd",
+      "model": "turbo",
+      "hypothesis": "Certains pensaient qu'il avait raison, mais beaucoup croyaient le contraire,\nque le système solaire se déplaçait autour de la Terre, y compris le Soleil, et même les autres étoiles.",
+      "audio_seconds": 10.14,
+      "wall_seconds": 22.171799332999967,
+      "returncode": 0,
+      "scores": {
+        "reference_normalized": "certains pensaient qu il avait raison mais beaucoup croyaient le contraire que le système solaire se déplaçait autour de la terre y compris le soleil et même les autres étoiles",
+        "hypothesis_normalized": "certains pensaient qu il avait raison mais beaucoup croyaient le contraire que le système solaire se déplaçait autour de la terre y compris le soleil et même les autres étoiles",
+        "word": {
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0,
+          "correct": 30,
+          "reference_units": 30,
+          "hypothesis_units": 30,
+          "errors": 0,
+          "error_rate": 0.0,
+          "operations": []
+        },
+        "character": {
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0,
+          "correct": 176,
+          "reference_units": 176,
+          "hypothesis_units": 176,
+          "errors": 0,
+          "error_rate": 0.0
+        }
+      }
+    },
+    {
+      "config": "fr_fr",
+      "filename": "16018224838310324332.wav",
+      "id": 1992,
+      "reference_raw": "Dans le langage courant, le terme « safari » désigne une excursion sur la terre africaine, et en particulier dans la savane, ayant pour but d'assister au spectacle saisissant des animaux sauvages dans leur milieu.",
+      "reference_dataset_normalized": "dans le langage courant, le terme « safari » désigne une excursion sur la terre africaine, et en particulier dans la savane, ayant pour but d'assister au spectacle saisissant des animaux sauvages dans leur milieu",
+      "audio_sha256": "ee6cb625a5f8c2130eac97531f09c08426d3422b6de7b701d53636b746233e7d",
+      "model": "turbo",
+      "hypothesis": "Dans le langage courant, le terme safari désigne une excursion sur la terre africaine, et en particulier dans la savane, ayant pour but d'assister au spectacle saisissant des animaux sauvages dans leur milieu.",
+      "audio_seconds": 12.78,
+      "wall_seconds": 24.249841708999952,
+      "returncode": 0,
+      "scores": {
+        "reference_normalized": "dans le langage courant le terme safari désigne une excursion sur la terre africaine et en particulier dans la savane ayant pour but d assister au spectacle saisissant des animaux sauvages dans leur milieu",
+        "hypothesis_normalized": "dans le langage courant le terme safari désigne une excursion sur la terre africaine et en particulier dans la savane ayant pour but d assister au spectacle saisissant des animaux sauvages dans leur milieu",
+        "word": {
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0,
+          "correct": 34,
+          "reference_units": 34,
+          "hypothesis_units": 34,
+          "errors": 0,
+          "error_rate": 0.0,
+          "operations": []
+        },
+        "character": {
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0,
+          "correct": 205,
+          "reference_units": 205,
+          "hypothesis_units": 205,
+          "errors": 0,
+          "error_rate": 0.0
+        }
+      }
+    },
+    {
+      "config": "fr_fr",
+      "filename": "15226377368459496410.wav",
+      "id": 1682,
+      "reference_raw": "Bien que personne ne sache vraiment qui l'a rédigé, on sait qu'à un stade précoce de son existence, le grand parchemin (qui mesure environ 29 pouces trois quarts sur 24 pouces) était entreposé roulé.",
+      "reference_dataset_normalized": "bien que personne ne sache vraiment qui l'a rédigé on sait qu'à un stade précoce de son existence, le grand parchemin qui mesure environ 29 pouces trois quarts sur 24 pouces était entreposé roulé",
+      "audio_sha256": "9b504385024341e2429f456e7ab8eb680baeb45dd056e8fe5d77b570bd057ae1",
+      "model": "turbo",
+      "hypothesis": "Bien que personne ne sache vraiment qui l'a rédigé, on sait qu'à un stade précoce de son\nexistence, le grand parchemin, qui mesure environ 29 pouces 3 quarts sur 24 pouces,\nest être entreposé roulé.",
+      "audio_seconds": 13.8,
+      "wall_seconds": 24.45135004200006,
+      "returncode": 0,
+      "scores": {
+        "reference_normalized": "bien que personne ne sache vraiment qui l a rédigé on sait qu à un stade précoce de son existence le grand parchemin qui mesure environ 29 pouces trois quarts sur 24 pouces était entreposé roulé",
+        "hypothesis_normalized": "bien que personne ne sache vraiment qui l a rédigé on sait qu à un stade précoce de son existence le grand parchemin qui mesure environ 29 pouces 3 quarts sur 24 pouces est être entreposé roulé",
+        "word": {
+          "substitutions": 2,
+          "deletions": 0,
+          "insertions": 1,
+          "correct": 34,
+          "reference_units": 36,
+          "hypothesis_units": 37,
+          "errors": 3,
+          "error_rate": 0.08333333333333333,
+          "operations": [
+            {
+              "op": "substitution",
+              "reference_index": 28,
+              "hypothesis_index": 28,
+              "reference": "trois",
+              "hypothesis": "3"
+            },
+            {
+              "op": "insertion",
+              "reference_index": 33,
+              "hypothesis_index": 33,
+              "reference": "",
+              "hypothesis": "est"
+            },
+            {
+              "op": "substitution",
+              "reference_index": 33,
+              "hypothesis_index": 34,
+              "reference": "était",
+              "hypothesis": "être"
+            }
+          ]
+        },
+        "character": {
+          "substitutions": 4,
+          "deletions": 4,
+          "insertions": 3,
+          "correct": 186,
+          "reference_units": 194,
+          "hypothesis_units": 193,
+          "errors": 11,
+          "error_rate": 0.05670103092783505
+        }
+      }
+    },
+    {
+      "config": "fr_fr",
+      "filename": "6532225463918874493.wav",
+      "id": 1689,
+      "reference_raw": "L'Europe est un continent relativement petit, mais comportant de nombreux pays indépendants. Dans des circonstances classiques, voyager à travers plusieurs pays implique donc de devoir procéder à plusieurs demandes de visa et de subir plusieurs vérifications de passeport.",
+      "reference_dataset_normalized": "l'europe est un continent relativement petit mais comportant de nombreux pays indépendants dans des circonstances classiques voyager à travers plusieurs pays implique donc de devoir procéder à plusieurs demandes de visa et de subir plusieurs vérifications de passeport",
+      "audio_sha256": "f45f8a38c2fbac062fb8b8232fb1315aa731aaf823a634c6f724487a7d2ddd56",
+      "model": "turbo",
+      "hypothesis": "L'Europe est un continent relativement petit mais comportant de nombreux pays indépendants.\nDans les circonstances classiques, voyager à travers plusieurs pays implique donc de devoir posséder à plusieurs demandes de visa et de subir plusieurs vérifications de passeport.",
+      "audio_seconds": 14.52,
+      "wall_seconds": 24.54720041600001,
+      "returncode": 0,
+      "scores": {
+        "reference_normalized": "l europe est un continent relativement petit mais comportant de nombreux pays indépendants dans des circonstances classiques voyager à travers plusieurs pays implique donc de devoir procéder à plusieurs demandes de visa et de subir plusieurs vérifications de passeport",
+        "hypothesis_normalized": "l europe est un continent relativement petit mais comportant de nombreux pays indépendants dans les circonstances classiques voyager à travers plusieurs pays implique donc de devoir posséder à plusieurs demandes de visa et de subir plusieurs vérifications de passeport",
+        "word": {
+          "substitutions": 2,
+          "deletions": 0,
+          "insertions": 0,
+          "correct": 37,
+          "reference_units": 39,
+          "hypothesis_units": 39,
+          "errors": 2,
+          "error_rate": 0.05128205128205128,
+          "operations": [
+            {
+              "op": "substitution",
+              "reference_index": 14,
+              "hypothesis_index": 14,
+              "reference": "des",
+              "hypothesis": "les"
+            },
+            {
+              "op": "substitution",
+              "reference_index": 26,
+              "hypothesis_index": 26,
+              "reference": "procéder",
+              "hypothesis": "posséder"
+            }
+          ]
+        },
+        "character": {
+          "substitutions": 4,
+          "deletions": 0,
+          "insertions": 0,
+          "correct": 264,
+          "reference_units": 268,
+          "hypothesis_units": 268,
+          "errors": 4,
+          "error_rate": 0.014925373134328358
+        }
+      }
+    },
+    {
+      "config": "fr_fr",
+      "filename": "10709985934106699878.wav",
+      "id": 1858,
+      "reference_raw": "Danielle Lantagne, experte de l'ONU sur la maladie, a déclaré que l'épidémie avait probablement été causée par les Casques bleus.",
+      "reference_dataset_normalized": "danielle lantagne experte de l'onu sur la maladie a déclaré que l'épidémie avait probablement été causée par les casques bleus",
+      "audio_sha256": "bd8659d0cd833d8f0321aebe475059b484978e9f257462b34c076d21ae14bca4",
+      "model": "turbo",
+      "hypothesis": "Daniel Lantagne, experte de l'ONU sur la maladie, a déclaré que l'épidémie avait probablement été causée par les casques bleus.",
+      "audio_seconds": 11.16,
+      "wall_seconds": 21.630895540999973,
+      "returncode": 0,
+      "scores": {
+        "reference_normalized": "danielle lantagne experte de l onu sur la maladie a déclaré que l épidémie avait probablement été causée par les casques bleus",
+        "hypothesis_normalized": "daniel lantagne experte de l onu sur la maladie a déclaré que l épidémie avait probablement été causée par les casques bleus",
+        "word": {
+          "substitutions": 1,
+          "deletions": 0,
+          "insertions": 0,
+          "correct": 21,
+          "reference_units": 22,
+          "hypothesis_units": 22,
+          "errors": 1,
+          "error_rate": 0.045454545454545456,
+          "operations": [
+            {
+              "op": "substitution",
+              "reference_index": 0,
+              "hypothesis_index": 0,
+              "reference": "danielle",
+              "hypothesis": "daniel"
+            }
+          ]
+        },
+        "character": {
+          "substitutions": 0,
+          "deletions": 2,
+          "insertions": 0,
+          "correct": 124,
+          "reference_units": 126,
+          "hypothesis_units": 124,
+          "errors": 2,
+          "error_rate": 0.015873015873015872
+        }
+      }
+    },
+    {
+      "config": "fr_fr",
+      "filename": "12907873963009218833.wav",
+      "id": 1844,
+      "reference_raw": "La surface de la lune est constituée de pierres et de poussière. Sa couche extérieure est appelée la croûte.",
+      "reference_dataset_normalized": "la surface de la lune est constituée de pierres et de poussière sa couche extérieure est appelée la croûte",
+      "audio_sha256": "21b9dfb9e8b331fea831d06e778301030ab1d9174e7d570d16a21c3c03be8344",
+      "model": "turbo",
+      "hypothesis": "La surface de la Lune est constituée de pierres et de poussières.\nSa couche extérieure est appelée la croûte.",
+      "audio_seconds": 5.94,
+      "wall_seconds": 20.35410845900003,
+      "returncode": 0,
+      "scores": {
+        "reference_normalized": "la surface de la lune est constituée de pierres et de poussière sa couche extérieure est appelée la croûte",
+        "hypothesis_normalized": "la surface de la lune est constituée de pierres et de poussières sa couche extérieure est appelée la croûte",
+        "word": {
+          "substitutions": 1,
+          "deletions": 0,
+          "insertions": 0,
+          "correct": 18,
+          "reference_units": 19,
+          "hypothesis_units": 19,
+          "errors": 1,
+          "error_rate": 0.05263157894736842,
+          "operations": [
+            {
+              "op": "substitution",
+              "reference_index": 11,
+              "hypothesis_index": 11,
+              "reference": "poussière",
+              "hypothesis": "poussières"
+            }
+          ]
+        },
+        "character": {
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 1,
+          "correct": 106,
+          "reference_units": 106,
+          "hypothesis_units": 107,
+          "errors": 1,
+          "error_rate": 0.009433962264150943
+        }
+      }
+    }
+  ],
+  "independent_verification": {
+    "status": "passed",
+    "jiwer_version": "4.0.0",
+    "rapidfuzz_version": "3.14.6",
+    "per_clip_pairs_checked": 24,
+    "language_aggregates_checked": 2,
+    "tolerance": 1e-12,
+    "checks": [
+      "Actual artifact metadata identifies Darwin/macOS with architecture recorded dynamically",
+      "All 24 original sample IDs, paired references and reported audio hashes match the fixed manifest",
+      "Source snapshot SHA-256 matches the Linux-tested application; scorer and runner SHA-256 match original scripts",
+      "All five reported model-file hashes and pinned model revision match Linux",
+      "Recorded package versions and decoding settings match Linux",
+      "All saved transcript files agree with full-result hypotheses and per_clip.jsonl",
+      "Recomputed score.py results agree with all recorded scores",
+      "jiwer independently agrees with every word/character error total and all aggregate WER/CER values",
+      "Aggregate values, run.json, aggregate.json and full results.json are mutually consistent"
+    ],
+    "scope_note": "This verifies saved run artifacts. Model/audio hashes were checked on the Mac by the runner and are compared here with the original manifest and Linux result; large model/audio files are not included in the downloaded CI artifact."
+  }
+}

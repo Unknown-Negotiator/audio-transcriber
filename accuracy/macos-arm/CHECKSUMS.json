@@ -1,0 +1,34 @@
+{
+  "files": [
+    {
+      "path": "ARM_ACCURACY.md",
+      "bytes": 3215,
+      "sha256": "2f929fcf5fda5c2bafdfce384c512fb13bece5fce4abc3e9927145ec8c1b8a2f"
+    },
+    {
+      "path": "LICENSE_DATA.md",
+      "bytes": 1226,
+      "sha256": "72cadd2941bf1f26f5427c000849939bbc00335f32f642281821c6cf5922291c"
+    },
+    {
+      "path": "aggregate.json",
+      "bytes": 7028,
+      "sha256": "0bade20e27026dfe6f6ebe59a11482400a346955cbcaf9cfd1c2a401509c58a6"
+    },
+    {
+      "path": "comparison_to_linux.json",
+      "bytes": 7105,
+      "sha256": "b1660f81f7ca34d6a8828c859cd2a34413ee38a079488cc1e05367035874e0ff"
+    },
+    {
+      "path": "metric_verification.json",
+      "bytes": 1263,
+      "sha256": "0d0de987fa6f9506a691c9859e81bc18ad8511e102a8c2d0b766444276cdf739"
+    },
+    {
+      "path": "results.json",
+      "bytes": 60837,
+      "sha256": "f45644ab814bf42518d33b27507c790b135629db058a2204e1ee88ce25f19b71"
+    }
+  ]
+}

@@ -1,0 +1,191 @@
+{
+  "linux_environment": {
+    "python": "3.11.17 (main, Oct 13 2026, 16:45:47) [GCC 15.3.0]",
+    "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+    "packages": {
+      "faster-whisper": "1.2.1",
+      "ctranslate2": "4.8.3",
+      "av": "18.1.0",
+      "numpy": "2.4.6",
+      "huggingface-hub": "1.33.0"
+    },
+    "processor": "INTEL(R) XEON(R) PLATINUM 8573C; shared cloud VM; not user Mac"
+  },
+  "mac_environment": {
+    "is_macos": true,
+    "system": "Darwin",
+    "release": "24.6.0",
+    "version": "Darwin Kernel Version 24.6.0: Tue Jul 21 20:51:34 PDT 2026; root:xnu-11417.140.69.711.44~1/RELEASE_ARM64_VMAPPLE",
+    "platform": "macOS-15.7.9-arm64-arm-64bit",
+    "machine": "arm64",
+    "processor": "arm",
+    "macos_version": "15.7.9",
+    "python": "3.11.17 (main, Oct 13 2026, 16:38:53) [Clang 21.1.8 ]",
+    "packages": {
+      "faster-whisper": "1.2.1",
+      "ctranslate2": "4.8.3",
+      "av": "18.1.0",
+      "numpy": "2.4.6",
+      "huggingface-hub": "1.33.0"
+    },
+    "github_actions": true,
+    "github_sha": "d010817a4be599ef39354b441d21ef354741822c",
+    "github_run_id": "39502317919",
+    "runner_os": "macOS",
+    "runner_arch": "ARM64"
+  },
+  "identical_normalized_hypotheses": 21,
+  "different_normalized_hypotheses": 3,
+  "differences_by_language": {
+    "ru_ru": 0,
+    "fr_fr": 3
+  },
+  "aggregate_linux": {
+    "ru_ru": {
+      "word": {
+        "substitutions": 2,
+        "deletions": 1,
+        "insertions": 0,
+        "correct": 203,
+        "reference_units": 206,
+        "hypothesis_units": 205,
+        "errors": 3,
+        "error_rate": 0.014563106796116505
+      },
+      "character": {
+        "substitutions": 1,
+        "deletions": 11,
+        "insertions": 0,
+        "correct": 1404,
+        "reference_units": 1416,
+        "hypothesis_units": 1405,
+        "errors": 12,
+        "error_rate": 0.00847457627118644
+      },
+      "clips": 12,
+      "audio_seconds": 121.68,
+      "cli_wall_seconds": 79.88936369700059,
+      "normalized_exact_match_clips": 9,
+      "real_time_factor_including_cli_startup": 0.6565529560897484
+    },
+    "fr_fr": {
+      "word": {
+        "substitutions": 15,
+        "deletions": 1,
+        "insertions": 1,
+        "correct": 322,
+        "reference_units": 338,
+        "hypothesis_units": 338,
+        "errors": 17,
+        "error_rate": 0.05029585798816568
+      },
+      "character": {
+        "substitutions": 15,
+        "deletions": 17,
+        "insertions": 5,
+        "correct": 1922,
+        "reference_units": 1954,
+        "hypothesis_units": 1942,
+        "errors": 37,
+        "error_rate": 0.018935516888433982
+      },
+      "clips": 12,
+      "audio_seconds": 133.02,
+      "cli_wall_seconds": 89.97555068599968,
+      "normalized_exact_match_clips": 4,
+      "real_time_factor_including_cli_startup": 0.6764061846789932
+    }
+  },
+  "aggregate_mac": {
+    "ru_ru": {
+      "word": {
+        "substitutions": 2,
+        "deletions": 1,
+        "insertions": 0,
+        "correct": 203,
+        "reference_units": 206,
+        "hypothesis_units": 205,
+        "errors": 3,
+        "error_rate": 0.014563106796116505
+      },
+      "character": {
+        "substitutions": 1,
+        "deletions": 11,
+        "insertions": 0,
+        "correct": 1404,
+        "reference_units": 1416,
+        "hypothesis_units": 1405,
+        "errors": 12,
+        "error_rate": 0.00847457627118644
+      },
+      "clips": 12,
+      "audio_seconds": 121.68,
+      "cli_wall_seconds": 231.64855558499985,
+      "normalized_exact_match_clips": 9,
+      "real_time_factor_including_cli_startup": 1.9037521004684406
+    },
+    "fr_fr": {
+      "word": {
+        "substitutions": 16,
+        "deletions": 2,
+        "insertions": 2,
+        "correct": 320,
+        "reference_units": 338,
+        "hypothesis_units": 338,
+        "errors": 20,
+        "error_rate": 0.05917159763313609
+      },
+      "character": {
+        "substitutions": 19,
+        "deletions": 17,
+        "insertions": 8,
+        "correct": 1918,
+        "reference_units": 1954,
+        "hypothesis_units": 1945,
+        "errors": 44,
+        "error_rate": 0.022517911975435005
+      },
+      "clips": 12,
+      "audio_seconds": 133.02,
+      "cli_wall_seconds": 254.54099904200012,
+      "normalized_exact_match_clips": 4,
+      "real_time_factor_including_cli_startup": 1.9135543455269892
+    }
+  },
+  "changed_clips": [
+    {
+      "config": "fr_fr",
+      "filename": "8242393670634015978.wav",
+      "reference_raw": "L’archipel se trouve à 120 km au nord de la péninsule. L’île du Roi-George, avec le village de Villa Las Estrellas, est la plus grande.",
+      "linux_hypothesis": "L'archipel se trouve à 120 km au nord de la péninsule, l'île du roi Georges, avec le village de Villalas-Est-Erelas et la plus grande.",
+      "mac_hypothesis": "L'archipel se trouve à 120 km au nord de la péninsule, l'île du roi Georges, avec le village de Villalas-Esterrelas et la plus grande.",
+      "linux_word_errors": 5,
+      "mac_word_errors": 5,
+      "linux_character_errors": 6,
+      "mac_character_errors": 6
+    },
+    {
+      "config": "fr_fr",
+      "filename": "5826493659721141060.wav",
+      "reference_raw": "Pendant la guerre révolutionnaire, les treize États ont d’abord formé un gouvernement central faible — le Congrès étant sa seule composante — en vertu des articles de la Confédération.",
+      "linux_hypothesis": "Pendant la guerre révolutionnaire, les 13 États ont d'abord formé un gouvernement central faible,\nle Congrès étant sa seule composante, en vertu des articles de la Confédération.",
+      "mac_hypothesis": "Pendant la guerre révolutionnaire, les 13 Etats ont d'abord formé un gouvernement central faible,\nle Congrès étant sa seule composante, en vertu des articles de la Confédération.",
+      "linux_word_errors": 1,
+      "mac_word_errors": 2,
+      "linux_character_errors": 6,
+      "mac_character_errors": 7
+    },
+    {
+      "config": "fr_fr",
+      "filename": "15226377368459496410.wav",
+      "reference_raw": "Bien que personne ne sache vraiment qui l'a rédigé, on sait qu'à un stade précoce de son existence, le grand parchemin (qui mesure environ 29 pouces trois quarts sur 24 pouces) était entreposé roulé.",
+      "linux_hypothesis": "Bien que personne ne sache vraiment qui l'a rédigé, on sait qu'à un stade précoce de son\nexistence, le grand parchemin, qui mesure environ 29 pouces 3 quarts sur 24 pouces,\nétait entreposé roulé.",
+      "mac_hypothesis": "Bien que personne ne sache vraiment qui l'a rédigé, on sait qu'à un stade précoce de son\nexistence, le grand parchemin, qui mesure environ 29 pouces 3 quarts sur 24 pouces,\nest être entreposé roulé.",
+      "linux_word_errors": 1,
+      "mac_word_errors": 3,
+      "linux_character_errors": 5,
+      "mac_character_errors": 11
+    }
+  ],
+  "interpretation": "Results are not cross-platform-identical. The cause of the differences was not isolated; identical weights, inputs and recorded package versions do not establish identical numerical execution across hardware."
+}
