@@ -33,6 +33,17 @@ class CLITests(unittest.TestCase):
     def test_turbo_model_option(self):
         args = app.parser().parse_args(['download-model', '--size', 'large-v3-turbo', '--directory', 'models/turbo'])
         self.assertEqual(args.size, 'large-v3-turbo')
+    def test_timestamp_clamps_to_audio_extent(self):
+        self.assertEqual(app.bounded_timestamps(3153.92, 3183.90, 3159.85), (3153.92, 3159.85))
+        self.assertEqual(app.bounded_timestamps(-1, 5, 120), (0.0, 5.0))
+        self.assertEqual(app.bounded_timestamps(125, 130, 120), (120.0, 120.0))
+        self.assertEqual(app.bounded_timestamps(8, 7, 120), (8.0, 8.0))
+        self.assertEqual(app.bounded_timestamps(2, 6, 120), (2.0, 6.0))
+    def test_timestamp_zero_and_nonfinite(self):
+        self.assertEqual(app.bounded_timestamps(0, 1, 0), (0.0, 0.0))
+        for values in [(float('nan'), 1, 2), (0, float('inf'), 2), (0, 1, -1)]:
+            with self.assertRaises(ValueError):
+                app.bounded_timestamps(*values)
     def test_parser_track(self):
         self.assertEqual(app.parser().parse_args(['transcribe','x.mkv','--model','m','--audio-track','1']).audio_track, 1)
 

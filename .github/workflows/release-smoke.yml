@@ -1,0 +1,49 @@
+name: Final CLI and timestamp regression on macOS
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/release-smoke.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  smoke:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-15, macos-15-intel]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    defaults:
+      run:
+        shell: bash -el {0}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: conda-incubator/setup-miniconda@v3
+        with:
+          miniforge-version: latest
+          environment-file: environment.yml
+          activate-environment: local-transcriber
+          auto-activate-base: false
+      - name: Test current code and synthetic decoder fixtures
+        run: |
+          conda install -n local-transcriber -c conda-forge ffmpeg -y
+          mkdir -p ci-results
+          python -m unittest discover -s tests -v 2>&1 | tee ci-results/unit-tests.txt
+          shasum -a 256 transcribe.py > ci-results/source-sha256.txt
+      - name: Public model and real audio setup
+        run: |
+          python transcribe.py download-model --size large-v3-turbo --directory "$RUNNER_TEMP/models/turbo"
+          curl -fL --retry 2 --max-time 300 'https://archive.org/download/white_nights_librivox/2-fm-dostoevsky-belye-nochi-night2-part1.mp3' -o "$RUNNER_TEMP/ru.mp3"
+          ffmpeg -v error -ss 20 -i "$RUNNER_TEMP/ru.mp3" -t 120 -c:a pcm_s16le "$RUNNER_TEMP/excerpt.mkv"
+      - name: Current CLI inference and timestamp bounds
+        run: |
+          python tests/benchmark.py "$RUNNER_TEMP/excerpt.mkv" "$RUNNER_TEMP/models/turbo" ru ci-results/ru.txt ci-results/ru.json
+          python tests/analyze_transcript.py ci-results/ru.txt 120 > ci-results/coverage.json
+          python -c "import re,pathlib; t=pathlib.Path('ci-results/ru.txt').read_text(); rows=re.findall(r'\[([\d.]+)–([\d.]+)\]',t); assert rows and all(0<=float(a)<=float(b)<=120 for a,b in rows); assert len(re.findall(r'[А-Яа-яЁё]',t))>100"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: final-cli-${{ matrix.os }}
+          path: ci-results/
+          retention-days: 1

@@ -60,6 +60,17 @@ def decode_audio(source, target, track):
                 wav.writeframes(out.to_ndarray().astype('<i2', copy=False).tobytes())
 
 
+def bounded_timestamps(start, end, duration):
+    """Keep displayed model estimates inside the actual audio extent."""
+    import math
+    start, end, duration = float(start), float(end), float(duration)
+    if not all(math.isfinite(x) for x in (start, end, duration)) or duration < 0:
+        raise ValueError('Invalid non-finite model timestamp or audio duration')
+    start = min(max(start, 0.0), duration)
+    end = min(max(float(end), start), float(duration))
+    return start, end
+
+
 def transcribe(args):
     offline_mode()
     source = args.input.expanduser().resolve()
@@ -92,6 +103,7 @@ def transcribe(args):
             import numpy as np
             with wave.open(str(wav), 'rb') as audio_file:
                 audio = np.frombuffer(audio_file.readframes(audio_file.getnframes()), dtype='<i2').astype(np.float32) / 32768.0
+            decoded_duration = len(audio) / 16000.0
             segments, info = model.transcribe(audio, language=args.language, task='transcribe',
                 beam_size=5, vad_filter=False, condition_on_previous_text=False)
             print(f'Language: {info.language}; audio duration: {info.duration:.1f}s', file=sys.stderr)
@@ -102,10 +114,13 @@ def transcribe(args):
                 for seg in segments:
                     text = seg.text.strip()
                     if text:
-                        prefix = f'[{seg.start:.2f}–{seg.end:.2f}] ' if args.timestamps else ''
+                        start, end = bounded_timestamps(seg.start, seg.end, decoded_duration)
+                        if start != seg.start or end != seg.end:
+                            print(f'Warning: unreliable model interval [{seg.start}, {seg.end}] for {decoded_duration:.2f}s audio; displayed times clipped to [{start}, {end}]. Text was retained and needs review against audio.', file=sys.stderr)
+                        prefix = f'[{start:.2f}–{end:.2f}] ' if args.timestamps else ''
                         f.write(prefix + text + '\n')
                         f.flush()
-                        print(f'Processed through {seg.end:.1f}s', file=sys.stderr)
+                        print(f'Processed through {end:.1f}s', file=sys.stderr)
             if args.force:
                 os.replace(pending, output)
             else:
