@@ -133,7 +133,7 @@ def main(argv=None):
             repo_id = ('dropbox-dash/faster-whisper-large-v3-turbo' if args.size == 'large-v3-turbo'
                        else f'Systran/faster-whisper-{args.size}')
             snapshot_download(repo_id=repo_id, local_dir=str(path),
-                              allow_patterns=['model.bin', 'config.json', 'tokenizer.json', 'vocabulary.*'])
+                              allow_patterns=['model.bin', 'config.json', 'tokenizer.json', 'preprocessor_config.json', 'vocabulary.*'])
             print(f'Model saved: {path}')
         else:
             transcribe(args)

@@ -1,4 +1,5 @@
 name: Real macOS transcription validation
+# Include model feature-extractor configuration for large-v3/turbo.
 on:
   push:
     branches: [main]
