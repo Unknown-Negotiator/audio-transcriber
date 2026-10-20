@@ -1,0 +1,50 @@
+{
+  "status": "passed",
+  "audited_utc": "2026-10-20T22:47:22.046483+00:00",
+  "platform": "Linux",
+  "model_repo": "dropbox-dash/faster-whisper-large-v3-turbo",
+  "declared_revision": "0a363e9161cbc7ed1431c9597a8ceaf0c4f78fcf",
+  "verification_scope": "Independently rehashed all five locally available model files and checked sizes against the pinned run metadata. Mac model bytes are not present and must not be described as independently rehashed.",
+  "checks": [
+    {
+      "file": "config.json",
+      "sha256": "b0253ea6c0d3bea6b1e19e91a02acfd3b53f4467362efcb5a3e6b16c9b3a9b7e",
+      "expected_sha256": "b0253ea6c0d3bea6b1e19e91a02acfd3b53f4467362efcb5a3e6b16c9b3a9b7e",
+      "bytes": 2263,
+      "expected_bytes": 2263,
+      "passed": true
+    },
+    {
+      "file": "model.bin",
+      "sha256": "e76620f83d5f5b69efd3d87e3dc180c1bd21df9fbebacfd4335e5e1efcc018da",
+      "expected_sha256": "e76620f83d5f5b69efd3d87e3dc180c1bd21df9fbebacfd4335e5e1efcc018da",
+      "bytes": 1617884929,
+      "expected_bytes": 1617884929,
+      "passed": true
+    },
+    {
+      "file": "preprocessor_config.json",
+      "sha256": "7ccc62c6f2765af1f3b46c00c9b5894426835a05021c8b9c01eecb6dfb542711",
+      "expected_sha256": "7ccc62c6f2765af1f3b46c00c9b5894426835a05021c8b9c01eecb6dfb542711",
+      "bytes": 340,
+      "expected_bytes": 340,
+      "passed": true
+    },
+    {
+      "file": "tokenizer.json",
+      "sha256": "297b13372ac43916285644fb9687add3cc62ee2a1adb60da3dc25cc94c1871fd",
+      "expected_sha256": "297b13372ac43916285644fb9687add3cc62ee2a1adb60da3dc25cc94c1871fd",
+      "bytes": 2710337,
+      "expected_bytes": 2710337,
+      "passed": true
+    },
+    {
+      "file": "vocabulary.json",
+      "sha256": "c69260f2ab26d659b7c398f9a2b2b48ed0df16c3b47d7326782fd9cba71690c1",
+      "expected_sha256": "c69260f2ab26d659b7c398f9a2b2b48ed0df16c3b47d7326782fd9cba71690c1",
+      "bytes": 1068114,
+      "expected_bytes": 1068114,
+      "passed": true
+    }
+  ]
+}

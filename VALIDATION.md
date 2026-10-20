@@ -42,7 +42,7 @@ WER counts word substitutions, deletions and insertions relative to the referenc
 - [Actual Intel results and all reference/hypothesis pairs](accuracy/macos-intel/INTEL_ACCURACY.md)
 - [Successful macOS accuracy workflow](https://github.com/Unknown-Negotiator/audio-transcriber/actions/runs/39502317919)
 
-This small clean read-speech sample does not prove general model ranking, performance on unseen training data, accuracy throughout the long files, or performance on noisy meetings, overlapping speakers, technical names or code-switching. No comparable real-English reference benchmark or hour-long real-English test was run. English functionality was initially smoke-tested with short synthetic speech only.
+This small clean read-speech sample does not prove general model ranking, performance on unseen training data, accuracy throughout the long files, or performance on noisy meetings, overlapping speakers, technical names or code-switching. English was initially smoke-tested with short synthetic speech; a subsequent real 42:36 English chapter and separate 32-recording reference benchmark have now completed on both Mac architectures. See the [English validation report](accuracy/english/REPORT.md). This is not an hour-long or conversational English test.
 
 ## Final code and timestamp regression
 
@@ -50,7 +50,7 @@ Long-recording and paired-reference inference above used application SHA256 `d57
 
 Inspection found model-generated timestamps extending beyond the recording, and suspicious trailing text such as a subtitle credit. The final display-only patch bounds timestamps and progress to the decoded PCM duration and emits a warning containing the raw interval. It deliberately retains recognized text and leaves inference settings unchanged. **Clipping timestamps does not remove hallucinations or restore omitted speech.** Review warned segments against the audio.
 
-The final application SHA256 is `532b240122f6a3e1f8d405391bf0a5e864bb9ce6398a968625777415ffad53dd`. Its separate [final macOS regression run](https://github.com/Unknown-Negotiator/audio-transcriber/actions/runs/39506793958) passed 13 regressions and actual two-minute Russian turbo inference on each architecture, including timestamp bounds and unchanged input. Retained results are in `validation/final-cli/`. Historical full-length and accuracy scores were not rerun under this formatting patch and must not be represented as such.
+The final application SHA256 is `532b240122f6a3e1f8d405391bf0a5e864bb9ce6398a968625777415ffad53dd`. Its separate [final macOS regression run](https://github.com/Unknown-Negotiator/audio-transcriber/actions/runs/39506793958) passed 13 regressions and actual two-minute Russian turbo inference on each architecture, including timestamp bounds and unchanged input. Retained results are in `validation/final-cli/`. Historical Russian/French full-length and accuracy scores were not rerun under this formatting patch and must not be represented as such. The subsequent English tests use this final application hash, with a full 42:36 recording plus 32 reference clips on each Mac architecture.
 
 ## Linux resource tests
 

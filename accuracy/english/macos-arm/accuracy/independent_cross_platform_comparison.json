@@ -1,0 +1,41 @@
+{
+  "status": "passed",
+  "checks": {
+    "all_32_scores_independently_verified": true,
+    "source_record_matches_current_and_snapshot": true,
+    "actual_macos_metadata": true,
+    "github_run_metadata": true,
+    "model_metadata_matches_independently_hashed_linux_model": true
+  },
+  "exact_saved_transcript_matches_linux": 29,
+  "normalized_transcript_matches_linux": 31,
+  "differences": [
+    {
+      "filename": "11559094331412401332.wav",
+      "linux_raw": "Hydrogen ions are protons that have their electrons stripped off them since hydrogen atoms consist of one proton and one electron.",
+      "mac_raw": "Hydrogen ions are protons that have their electrons stripped off them, since hydrogen atoms consist of one proton and one electron.",
+      "normalized_equal": true,
+      "word_rate_equal": true,
+      "character_rate_equal": true
+    },
+    {
+      "filename": "14212778709566873555.wav",
+      "linux_raw": "The Moroccan Sultan rebuilt the city as Daru Abadia and it was given the name Casablanca\nby Spanish traders who established trading bases there.",
+      "mac_raw": "The Moroccan Sultan rebuilt the city as Daru Ibadia, and it was given the name Casablanca by Spanish traders who established trading bases there.",
+      "normalized_equal": false,
+      "word_rate_equal": true,
+      "character_rate_equal": true
+    },
+    {
+      "filename": "8324220666349639753.wav",
+      "linux_raw": "This seems sensible because the Earth doesn't feel as if it's moving, does it?",
+      "mac_raw": "This seems sensible because the earth doesn't feel as if it's moving, does it?",
+      "normalized_equal": true,
+      "word_rate_equal": true,
+      "character_rate_equal": true
+    }
+  ],
+  "same_scores_not_same_transcripts": true,
+  "model_verification_scope": "Only Mac runner-reported model hashes/sizes are available. All match the pinned model and independently rehashed Linux model; actual Mac model bytes were not uploaded and were NOT independently rehashed.",
+  "input_verification_scope": "All 32 Mac output files and copied source snapshot were independently read and hashed. Original public audio and archive checks use local verified source copies; Mac per-input unchanged assertions are runner metadata, not a second rehash of unavailable Mac input files."
+}

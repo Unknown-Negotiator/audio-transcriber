@@ -1,0 +1,2308 @@
+{
+  "status": "completed_exploratory_comparison_not_ground_truth_accuracy",
+  "audited_utc": "2026-10-20T23:01:16.233115+00:00",
+  "purpose": "Check the long transcript for gross loss/repetition by comparing its book body to a separately prepared published text. This is agreement with book text, NOT measured full-file or validated speech-recognition accuracy.",
+  "independence": "No benchmark scorer, runner, or transcription application was imported. jiwer/RapidFuzz performs optimized alignment; no quadratic Python CER matrix was used.",
+  "jiwer_version": "4.0.0",
+  "artifacts": {
+    "transcript_sha256": "472dceb509e68dff2571bdd88389494072369ab7f304b099b3d726f6b4d21a4e",
+    "reference_sha256": "e936fcb54b7487109c599e078e4500012375557a5661a72e6ea194d19e566658",
+    "metrics_sha256": "c69ba606ce6b53779e2db13803c30839c55d739763b0dd4f5648530699a2632a",
+    "silence_log_sha256": "21dc6918182a024fd4116e2687b0bd9fed2450b7c01c61bc29d8070d9a9a3718"
+  },
+  "source": {
+    "title": "The Time Machine (Version 3), Chapter 5",
+    "published_book_source": "https://www.gutenberg.org/cache/epub/35/pg35.txt",
+    "book_body_reference_scope": "Book body only. Does not include spoken recording title/introduction/outro; exact audio boundary offsets have not been manually established. Narration deviations have not been exhaustively manually audited. Do not report full-file WER against this body-only reference as ground truth without boundary/reference validation.",
+    "reference_extraction": "Body prose of current Gutenberg sections VII (A Sudden Shock) and VIII (Explanation), concatenated in source order; source chapter headings removed and paragraph-internal whitespace collapsed. This corresponds to Chapter V in the older 12-chapter edition used for the recording. No ASR output was used to generate or correct this reference."
+  },
+  "input_integrity": {
+    "checks": {
+      "original_file_matches_provenance": true,
+      "tested_mkv_matches_run_before_and_after": true,
+      "compressed_audio_identical": true,
+      "decoded_audio_identical": true,
+      "reference_hash_matches_provenance": true,
+      "timestamp_monotonic_nonoverlapping": true
+    },
+    "files": {
+      "original-public.mp3": {
+        "file_sha256": "2ef1620a2f38f8ac4e4e06c6cee775c148dbb38725cf500f21dac8cb26412aee",
+        "file_bytes": 40902574,
+        "compressed_audio_sha256": "bf2b0246ad1330fc6e407b20de6cc79c043f2d88cc3a7e149106df41ee4f2ee7",
+        "decoded_pcm_s16le_sha256": "a57c6f35d0b7313850cb6411e8eef266a3d8d1cbe9d43f4234c741e89c8b2420"
+      },
+      "tested-remux.mkv": {
+        "file_sha256": "2f12213ab40d92693451669f3d6c5ad6a2db6aa923f7d21316730e65037c7e04",
+        "file_bytes": 41603833,
+        "compressed_audio_sha256": "bf2b0246ad1330fc6e407b20de6cc79c043f2d88cc3a7e149106df41ee4f2ee7",
+        "decoded_pcm_s16le_sha256": "a57c6f35d0b7313850cb6411e8eef266a3d8d1cbe9d43f4234c741e89c8b2420"
+      }
+    },
+    "interpretation": "The tested input is a lossless MP3-to-MKV remux, not the original MP3 container. Both compressed audio packet content and decoded PCM hashes are identical, while container hashes appropriately differ. The tested MKV hash matches before/after run metrics."
+  },
+  "body_selection": {
+    "method": "First unique opening anchor through the complete segment containing the unique closing anchor. Anchors identify book body only; no manual audio boundary or narration-reference validation was performed.",
+    "opening_anchor": "as i stood there musing over this too perfect triumph of man",
+    "closing_anchor": "and very soon she was smiling and clapping her hands while i solemnly",
+    "opening_anchor_occurrences": 1,
+    "closing_anchor_occurrences": 1,
+    "first_included_line_1_based": 2,
+    "last_included_line_1_based": 533,
+    "first_included_timestamp_seconds": 15.1,
+    "last_included_timestamp_seconds": 2541.46,
+    "excluded_before_body": [
+      {
+        "line_1_based": 1,
+        "start_seconds": 0.0,
+        "end_seconds": 15.1,
+        "text": "V.",
+        "normalized": "v"
+      }
+    ],
+    "excluded_after_body": [
+      {
+        "line_1_based": 534,
+        "start_seconds": 2541.88,
+        "end_seconds": 2545.2,
+        "text": "End of chapter 5",
+        "normalized": "end of chapter 5"
+      }
+    ]
+  },
+  "exploratory_published_book_text_agreement": {
+    "not_ground_truth_wer_cer": true,
+    "normalization": "Unicode NFKC/casefold; letters, marks and numbers retained; punctuation/symbols become spaces; whitespace collapsed. No numeric-word, alternate-spelling or edition equivalence. Character ratio includes spaces.",
+    "word": {
+      "reference_units": 6573,
+      "hypothesis_units": 6553,
+      "substitutions": 65,
+      "deletions": 32,
+      "insertions": 12,
+      "equal_units": 6476,
+      "edits": 109,
+      "edit_ratio": 0.016582991023885593
+    },
+    "character": {
+      "reference_units": 34834,
+      "hypothesis_units": 34685,
+      "substitutions": 50,
+      "deletions": 195,
+      "insertions": 46,
+      "equal_units": 34589,
+      "edits": 291,
+      "edit_ratio": 0.008353907102256416
+    }
+  },
+  "gross_continuity_checks": {
+    "longest_contiguous_book_only_deletion_words": 15,
+    "longest_contiguous_transcript_only_insertion_words": 1,
+    "repeated_phrase_checks": {
+      "12": {
+        "excess_repeated_ngrams": [],
+        "count": 0
+      },
+      "20": {
+        "excess_repeated_ngrams": [],
+        "count": 0
+      }
+    },
+    "finding": "The alignment shows no paragraph-scale missing or repeated passages. The largest book-only span is 15 words, but its absence cannot be attributed to ASR without checking the narration/edition. This does not prove every spoken word was transcribed."
+  },
+  "salient_differences": [
+    {
+      "topic": "15-word book-only clause",
+      "reference": "even anger at the folly of leaving the machine having leaked away with my strength",
+      "location": "Between output segments 406.22–411.98 and 412.64–415.08 seconds.",
+      "interpretation": "Secondary small-model recognition of the local audio excerpt also lacks this clause. Together with the short timestamp gap this supports a narration/edition difference, but is not human-audited proof. Do not count it as a confirmed ASR omission."
+    },
+    {
+      "topic": "Numeric representation",
+      "reference": "eight hundred and two thousand seven hundred and one",
+      "hypothesis": "802,701",
+      "interpretation": "The raw text metric counts substitutions/deletions for number spelling versus digits; this is not a seven-word missing spoken passage."
+    },
+    {
+      "topic": "Chapter label",
+      "primary_output": "V.",
+      "secondary_output": "CHAPTER V",
+      "interpretation": "Possible loss of the word Chapter in the primary output. Neither output establishes manually verified opening speech. No evidence here supports inventing an omitted long LibriVox introduction."
+    },
+    {
+      "topic": "Spelling/lexical differences",
+      "examples": [
+        "realised → realized",
+        "behoves → behooves",
+        "sombre grey → somber gray",
+        "burnt → burned",
+        "circular → circuiter",
+        "conveniences → conveyances"
+      ],
+      "interpretation": "Some differences are orthographic or wording variants; others may be recognition errors. Classification is not exhaustive auditory adjudication."
+    }
+  ],
+  "ending_signal_check": {
+    "method": "Independent ffmpeg run on actual tested MKV: silencedetect=noise=-40dB:d=2; this is a signal-level threshold check, not human listening.",
+    "last_output_segment": {
+      "line_1_based": 534,
+      "start_seconds": 2541.88,
+      "end_seconds": 2545.2,
+      "text": "End of chapter 5",
+      "normalized": "end of chapter 5"
+    },
+    "final_detected_silence": {
+      "start_seconds": 2545.174512,
+      "end_seconds": 2556.133878,
+      "duration_seconds": 10.959366000000045
+    },
+    "reference_original_container_duration_seconds": 2556.154875,
+    "unrepresented_tail_using_original_container_duration_seconds": 10.954875000000357,
+    "interpretation": "The final output timestamp lies within the detected final silence. The approximately 10.95-second unrepresented tail is consistent with silence, not evidence of missing narration."
+  },
+  "secondary_automatic_checks": {
+    "intro-small.txt": {
+      "sha256": "856e90c46b5e2a38b976a1c8cf81e8dad4c3acb5d1e8394cc12e94a7ea595c54",
+      "text": "CHAPTER V As I stood there musing over this two perfect\ntriumph of man, the full moon\n",
+      "evidence_type": "Secondary automatic recognition only, not human auditory adjudication."
+    },
+    "book-difference-small.txt": {
+      "sha256": "e91d07f7c990319b747dd0e727200e456f8c7f2a2b082c7bbfe678a18cf3f3b5",
+      "text": "of looking in this impossible place and that, of groping among moonlit ruins and touching\nstrange creatures in the black shadows, at last of lying on the ground near the Sphinx\nand weeping with absolute wretchedness. I had nothing left but misery. Then I slept,\nand when I woke again it was full day, and a couple of sparrows were hopping round\nme on the turf within reach of my arm.\n",
+      "evidence_type": "Secondary automatic recognition only, not human auditory adjudication."
+    }
+  },
+  "all_word_alignment_differences": [
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 34,
+      "hypothesis_word_index_0_based": 34,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "figures",
+      "hypothesis": "figure",
+      "reference_context": "light in the north east the bright little figures ceased to move about below a noiseless owl",
+      "hypothesis_context": "light in the north east the bright little figure ceased to move about below a noiseless owl",
+      "preceding_output_segment": {
+        "line_1_based": 4,
+        "start_seconds": 25.92,
+        "end_seconds": 31.54,
+        "text": "The bright little figure ceased to move about below, a noiseless owl flitted by, and I shivered",
+        "normalized": "the bright little figure ceased to move about below a noiseless owl flitted by and i shivered"
+      },
+      "following_output_segment": {
+        "line_1_based": 4,
+        "start_seconds": 25.92,
+        "end_seconds": 31.54,
+        "text": "The bright little figure ceased to move about below, a noiseless owl flitted by, and I shivered",
+        "normalized": "the bright little figure ceased to move about below a noiseless owl flitted by and i shivered"
+      }
+    },
+    {
+      "operation": "delete",
+      "reference_word_index_0_based": 177,
+      "hypothesis_word_index_0_based": 177,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 0,
+      "reference": "but",
+      "hypothesis": "",
+      "reference_context": "felt as this conviction came home to me but you cannot the time machine was gone at",
+      "hypothesis_context": "felt as this conviction came home to me you cannot the time machine was gone at",
+      "preceding_output_segment": {
+        "line_1_based": 17,
+        "start_seconds": 76.04,
+        "end_seconds": 80.52,
+        "text": "Can you imagine what I felt as this conviction came home to me?",
+        "normalized": "can you imagine what i felt as this conviction came home to me"
+      },
+      "following_output_segment": {
+        "line_1_based": 18,
+        "start_seconds": 80.52,
+        "end_seconds": 88.46,
+        "text": "you cannot. The time-machine was gone. At once, like a lash across the face, came the",
+        "normalized": "you cannot the time machine was gone at once like a lash across the face came the"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 410,
+      "hypothesis_word_index_0_based": 409,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "that",
+      "hypothesis": "the",
+      "reference_context": "not a creature seemed to be stirring in that moonlit world when i reached the lawn my",
+      "hypothesis_context": "not a creature seemed to be stirring in the moonlit world when i reached the lawn my",
+      "preceding_output_segment": {
+        "line_1_based": 32,
+        "start_seconds": 165.54,
+        "end_seconds": 168.34,
+        "text": "Not a creature seemed to be stirring in the moonlit world.",
+        "normalized": "not a creature seemed to be stirring in the moonlit world"
+      },
+      "following_output_segment": {
+        "line_1_based": 32,
+        "start_seconds": 165.54,
+        "end_seconds": 168.34,
+        "text": "Not a creature seemed to be stirring in the moonlit world.",
+        "normalized": "not a creature seemed to be stirring in the moonlit world"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 422,
+      "hypothesis_word_index_0_based": 421,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "realised",
+      "hypothesis": "realized",
+      "reference_context": "i reached the lawn my worst fears were realised not a trace of the thing was to",
+      "hypothesis_context": "i reached the lawn my worst fears were realized not a trace of the thing was to",
+      "preceding_output_segment": {
+        "line_1_based": 33,
+        "start_seconds": 169.72,
+        "end_seconds": 173.16,
+        "text": "When I reached the lawn, my worst fears were realized.",
+        "normalized": "when i reached the lawn my worst fears were realized"
+      },
+      "following_output_segment": {
+        "line_1_based": 34,
+        "start_seconds": 173.84,
+        "end_seconds": 176.2,
+        "text": "Not a trace of the thing was to be seen.",
+        "normalized": "not a trace of the thing was to be seen"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 638,
+      "hypothesis_word_index_0_based": 637,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "round",
+      "hypothesis": "around",
+      "reference_context": "in and out among the moonlit bushes all round the sphinx and startling some white animal that",
+      "hypothesis_context": "in and out among the moonlit bushes all around the sphinx and startling some white animal that",
+      "preceding_output_segment": {
+        "line_1_based": 53,
+        "start_seconds": 253.7,
+        "end_seconds": 257.96,
+        "text": "I remember running violently in and out among the moonlit bushes all around the Sphinx",
+        "normalized": "i remember running violently in and out among the moonlit bushes all around the sphinx"
+      },
+      "following_output_segment": {
+        "line_1_based": 53,
+        "start_seconds": 253.7,
+        "end_seconds": 257.96,
+        "text": "I remember running violently in and out among the moonlit bushes all around the Sphinx",
+        "normalized": "i remember running violently in and out among the moonlit bushes all around the sphinx"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 742,
+      "hypothesis_word_index_0_based": 741,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "there",
+      "hypothesis": "then",
+      "reference_context": "dusty curtains of which i have told you there i found a second great hall covered with",
+      "hypothesis_context": "dusty curtains of which i have told you then i found a second great hall covered with",
+      "preceding_output_segment": {
+        "line_1_based": 62,
+        "start_seconds": 290.86,
+        "end_seconds": 296.1,
+        "text": "I lit a match and went on past the dusty curtains of which I have told you.",
+        "normalized": "i lit a match and went on past the dusty curtains of which i have told you"
+      },
+      "following_output_segment": {
+        "line_1_based": 63,
+        "start_seconds": 296.1,
+        "end_seconds": 304.06,
+        "text": "Then I found a second great hall, covered with cushions, upon which, perhaps, a score or so",
+        "normalized": "then i found a second great hall covered with cushions upon which perhaps a score or so"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 821,
+      "hypothesis_word_index_0_based": 820,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "it",
+      "hypothesis": "i",
+      "reference_context": "hands upon them and shaking them up together it must have been very queer to them some",
+      "hypothesis_context": "hands upon them and shaking them up together i must have been very queer to them some",
+      "preceding_output_segment": {
+        "line_1_based": 68,
+        "start_seconds": 328.44,
+        "end_seconds": 334.58,
+        "text": "and shaking them up together. I must have been very queer to them. Some laughed, most",
+        "normalized": "and shaking them up together i must have been very queer to them some laughed most"
+      },
+      "following_output_segment": {
+        "line_1_based": 68,
+        "start_seconds": 328.44,
+        "end_seconds": 334.58,
+        "text": "and shaking them up together. I must have been very queer to them. Some laughed, most",
+        "normalized": "and shaking them up together i must have been very queer to them some laughed most"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 881,
+      "hypothesis_word_index_0_based": 880,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "behaviour",
+      "hypothesis": "behavior",
+      "reference_context": "sensation of fear for reasoning from their daylight behaviour i thought that fear must be forgotten abruptly",
+      "hypothesis_context": "sensation of fear for reasoning from their daylight behavior i thought that fear must be forgotten abruptly",
+      "preceding_output_segment": {
+        "line_1_based": 72,
+        "start_seconds": 348.52,
+        "end_seconds": 350.82,
+        "text": "For, reasoning from their daylight behavior,",
+        "normalized": "for reasoning from their daylight behavior"
+      },
+      "following_output_segment": {
+        "line_1_based": 73,
+        "start_seconds": 351.32,
+        "end_seconds": 353.58,
+        "text": "I thought that fear must be forgotten.",
+        "normalized": "i thought that fear must be forgotten"
+      }
+    },
+    {
+      "operation": "delete",
+      "reference_word_index_0_based": 1041,
+      "hypothesis_word_index_0_based": 1040,
+      "reference_word_count": 15,
+      "hypothesis_word_count": 0,
+      "reference": "even anger at the folly of leaving the machine having leaked away with my strength",
+      "hypothesis": "",
+      "reference_context": "near the sphinx and weeping with absolute wretchedness even anger at the folly of leaving the machine having leaked away with my strength i had nothing left but misery then i",
+      "hypothesis_context": "near the sphinx and weeping with absolute wretchedness i had nothing left but misery then i",
+      "preceding_output_segment": {
+        "line_1_based": 87,
+        "start_seconds": 406.22,
+        "end_seconds": 411.98,
+        "text": "at last of lying on the ground near the sphinx and weeping with absolute wretchedness.",
+        "normalized": "at last of lying on the ground near the sphinx and weeping with absolute wretchedness"
+      },
+      "following_output_segment": {
+        "line_1_based": 88,
+        "start_seconds": 412.64,
+        "end_seconds": 415.08,
+        "text": "I had nothing left but misery.",
+        "normalized": "i had nothing left but misery"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 1169,
+      "hypothesis_word_index_0_based": 1153,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "behoves",
+      "hypothesis": "behooves",
+      "reference_context": "suppose the machine altogether lost perhaps destroyed it behoves me to be calm and patient to learn",
+      "hypothesis_context": "suppose the machine altogether lost perhaps destroyed it behooves me to be calm and patient to learn",
+      "preceding_output_segment": {
+        "line_1_based": 95,
+        "start_seconds": 449.98,
+        "end_seconds": 458.58,
+        "text": "Suppose the worst, I said. Suppose the machine altogether lost, perhaps destroyed. It behooves",
+        "normalized": "suppose the worst i said suppose the machine altogether lost perhaps destroyed it behooves"
+      },
+      "following_output_segment": {
+        "line_1_based": 96,
+        "start_seconds": 458.58,
+        "end_seconds": 464.76,
+        "text": "me to be calm and patient, to learn the way of the people, to get a clear idea of the method",
+        "normalized": "me to be calm and patient to learn the way of the people to get a clear idea of the method"
+      }
+    },
+    {
+      "operation": "delete",
+      "reference_word_index_0_based": 1218,
+      "hypothesis_word_index_0_based": 1202,
+      "reference_word_count": 3,
+      "hypothesis_word_count": 0,
+      "reference": "a poor hope",
+      "hypothesis": "",
+      "reference_context": "make another that would be my only hope a poor hope perhaps but better than despair and after all",
+      "hypothesis_context": "make another that would be my only hope perhaps but better than despair and after after",
+      "preceding_output_segment": {
+        "line_1_based": 98,
+        "start_seconds": 471.1,
+        "end_seconds": 478.96,
+        "text": "may make another. That would be my only hope, perhaps, but better than despair. And, after",
+        "normalized": "may make another that would be my only hope perhaps but better than despair and after"
+      },
+      "following_output_segment": {
+        "line_1_based": 98,
+        "start_seconds": 471.1,
+        "end_seconds": 478.96,
+        "text": "may make another. That would be my only hope, perhaps, but better than despair. And, after",
+        "normalized": "may make another that would be my only hope perhaps but better than despair and after"
+      }
+    },
+    {
+      "operation": "insert",
+      "reference_word_index_0_based": 1228,
+      "hypothesis_word_index_0_based": 1209,
+      "reference_word_count": 0,
+      "hypothesis_word_count": 1,
+      "reference": "",
+      "hypothesis": "after",
+      "reference_context": "hope perhaps but better than despair and after all it was a beautiful and curious world",
+      "hypothesis_context": "hope perhaps but better than despair and after after all it was a beautiful and curious world",
+      "preceding_output_segment": {
+        "line_1_based": 98,
+        "start_seconds": 471.1,
+        "end_seconds": 478.96,
+        "text": "may make another. That would be my only hope, perhaps, but better than despair. And, after",
+        "normalized": "may make another that would be my only hope perhaps but better than despair and after"
+      },
+      "following_output_segment": {
+        "line_1_based": 99,
+        "start_seconds": 478.96,
+        "end_seconds": 483.64,
+        "text": "After all, it was a beautiful and curious world.",
+        "normalized": "after all it was a beautiful and curious world"
+      }
+    },
+    {
+      "operation": "insert",
+      "reference_word_index_0_based": 1318,
+      "hypothesis_word_index_0_based": 1300,
+      "reference_word_count": 0,
+      "hypothesis_word_count": 1,
+      "reference": "",
+      "hypothesis": "over",
+      "reference_context": "i found myself wondering at my intense excitement overnight i made a careful examination of the",
+      "hypothesis_context": "i found myself wondering at my intense excitement over night i made a careful examination of the",
+      "preceding_output_segment": {
+        "line_1_based": 106,
+        "start_seconds": 511.28,
+        "end_seconds": 517.1,
+        "text": "Indeed, as I went about my business, I found myself wondering at my intense excitement over",
+        "normalized": "indeed as i went about my business i found myself wondering at my intense excitement over"
+      },
+      "following_output_segment": {
+        "line_1_based": 107,
+        "start_seconds": 517.1,
+        "end_seconds": 518.1,
+        "text": "night.",
+        "normalized": "night"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 1318,
+      "hypothesis_word_index_0_based": 1301,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "overnight",
+      "hypothesis": "night",
+      "reference_context": "i found myself wondering at my intense excitement overnight i made a careful examination of the ground",
+      "hypothesis_context": "found myself wondering at my intense excitement over night i made a careful examination of the ground",
+      "preceding_output_segment": {
+        "line_1_based": 106,
+        "start_seconds": 511.28,
+        "end_seconds": 517.1,
+        "text": "Indeed, as I went about my business, I found myself wondering at my intense excitement over",
+        "normalized": "indeed as i went about my business i found myself wondering at my intense excitement over"
+      },
+      "following_output_segment": {
+        "line_1_based": 108,
+        "start_seconds": 518.1,
+        "end_seconds": 522.22,
+        "text": "I made a careful examination of the ground about the little lawn.",
+        "normalized": "i made a careful examination of the ground about the little lawn"
+      }
+    },
+    {
+      "operation": "delete",
+      "reference_word_index_0_based": 1361,
+      "hypothesis_word_index_0_based": 1344,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 0,
+      "reference": "some",
+      "hypothesis": "",
+      "reference_context": "by they all failed to understand my gestures some were simply stolid some thought it was a",
+      "hypothesis_context": "by they all failed to understand my gestures were simply stolid some thought it was a",
+      "preceding_output_segment": {
+        "line_1_based": 111,
+        "start_seconds": 530.5,
+        "end_seconds": 533.32,
+        "text": "They all failed to understand my gestures.",
+        "normalized": "they all failed to understand my gestures"
+      },
+      "following_output_segment": {
+        "line_1_based": 112,
+        "start_seconds": 533.32,
+        "end_seconds": 539.5,
+        "text": "were simply stolid, some thought it was a jest and laughed at me. I had the hardest task in the",
+        "normalized": "were simply stolid some thought it was a jest and laughed at me i had the hardest task in the"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 1850,
+      "hypothesis_word_index_0_based": 1832,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "verdigris",
+      "hypothesis": "vertigris",
+      "reference_context": "flattened a coil in the decorations and the verdigris came off in powdery flakes the delicate little",
+      "hypothesis_context": "flattened a coil in the decorations and the vertigris came off in powdery flakes the delicate little",
+      "preceding_output_segment": {
+        "line_1_based": 143,
+        "start_seconds": 709.14,
+        "end_seconds": 714.18,
+        "text": "I had flattened a coil in the decorations, and the vertigris came off in powdery flakes.",
+        "normalized": "i had flattened a coil in the decorations and the vertigris came off in powdery flakes"
+      },
+      "following_output_segment": {
+        "line_1_based": 143,
+        "start_seconds": 709.14,
+        "end_seconds": 714.18,
+        "text": "I had flattened a coil in the decorations, and the vertigris came off in powdery flakes.",
+        "normalized": "i had flattened a coil in the decorations and the vertigris came off in powdery flakes"
+      }
+    },
+    {
+      "operation": "insert",
+      "reference_word_index_0_based": 1986,
+      "hypothesis_word_index_0_based": 1968,
+      "reference_word_count": 0,
+      "hypothesis_word_count": 1,
+      "reference": "",
+      "hypothesis": "you",
+      "reference_context": "take your machine away it s little good your wrecking their bronze panels and if they",
+      "hypothesis_context": "take your machine away it s little good you re wrecking their bronze panels and if they",
+      "preceding_output_segment": {
+        "line_1_based": 152,
+        "start_seconds": 758.16,
+        "end_seconds": 762.16,
+        "text": "If they mean to take your machine away, it's little good you're wrecking their bronze",
+        "normalized": "if they mean to take your machine away it s little good you re wrecking their bronze"
+      },
+      "following_output_segment": {
+        "line_1_based": 152,
+        "start_seconds": 758.16,
+        "end_seconds": 762.16,
+        "text": "If they mean to take your machine away, it's little good you're wrecking their bronze",
+        "normalized": "if they mean to take your machine away it s little good you re wrecking their bronze"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 1986,
+      "hypothesis_word_index_0_based": 1969,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "your",
+      "hypothesis": "re",
+      "reference_context": "take your machine away it s little good your wrecking their bronze panels and if they don",
+      "hypothesis_context": "your machine away it s little good you re wrecking their bronze panels and if they don",
+      "preceding_output_segment": {
+        "line_1_based": 152,
+        "start_seconds": 758.16,
+        "end_seconds": 762.16,
+        "text": "If they mean to take your machine away, it's little good you're wrecking their bronze",
+        "normalized": "if they mean to take your machine away it s little good you re wrecking their bronze"
+      },
+      "following_output_segment": {
+        "line_1_based": 152,
+        "start_seconds": 758.16,
+        "end_seconds": 762.16,
+        "text": "If they mean to take your machine away, it's little good you're wrecking their bronze",
+        "normalized": "if they mean to take your machine away it s little good you re wrecking their bronze"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 2038,
+      "hypothesis_word_index_0_based": 2021,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "too",
+      "hypothesis": "two",
+      "reference_context": "learn its ways watch it be careful of too hasty guesses at its meaning in the end",
+      "hypothesis_context": "learn its ways watch it be careful of two hasty guesses at its meaning in the end",
+      "preceding_output_segment": {
+        "line_1_based": 159,
+        "start_seconds": 778.08,
+        "end_seconds": 781.1,
+        "text": "be careful of two hasty guesses at its meaning.",
+        "normalized": "be careful of two hasty guesses at its meaning"
+      },
+      "following_output_segment": {
+        "line_1_based": 159,
+        "start_seconds": 778.08,
+        "end_seconds": 781.1,
+        "text": "be careful of two hasty guesses at its meaning.",
+        "normalized": "be careful of two hasty guesses at its meaning"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 2057,
+      "hypothesis_word_index_0_based": 2040,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "humour",
+      "hypothesis": "humor",
+      "reference_context": "find clues to it all then suddenly the humour of the situation came into my mind the",
+      "hypothesis_context": "find clues to it all then suddenly the humor of the situation came into my mind the",
+      "preceding_output_segment": {
+        "line_1_based": 161,
+        "start_seconds": 786.74,
+        "end_seconds": 790.56,
+        "text": "Then suddenly the humor of the situation came into my mind,",
+        "normalized": "then suddenly the humor of the situation came into my mind"
+      },
+      "following_output_segment": {
+        "line_1_based": 161,
+        "start_seconds": 786.74,
+        "end_seconds": 790.56,
+        "text": "Then suddenly the humor of the situation came into my mind,",
+        "normalized": "then suddenly the humor of the situation came into my mind"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 2432,
+      "hypothesis_word_index_0_based": 2415,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "circular",
+      "hypothesis": "circuiter",
+      "reference_context": "attracted my attention was the presence of certain circular wells several as it seemed to me of",
+      "hypothesis_context": "attracted my attention was the presence of certain circuiter wells several as it seemed to me of",
+      "preceding_output_segment": {
+        "line_1_based": 193,
+        "start_seconds": 927.22,
+        "end_seconds": 930.04,
+        "text": "was the presence of certain circuiter wells,",
+        "normalized": "was the presence of certain circuiter wells"
+      },
+      "following_output_segment": {
+        "line_1_based": 193,
+        "start_seconds": 927.22,
+        "end_seconds": 930.04,
+        "text": "was the presence of certain circuiter wells,",
+        "normalized": "was the presence of certain circuiter wells"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 2476,
+      "hypothesis_word_index_0_based": 2459,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "cupola",
+      "hypothesis": "cupula",
+      "reference_context": "bronze curiously wrought and protected by a little cupola from the rain sitting by the side of",
+      "hypothesis_context": "bronze curiously wrought and protected by a little cupula from the rain sitting by the side of",
+      "preceding_output_segment": {
+        "line_1_based": 197,
+        "start_seconds": 942.02,
+        "end_seconds": 945.78,
+        "text": "curiously wrought, and protected by a little cupula from the rain.",
+        "normalized": "curiously wrought and protected by a little cupula from the rain"
+      },
+      "following_output_segment": {
+        "line_1_based": 197,
+        "start_seconds": 942.02,
+        "end_seconds": 945.78,
+        "text": "curiously wrought, and protected by a little cupula from the rain.",
+        "normalized": "curiously wrought and protected by a little cupula from the rain"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 2539,
+      "hypothesis_word_index_0_based": 2522,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "my",
+      "hypothesis": "the",
+      "reference_context": "engine and i discovered from the flaring of my matches that a steady current of air set",
+      "hypothesis_context": "engine and i discovered from the flaring of the matches that a steady current of air set",
+      "preceding_output_segment": {
+        "line_1_based": 201,
+        "start_seconds": 962.7,
+        "end_seconds": 968.26,
+        "text": "like the beating of some big engine, and I discovered, from the flaring of the matches,",
+        "normalized": "like the beating of some big engine and i discovered from the flaring of the matches"
+      },
+      "following_output_segment": {
+        "line_1_based": 201,
+        "start_seconds": 962.7,
+        "end_seconds": 968.26,
+        "text": "like the beating of some big engine, and I discovered, from the flaring of the matches,",
+        "normalized": "like the beating of some big engine and i discovered from the flaring of the matches"
+      }
+    },
+    {
+      "operation": "delete",
+      "reference_word_index_0_based": 2623,
+      "hypothesis_word_index_0_based": 2606,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 0,
+      "reference": "putting",
+      "hypothesis": "",
+      "reference_context": "a hot day above a sun scorched beach putting things together i reached a strong suggestion of",
+      "hypothesis_context": "a hot day above a sun scorched beach things together i reached a strong suggestion of",
+      "preceding_output_segment": {
+        "line_1_based": 207,
+        "start_seconds": 992.12,
+        "end_seconds": 998.4,
+        "text": "a flicker in the air as one sees on a hot day above a sun-scorched beach.",
+        "normalized": "a flicker in the air as one sees on a hot day above a sun scorched beach"
+      },
+      "following_output_segment": {
+        "line_1_based": 208,
+        "start_seconds": 998.4,
+        "end_seconds": 1004.6,
+        "text": "things together, I reached a strong suggestion of an extensive system of subterranean ventilation,",
+        "normalized": "things together i reached a strong suggestion of an extensive system of subterranean ventilation"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 2678,
+      "hypothesis_word_index_0_based": 2660,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "learnt",
+      "hypothesis": "learned",
+      "reference_context": "wrong and here i must admit that i learnt very little of drains and bells and modes",
+      "hypothesis_context": "wrong and here i must admit that i learned very little of drains and bells and modes",
+      "preceding_output_segment": {
+        "line_1_based": 211,
+        "start_seconds": 1019.6,
+        "end_seconds": 1025.88,
+        "text": "And here I must admit that I learned very little of drains and bells and modes of conveyance,",
+        "normalized": "and here i must admit that i learned very little of drains and bells and modes of conveyance"
+      },
+      "following_output_segment": {
+        "line_1_based": 211,
+        "start_seconds": 1019.6,
+        "end_seconds": 1025.88,
+        "text": "And here I must admit that I learned very little of drains and bells and modes of conveyance,",
+        "normalized": "and here i must admit that i learned very little of drains and bells and modes of conveyance"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 2692,
+      "hypothesis_word_index_0_based": 2674,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "conveniences",
+      "hypothesis": "conveyances",
+      "reference_context": "bells and modes of conveyance and the like conveniences during my time in this real future in",
+      "hypothesis_context": "bells and modes of conveyance and the like conveyances during my time in this real future in",
+      "preceding_output_segment": {
+        "line_1_based": 212,
+        "start_seconds": 1025.88,
+        "end_seconds": 1029.7,
+        "text": "and the like conveyances during my time in this real future.",
+        "normalized": "and the like conveyances during my time in this real future"
+      },
+      "following_output_segment": {
+        "line_1_based": 212,
+        "start_seconds": 1025.88,
+        "end_seconds": 1029.7,
+        "text": "and the like conveyances during my time in this real future.",
+        "normalized": "and the like conveyances during my time in this real future"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 2833,
+      "hypothesis_word_index_0_based": 2815,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "untravelled",
+      "hypothesis": "untraveled",
+      "reference_context": "he knew how much could he make his untravelled friend either apprehend or believe then think how",
+      "hypothesis_context": "he knew how much could he make his untraveled friend either apprehend or believe then think how",
+      "preceding_output_segment": {
+        "line_1_based": 223,
+        "start_seconds": 1075.78,
+        "end_seconds": 1081.52,
+        "text": "And even of what he knew, how much could he make his untraveled friend either apprehend",
+        "normalized": "and even of what he knew how much could he make his untraveled friend either apprehend"
+      },
+      "following_output_segment": {
+        "line_1_based": 223,
+        "start_seconds": 1075.78,
+        "end_seconds": 1081.52,
+        "text": "And even of what he knew, how much could he make his untraveled friend either apprehend",
+        "normalized": "and even of what he knew how much could he make his untraveled friend either apprehend"
+      }
+    },
+    {
+      "operation": "delete",
+      "reference_word_index_0_based": 2854,
+      "hypothesis_word_index_0_based": 2836,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 0,
+      "reference": "own",
+      "hypothesis": "",
+      "reference_context": "a negro and a white man of our own times and how wide the interval between myself",
+      "hypothesis_context": "a negro and a white man of our times and how wide the interval between myself",
+      "preceding_output_segment": {
+        "line_1_based": 225,
+        "start_seconds": 1082.42,
+        "end_seconds": 1089.54,
+        "text": "Then think how narrow the gap between a negro and a white man of our times, and how wide",
+        "normalized": "then think how narrow the gap between a negro and a white man of our times and how wide"
+      },
+      "following_output_segment": {
+        "line_1_based": 225,
+        "start_seconds": 1082.42,
+        "end_seconds": 1089.54,
+        "text": "Then think how narrow the gap between a negro and a white man of our times, and how wide",
+        "normalized": "then think how narrow the gap between a negro and a white man of our times and how wide"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 2891,
+      "hypothesis_word_index_0_based": 2872,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "organisation",
+      "hypothesis": "organization",
+      "reference_context": "but save for a general impression of automatic organisation i fear i can convey very little of",
+      "hypothesis_context": "but save for a general impression of automatic organization i fear i can convey very little of",
+      "preceding_output_segment": {
+        "line_1_based": 228,
+        "start_seconds": 1100.86,
+        "end_seconds": 1107.14,
+        "text": "a general impression of automatic organization, I fear I can convey very little of the difference",
+        "normalized": "a general impression of automatic organization i fear i can convey very little of the difference"
+      },
+      "following_output_segment": {
+        "line_1_based": 228,
+        "start_seconds": 1100.86,
+        "end_seconds": 1107.14,
+        "text": "a general impression of automatic organization, I fear I can convey very little of the difference",
+        "normalized": "a general impression of automatic organization i fear i can convey very little of the difference"
+      }
+    },
+    {
+      "operation": "delete",
+      "reference_word_index_0_based": 2905,
+      "hypothesis_word_index_0_based": 2886,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 0,
+      "reference": "in",
+      "hypothesis": "",
+      "reference_context": "very little of the difference to your mind in the matter of sepulture for instance i could",
+      "hypothesis_context": "very little of the difference to your mind the matter of sepulchre for instance i could",
+      "preceding_output_segment": {
+        "line_1_based": 229,
+        "start_seconds": 1107.14,
+        "end_seconds": 1109.54,
+        "text": "to your mind.",
+        "normalized": "to your mind"
+      },
+      "following_output_segment": {
+        "line_1_based": 230,
+        "start_seconds": 1109.54,
+        "end_seconds": 1115.42,
+        "text": "the matter of sepulchre, for instance, I could see no signs of crematoria nor anything suggestive",
+        "normalized": "the matter of sepulchre for instance i could see no signs of crematoria nor anything suggestive"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 2909,
+      "hypothesis_word_index_0_based": 2889,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "sepulture",
+      "hypothesis": "sepulchre",
+      "reference_context": "difference to your mind in the matter of sepulture for instance i could see no signs of",
+      "hypothesis_context": "the difference to your mind the matter of sepulchre for instance i could see no signs of",
+      "preceding_output_segment": {
+        "line_1_based": 230,
+        "start_seconds": 1109.54,
+        "end_seconds": 1115.42,
+        "text": "the matter of sepulchre, for instance, I could see no signs of crematoria nor anything suggestive",
+        "normalized": "the matter of sepulchre for instance i could see no signs of crematoria nor anything suggestive"
+      },
+      "following_output_segment": {
+        "line_1_based": 230,
+        "start_seconds": 1109.54,
+        "end_seconds": 1115.42,
+        "text": "the matter of sepulchre, for instance, I could see no signs of crematoria nor anything suggestive",
+        "normalized": "the matter of sepulchre for instance i could see no signs of crematoria nor anything suggestive"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 2988,
+      "hypothesis_word_index_0_based": 2968,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "this",
+      "hypothesis": "these",
+      "reference_context": "me still more that aged and infirm among this people there were none i must confess that",
+      "hypothesis_context": "me still more that aged and infirm among these people there were none i must confess that",
+      "preceding_output_segment": {
+        "line_1_based": 235,
+        "start_seconds": 1140.28,
+        "end_seconds": 1144.36,
+        "text": "that, aged and infirm among these people, there were none.",
+        "normalized": "that aged and infirm among these people there were none"
+      },
+      "following_output_segment": {
+        "line_1_based": 235,
+        "start_seconds": 1140.28,
+        "end_seconds": 1144.36,
+        "text": "that, aged and infirm among these people, there were none.",
+        "normalized": "that aged and infirm among these people there were none"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 3006,
+      "hypothesis_word_index_0_based": 2986,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "civilisation",
+      "hypothesis": "civilization",
+      "reference_context": "satisfaction with my first theories of an automatic civilisation and a decadent humanity did not long endure",
+      "hypothesis_context": "satisfaction with my first theories of an automatic civilization and a decadent humanity did not long endure",
+      "preceding_output_segment": {
+        "line_1_based": 236,
+        "start_seconds": 1145.42,
+        "end_seconds": 1151.2,
+        "text": "I must confess that my satisfaction with my first theories of an automatic civilization",
+        "normalized": "i must confess that my satisfaction with my first theories of an automatic civilization"
+      },
+      "following_output_segment": {
+        "line_1_based": 237,
+        "start_seconds": 1151.2,
+        "end_seconds": 1154.54,
+        "text": "and a decadent humanity did not long endure.",
+        "normalized": "and a decadent humanity did not long endure"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 3238,
+      "hypothesis_word_index_0_based": 3218,
+      "reference_word_count": 2,
+      "hypothesis_word_count": 2,
+      "reference": "eight hundred",
+      "hypothesis": "802 701",
+      "reference_context": "my visit that was how the world of eight hundred and two thousand seven hundred and one presented",
+      "hypothesis_context": "my visit that was how the world of 802 701 presented itself to me that day too i",
+      "preceding_output_segment": {
+        "line_1_based": 261,
+        "start_seconds": 1249.14,
+        "end_seconds": 1256.12,
+        "text": "Well, on the third day of my visit, that was how the world of 802,701 presented itself to me.",
+        "normalized": "well on the third day of my visit that was how the world of 802 701 presented itself to me"
+      },
+      "following_output_segment": {
+        "line_1_based": 261,
+        "start_seconds": 1249.14,
+        "end_seconds": 1256.12,
+        "text": "Well, on the third day of my visit, that was how the world of 802,701 presented itself to me.",
+        "normalized": "well on the third day of my visit that was how the world of 802 701 presented itself to me"
+      }
+    },
+    {
+      "operation": "delete",
+      "reference_word_index_0_based": 3240,
+      "hypothesis_word_index_0_based": 3220,
+      "reference_word_count": 7,
+      "hypothesis_word_count": 0,
+      "reference": "and two thousand seven hundred and one",
+      "hypothesis": "",
+      "reference_context": "that was how the world of eight hundred and two thousand seven hundred and one presented itself to me that day too i",
+      "hypothesis_context": "that was how the world of 802 701 presented itself to me that day too i",
+      "preceding_output_segment": {
+        "line_1_based": 261,
+        "start_seconds": 1249.14,
+        "end_seconds": 1256.12,
+        "text": "Well, on the third day of my visit, that was how the world of 802,701 presented itself to me.",
+        "normalized": "well on the third day of my visit that was how the world of 802 701 presented itself to me"
+      },
+      "following_output_segment": {
+        "line_1_based": 261,
+        "start_seconds": 1249.14,
+        "end_seconds": 1256.12,
+        "text": "Well, on the third day of my visit, that was how the world of 802,701 presented itself to me.",
+        "normalized": "well on the third day of my visit that was how the world of 802 701 presented itself to me"
+      }
+    },
+    {
+      "operation": "insert",
+      "reference_word_index_0_based": 3283,
+      "hypothesis_word_index_0_based": 3256,
+      "reference_word_count": 0,
+      "hypothesis_word_count": 1,
+      "reference": "",
+      "hypothesis": "a",
+      "reference_context": "a shallow one of them was seized with cramp and began drifting downstream the main current",
+      "hypothesis_context": "a shallow one of them was seized with a cramp and began drifting downstream the main current",
+      "preceding_output_segment": {
+        "line_1_based": 263,
+        "start_seconds": 1263.0,
+        "end_seconds": 1267.88,
+        "text": "little people bathing in a shallow, one of them was seized with a cramp and began drifting",
+        "normalized": "little people bathing in a shallow one of them was seized with a cramp and began drifting"
+      },
+      "following_output_segment": {
+        "line_1_based": 263,
+        "start_seconds": 1263.0,
+        "end_seconds": 1267.88,
+        "text": "little people bathing in a shallow, one of them was seized with a cramp and began drifting",
+        "normalized": "little people bathing in a shallow one of them was seized with a cramp and began drifting"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 3342,
+      "hypothesis_word_index_0_based": 3316,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "realised",
+      "hypothesis": "realized",
+      "reference_context": "which was drowning before their eyes when i realised this i hurriedly slipped off my clothes and",
+      "hypothesis_context": "which was drowning before their eyes when i realized this i hurriedly slipped off my clothes and",
+      "preceding_output_segment": {
+        "line_1_based": 267,
+        "start_seconds": 1285.72,
+        "end_seconds": 1291.76,
+        "text": "which was drowning before their eyes. When I realized this, I hurriedly slipped off my clothes,",
+        "normalized": "which was drowning before their eyes when i realized this i hurriedly slipped off my clothes"
+      },
+      "following_output_segment": {
+        "line_1_based": 267,
+        "start_seconds": 1285.72,
+        "end_seconds": 1291.76,
+        "text": "which was drowning before their eyes. When I realized this, I hurriedly slipped off my clothes,",
+        "normalized": "which was drowning before their eyes when i realized this i hurriedly slipped off my clothes"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 3444,
+      "hypothesis_word_index_0_based": 3418,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "centre",
+      "hypothesis": "center",
+      "reference_context": "it was as i was returning towards my centre from an exploration and she received me with",
+      "hypothesis_context": "it was as i was returning towards my center from an exploration and she received me with",
+      "preceding_output_segment": {
+        "line_1_based": 272,
+        "start_seconds": 1317.22,
+        "end_seconds": 1323.3,
+        "text": "afternoon I met my little woman, as I believe it was, as I was returning towards my center from",
+        "normalized": "afternoon i met my little woman as i believe it was as i was returning towards my center from"
+      },
+      "following_output_segment": {
+        "line_1_based": 272,
+        "start_seconds": 1317.22,
+        "end_seconds": 1323.3,
+        "text": "afternoon I met my little woman, as I believe it was, as I was returning towards my center from",
+        "normalized": "afternoon i met my little woman as i believe it was as i was returning towards my center from"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 3507,
+      "hypothesis_word_index_0_based": 3481,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "arbour",
+      "hypothesis": "arbor",
+      "reference_context": "were soon seated together in a little stone arbour engaged in conversation chiefly of smiles the creature",
+      "hypothesis_context": "were soon seated together in a little stone arbor engaged in conversation chiefly of smiles the creature",
+      "preceding_output_segment": {
+        "line_1_based": 276,
+        "start_seconds": 1342.74,
+        "end_seconds": 1348.56,
+        "text": "the gift. We were soon seated together in a little stone arbor, engaged in conversation",
+        "normalized": "the gift we were soon seated together in a little stone arbor engaged in conversation"
+      },
+      "following_output_segment": {
+        "line_1_based": 276,
+        "start_seconds": 1342.74,
+        "end_seconds": 1348.56,
+        "text": "the gift. We were soon seated together in a little stone arbor, engaged in conversation",
+        "normalized": "the gift we were soon seated together in a little stone arbor engaged in conversation"
+      }
+    },
+    {
+      "operation": "delete",
+      "reference_word_index_0_based": 3699,
+      "hypothesis_word_index_0_based": 3673,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 0,
+      "reference": "very",
+      "hypothesis": "",
+      "reference_context": "from her devotion nevertheless she was somehow a very great comfort i thought it was mere childish",
+      "hypothesis_context": "from her devotion nevertheless she was somehow a great comfort i thought it was mere childish",
+      "preceding_output_segment": {
+        "line_1_based": 287,
+        "start_seconds": 1413.6,
+        "end_seconds": 1421.78,
+        "text": "comfort from her devotion. Nevertheless, she was, somehow, a great comfort. I thought it was",
+        "normalized": "comfort from her devotion nevertheless she was somehow a great comfort i thought it was"
+      },
+      "following_output_segment": {
+        "line_1_based": 287,
+        "start_seconds": 1413.6,
+        "end_seconds": 1421.78,
+        "text": "comfort from her devotion. Nevertheless, she was, somehow, a great comfort. I thought it was",
+        "normalized": "comfort from her devotion nevertheless she was somehow a great comfort i thought it was"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 3781,
+      "hypothesis_word_index_0_based": 3754,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "neighbourhood",
+      "hypothesis": "neighborhood",
+      "reference_context": "a creature presently gave my return to the neighbourhood of the white sphinx almost the feeling of",
+      "hypothesis_context": "a creature presently gave my return to the neighborhood of the white sphinx almost the feeling of",
+      "preceding_output_segment": {
+        "line_1_based": 296,
+        "start_seconds": 1444.68,
+        "end_seconds": 1446.92,
+        "text": "presently gave my return to the neighborhood",
+        "normalized": "presently gave my return to the neighborhood"
+      },
+      "following_output_segment": {
+        "line_1_based": 297,
+        "start_seconds": 1446.92,
+        "end_seconds": 1448.02,
+        "text": "of the White Sphinx",
+        "normalized": "of the white sphinx"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 3819,
+      "hypothesis_word_index_0_based": 3792,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "learnt",
+      "hypothesis": "learned",
+      "reference_context": "hill it was from her too that i learnt that fear had not yet left the world",
+      "hypothesis_context": "hill it was from her too that i learned that fear had not yet left the world",
+      "preceding_output_segment": {
+        "line_1_based": 302,
+        "start_seconds": 1457.52,
+        "end_seconds": 1462.7,
+        "text": "It was from her, too, that I learned that fear had not yet left the world.",
+        "normalized": "it was from her too that i learned that fear had not yet left the world"
+      },
+      "following_output_segment": {
+        "line_1_based": 302,
+        "start_seconds": 1457.52,
+        "end_seconds": 1462.7,
+        "text": "It was from her, too, that I learned that fear had not yet left the world.",
+        "normalized": "it was from her too that i learned that fear had not yet left the world"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 4076,
+      "hypothesis_word_index_0_based": 4049,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "greyish",
+      "hypothesis": "grayish",
+      "reference_context": "start and with an odd fancy that some greyish animal had just rushed out of the chamber",
+      "hypothesis_context": "start and with an odd fancy that some grayish animal had just rushed out of the chamber",
+      "preceding_output_segment": {
+        "line_1_based": 320,
+        "start_seconds": 1550.56,
+        "end_seconds": 1557.16,
+        "text": "I woke with a start, and with an odd fancy that some grayish animal had just rushed out",
+        "normalized": "i woke with a start and with an odd fancy that some grayish animal had just rushed out"
+      },
+      "following_output_segment": {
+        "line_1_based": 320,
+        "start_seconds": 1550.56,
+        "end_seconds": 1557.16,
+        "text": "I woke with a start, and with an odd fancy that some grayish animal had just rushed out",
+        "normalized": "i woke with a start and with an odd fancy that some grayish animal had just rushed out"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 4102,
+      "hypothesis_word_index_0_based": 4075,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "grey",
+      "hypothesis": "gray",
+      "reference_context": "felt restless and uncomfortable it was that dim grey hour when things are just creeping out of",
+      "hypothesis_context": "felt restless and uncomfortable it was that dim gray hour when things are just creeping out of",
+      "preceding_output_segment": {
+        "line_1_based": 322,
+        "start_seconds": 1564.04,
+        "end_seconds": 1569.22,
+        "text": "was that dim gray hour when things are just creeping out of darkness, when everything",
+        "normalized": "was that dim gray hour when things are just creeping out of darkness when everything"
+      },
+      "following_output_segment": {
+        "line_1_based": 322,
+        "start_seconds": 1564.04,
+        "end_seconds": 1569.22,
+        "text": "was that dim gray hour when things are just creeping out of darkness, when everything",
+        "normalized": "was that dim gray hour when things are just creeping out of darkness when everything"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 4115,
+      "hypothesis_word_index_0_based": 4088,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "colourless",
+      "hypothesis": "colorless",
+      "reference_context": "just creeping out of darkness when everything is colourless and clear cut and yet unreal i got",
+      "hypothesis_context": "just creeping out of darkness when everything is colorless and clear cut and yet unreal i got",
+      "preceding_output_segment": {
+        "line_1_based": 323,
+        "start_seconds": 1569.22,
+        "end_seconds": 1576.04,
+        "text": "is colorless and clear-cut and yet unreal. I got up and went down into the great hall,",
+        "normalized": "is colorless and clear cut and yet unreal i got up and went down into the great hall"
+      },
+      "following_output_segment": {
+        "line_1_based": 323,
+        "start_seconds": 1569.22,
+        "end_seconds": 1576.04,
+        "text": "is colorless and clear-cut and yet unreal. I got up and went down into the great hall,",
+        "normalized": "is colorless and clear cut and yet unreal i got up and went down into the great hall"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 4185,
+      "hypothesis_word_index_0_based": 4158,
+      "reference_word_count": 2,
+      "hypothesis_word_count": 2,
+      "reference": "sombre grey",
+      "hypothesis": "somber gray",
+      "reference_context": "the bushes were inky black the ground a sombre grey the sky colourless and cheerless and up the",
+      "hypothesis_context": "the bushes were inky black the ground a somber gray the sky colorless and cheerless and up the",
+      "preceding_output_segment": {
+        "line_1_based": 327,
+        "start_seconds": 1594.04,
+        "end_seconds": 1598.7,
+        "text": "the ground a somber gray, the sky colorless and cheerless.",
+        "normalized": "the ground a somber gray the sky colorless and cheerless"
+      },
+      "following_output_segment": {
+        "line_1_based": 327,
+        "start_seconds": 1594.04,
+        "end_seconds": 1598.7,
+        "text": "the ground a somber gray, the sky colorless and cheerless.",
+        "normalized": "the ground a somber gray the sky colorless and cheerless"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 4189,
+      "hypothesis_word_index_0_based": 4162,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "colourless",
+      "hypothesis": "colorless",
+      "reference_context": "black the ground a sombre grey the sky colourless and cheerless and up the hill i thought",
+      "hypothesis_context": "black the ground a somber gray the sky colorless and cheerless and up the hill i thought",
+      "preceding_output_segment": {
+        "line_1_based": 327,
+        "start_seconds": 1594.04,
+        "end_seconds": 1598.7,
+        "text": "the ground a somber gray, the sky colorless and cheerless.",
+        "normalized": "the ground a somber gray the sky colorless and cheerless"
+      },
+      "following_output_segment": {
+        "line_1_based": 327,
+        "start_seconds": 1594.04,
+        "end_seconds": 1598.7,
+        "text": "the ground a somber gray, the sky colorless and cheerless.",
+        "normalized": "the ground a somber gray the sky colorless and cheerless"
+      }
+    },
+    {
+      "operation": "insert",
+      "reference_word_index_0_based": 4202,
+      "hypothesis_word_index_0_based": 4175,
+      "reference_word_count": 0,
+      "hypothesis_word_count": 1,
+      "reference": "",
+      "hypothesis": "there",
+      "reference_context": "the hill i thought i could see ghosts three several times as i scanned the slope",
+      "hypothesis_context": "the hill i thought i could see ghosts there were several times as i scanned the slope",
+      "preceding_output_segment": {
+        "line_1_based": 328,
+        "start_seconds": 1600.18,
+        "end_seconds": 1603.8,
+        "text": "And up the hill I thought I could see ghosts.",
+        "normalized": "and up the hill i thought i could see ghosts"
+      },
+      "following_output_segment": {
+        "line_1_based": 329,
+        "start_seconds": 1604.76,
+        "end_seconds": 1608.8,
+        "text": "There were several times, as I scanned the slope, I saw white figures.",
+        "normalized": "there were several times as i scanned the slope i saw white figures"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 4202,
+      "hypothesis_word_index_0_based": 4176,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "three",
+      "hypothesis": "were",
+      "reference_context": "the hill i thought i could see ghosts three several times as i scanned the slope i",
+      "hypothesis_context": "hill i thought i could see ghosts there were several times as i scanned the slope i",
+      "preceding_output_segment": {
+        "line_1_based": 329,
+        "start_seconds": 1604.76,
+        "end_seconds": 1608.8,
+        "text": "There were several times, as I scanned the slope, I saw white figures.",
+        "normalized": "there were several times as i scanned the slope i saw white figures"
+      },
+      "following_output_segment": {
+        "line_1_based": 329,
+        "start_seconds": 1604.76,
+        "end_seconds": 1608.8,
+        "text": "There were several times, as I scanned the slope, I saw white figures.",
+        "normalized": "there were several times as i scanned the slope i saw white figures"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 4307,
+      "hypothesis_word_index_0_based": 4281,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "colouring",
+      "hypothesis": "coloring",
+      "reference_context": "of the day came on and its vivid colouring returned upon the world once more i scanned",
+      "hypothesis_context": "of the day came on and its vivid coloring returned upon the world once more i scanned",
+      "preceding_output_segment": {
+        "line_1_based": 340,
+        "start_seconds": 1644.32,
+        "end_seconds": 1647.12,
+        "text": "and its vivid coloring returned upon the world once more,",
+        "normalized": "and its vivid coloring returned upon the world once more"
+      },
+      "following_output_segment": {
+        "line_1_based": 340,
+        "start_seconds": 1644.32,
+        "end_seconds": 1647.12,
+        "text": "and its vivid coloring returned upon the world once more,",
+        "normalized": "and its vivid coloring returned upon the world once more"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 4394,
+      "hypothesis_word_index_0_based": 4368,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "hence",
+      "hypothesis": "since",
+      "reference_context": "have grown innumerable some eight hundred thousand years hence and it was no great wonder to see",
+      "hypothesis_context": "have grown innumerable some eight hundred thousand years since and it was no great wonder to see",
+      "preceding_output_segment": {
+        "line_1_based": 348,
+        "start_seconds": 1675.64,
+        "end_seconds": 1680.32,
+        "text": "\"'On that theory they would have grown innumerable some eight hundred thousand years since,",
+        "normalized": "on that theory they would have grown innumerable some eight hundred thousand years since"
+      },
+      "following_output_segment": {
+        "line_1_based": 349,
+        "start_seconds": 1680.32,
+        "end_seconds": 1683.66,
+        "text": "and it was no great wonder to see four at once.",
+        "normalized": "and it was no great wonder to see four at once"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 4633,
+      "hypothesis_word_index_0_based": 4607,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "clambering",
+      "hypothesis": "clabbering",
+      "reference_context": "slept and fed there happened this strange thing clambering among these heaps of masonry i found a",
+      "hypothesis_context": "slept and fed there happened this strange thing clabbering among these heaps of masonry i found a",
+      "preceding_output_segment": {
+        "line_1_based": 368,
+        "start_seconds": 1762.86,
+        "end_seconds": 1765.26,
+        "text": "there happened this strange thing.",
+        "normalized": "there happened this strange thing"
+      },
+      "following_output_segment": {
+        "line_1_based": 369,
+        "start_seconds": 1766.74,
+        "end_seconds": 1768.68,
+        "text": "Clabbering among these heaps of masonry,",
+        "normalized": "clabbering among these heaps of masonry"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 4684,
+      "hypothesis_word_index_0_based": 4658,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "colour",
+      "hypothesis": "color",
+      "reference_context": "change from light to blackness made spots of colour swim before me suddenly i halted spellbound a",
+      "hypothesis_context": "change from light to blackness made spots of color swim before me suddenly i halted spellbound a",
+      "preceding_output_segment": {
+        "line_1_based": 376,
+        "start_seconds": 1785.36,
+        "end_seconds": 1787.7,
+        "text": "made spots of color swim before me.",
+        "normalized": "made spots of color swim before me"
+      },
+      "following_output_segment": {
+        "line_1_based": 376,
+        "start_seconds": 1785.36,
+        "end_seconds": 1787.7,
+        "text": "made spots of color swim before me.",
+        "normalized": "made spots of color swim before me"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 4884,
+      "hypothesis_word_index_0_based": 4858,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "greyish",
+      "hypothesis": "grayish",
+      "reference_context": "was a dull white and had strange large greyish red eyes also that there was flaxen hair",
+      "hypothesis_context": "was a dull white and had strange large grayish red eyes also that there was flaxen hair",
+      "preceding_output_segment": {
+        "line_1_based": 393,
+        "start_seconds": 1863.08,
+        "end_seconds": 1869.04,
+        "text": "But I know it was a dull white, and had strange large grayish-red eyes.",
+        "normalized": "but i know it was a dull white and had strange large grayish red eyes"
+      },
+      "following_output_segment": {
+        "line_1_based": 393,
+        "start_seconds": 1863.08,
+        "end_seconds": 1869.04,
+        "text": "But I know it was a dull white, and had strange large grayish-red eyes.",
+        "normalized": "but i know it was a dull white and had strange large grayish red eyes"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 5215,
+      "hypothesis_word_index_0_based": 5189,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "organisation",
+      "hypothesis": "organization",
+      "reference_context": "doing in my scheme of a perfectly balanced organisation how was it related to the indolent serenity",
+      "hypothesis_context": "doing in my scheme of a perfectly balanced organization how was it related to the indolent serenity",
+      "preceding_output_segment": {
+        "line_1_based": 428,
+        "start_seconds": 1992.7,
+        "end_seconds": 1996.04,
+        "text": "doing in my scheme of a perfectly balanced organization?",
+        "normalized": "doing in my scheme of a perfectly balanced organization"
+      },
+      "following_output_segment": {
+        "line_1_based": 429,
+        "start_seconds": 1996.04,
+        "end_seconds": 2002.9,
+        "text": "How was it related to the indolent serenity of the beautiful upper-worlders, and what",
+        "normalized": "how was it related to the indolent serenity of the beautiful upper worlders and what"
+      }
+    },
+    {
+      "operation": "insert",
+      "reference_word_index_0_based": 5227,
+      "hypothesis_word_index_0_based": 5201,
+      "reference_word_count": 0,
+      "hypothesis_word_count": 1,
+      "reference": "",
+      "hypothesis": "upper",
+      "reference_context": "related to the indolent serenity of the beautiful overworlders and what was hidden down there at",
+      "hypothesis_context": "related to the indolent serenity of the beautiful upper worlders and what was hidden down there at",
+      "preceding_output_segment": {
+        "line_1_based": 429,
+        "start_seconds": 1996.04,
+        "end_seconds": 2002.9,
+        "text": "How was it related to the indolent serenity of the beautiful upper-worlders, and what",
+        "normalized": "how was it related to the indolent serenity of the beautiful upper worlders and what"
+      },
+      "following_output_segment": {
+        "line_1_based": 429,
+        "start_seconds": 1996.04,
+        "end_seconds": 2002.9,
+        "text": "How was it related to the indolent serenity of the beautiful upper-worlders, and what",
+        "normalized": "how was it related to the indolent serenity of the beautiful upper worlders and what"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 5227,
+      "hypothesis_word_index_0_based": 5202,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "overworlders",
+      "hypothesis": "worlders",
+      "reference_context": "related to the indolent serenity of the beautiful overworlders and what was hidden down there at the",
+      "hypothesis_context": "to the indolent serenity of the beautiful upper worlders and what was hidden down there at the",
+      "preceding_output_segment": {
+        "line_1_based": 429,
+        "start_seconds": 1996.04,
+        "end_seconds": 2002.9,
+        "text": "How was it related to the indolent serenity of the beautiful upper-worlders, and what",
+        "normalized": "how was it related to the indolent serenity of the beautiful upper worlders and what"
+      },
+      "following_output_segment": {
+        "line_1_based": 429,
+        "start_seconds": 1996.04,
+        "end_seconds": 2002.9,
+        "text": "How was it related to the indolent serenity of the beautiful upper-worlders, and what",
+        "normalized": "how was it related to the indolent serenity of the beautiful upper worlders and what"
+      }
+    },
+    {
+      "operation": "insert",
+      "reference_word_index_0_based": 5286,
+      "hypothesis_word_index_0_based": 5261,
+      "reference_word_count": 0,
+      "hypothesis_word_count": 1,
+      "reference": "",
+      "hypothesis": "upper",
+      "reference_context": "go as i hesitated two of the beautiful upperworld people came running in their amorous sport",
+      "hypothesis_context": "go as i hesitated two of the beautiful upper world people came running in their amorous sport",
+      "preceding_output_segment": {
+        "line_1_based": 434,
+        "start_seconds": 2021.78,
+        "end_seconds": 2029.24,
+        "text": "As I hesitated, two of the beautiful upper-world people came running in their amorous sport across the daylight in the shadow.",
+        "normalized": "as i hesitated two of the beautiful upper world people came running in their amorous sport across the daylight in the shadow"
+      },
+      "following_output_segment": {
+        "line_1_based": 434,
+        "start_seconds": 2021.78,
+        "end_seconds": 2029.24,
+        "text": "As I hesitated, two of the beautiful upper-world people came running in their amorous sport across the daylight in the shadow.",
+        "normalized": "as i hesitated two of the beautiful upper world people came running in their amorous sport across the daylight in the shadow"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 5286,
+      "hypothesis_word_index_0_based": 5262,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "upperworld",
+      "hypothesis": "world",
+      "reference_context": "go as i hesitated two of the beautiful upperworld people came running in their amorous sport across",
+      "hypothesis_context": "as i hesitated two of the beautiful upper world people came running in their amorous sport across",
+      "preceding_output_segment": {
+        "line_1_based": 434,
+        "start_seconds": 2021.78,
+        "end_seconds": 2029.24,
+        "text": "As I hesitated, two of the beautiful upper-world people came running in their amorous sport across the daylight in the shadow.",
+        "normalized": "as i hesitated two of the beautiful upper world people came running in their amorous sport across the daylight in the shadow"
+      },
+      "following_output_segment": {
+        "line_1_based": 434,
+        "start_seconds": 2021.78,
+        "end_seconds": 2029.24,
+        "text": "As I hesitated, two of the beautiful upper-world people came running in their amorous sport across the daylight in the shadow.",
+        "normalized": "as i hesitated two of the beautiful upper world people came running in their amorous sport across the daylight in the shadow"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 5624,
+      "hypothesis_word_index_0_based": 5600,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "tunnelled",
+      "hypothesis": "tunneled",
+      "reference_context": "beneath my feet then the earth must be tunnelled enormously and these tunnellings were the habitat of",
+      "hypothesis_context": "beneath my feet then the earth must be tunneled enormously and these tunnelings were the habitats of",
+      "preceding_output_segment": {
+        "line_1_based": 461,
+        "start_seconds": 2152.1,
+        "end_seconds": 2157.22,
+        "text": "of the retina. Beneath my feet, then, the earth must be",
+        "normalized": "of the retina beneath my feet then the earth must be"
+      },
+      "following_output_segment": {
+        "line_1_based": 462,
+        "start_seconds": 2157.22,
+        "end_seconds": 2163.56,
+        "text": "tunneled enormously, and these tunnelings were the habitats of the new race. The presence",
+        "normalized": "tunneled enormously and these tunnelings were the habitats of the new race the presence"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 5628,
+      "hypothesis_word_index_0_based": 5604,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "tunnellings",
+      "hypothesis": "tunnelings",
+      "reference_context": "the earth must be tunnelled enormously and these tunnellings were the habitat of the new race the",
+      "hypothesis_context": "the earth must be tunneled enormously and these tunnelings were the habitats of the new race the",
+      "preceding_output_segment": {
+        "line_1_based": 462,
+        "start_seconds": 2157.22,
+        "end_seconds": 2163.56,
+        "text": "tunneled enormously, and these tunnelings were the habitats of the new race. The presence",
+        "normalized": "tunneled enormously and these tunnelings were the habitats of the new race the presence"
+      },
+      "following_output_segment": {
+        "line_1_based": 462,
+        "start_seconds": 2157.22,
+        "end_seconds": 2163.56,
+        "text": "tunneled enormously, and these tunnelings were the habitats of the new race. The presence",
+        "normalized": "tunneled enormously and these tunnelings were the habitats of the new race the presence"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 5631,
+      "hypothesis_word_index_0_based": 5607,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "habitat",
+      "hypothesis": "habitats",
+      "reference_context": "be tunnelled enormously and these tunnellings were the habitat of the new race the presence of ventilating",
+      "hypothesis_context": "be tunneled enormously and these tunnelings were the habitats of the new race the presence of ventilating",
+      "preceding_output_segment": {
+        "line_1_based": 462,
+        "start_seconds": 2157.22,
+        "end_seconds": 2163.56,
+        "text": "tunneled enormously, and these tunnelings were the habitats of the new race. The presence",
+        "normalized": "tunneled enormously and these tunnelings were the habitats of the new race the presence"
+      },
+      "following_output_segment": {
+        "line_1_based": 462,
+        "start_seconds": 2157.22,
+        "end_seconds": 2163.56,
+        "text": "tunneled enormously, and these tunnelings were the habitats of the new race. The presence",
+        "normalized": "tunneled enormously and these tunnelings were the habitats of the new race the presence"
+      }
+    },
+    {
+      "operation": "insert",
+      "reference_word_index_0_based": 5662,
+      "hypothesis_word_index_0_based": 5638,
+      "reference_word_count": 0,
+      "hypothesis_word_count": 1,
+      "reference": "",
+      "hypothesis": "s",
+      "reference_context": "valley showed how universal were its ramifications what so natural then as to assume that it",
+      "hypothesis_context": "valley showed how universal were its ramifications what s so natural then as to assume that it",
+      "preceding_output_segment": {
+        "line_1_based": 464,
+        "start_seconds": 2168.38,
+        "end_seconds": 2174.42,
+        "text": "the river valley, showed how universal were its ramifications. What's so natural, then,",
+        "normalized": "the river valley showed how universal were its ramifications what s so natural then"
+      },
+      "following_output_segment": {
+        "line_1_based": 464,
+        "start_seconds": 2168.38,
+        "end_seconds": 2174.42,
+        "text": "the river valley, showed how universal were its ramifications. What's so natural, then,",
+        "normalized": "the river valley showed how universal were its ramifications what s so natural then"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 5775,
+      "hypothesis_word_index_0_based": 5752,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "labourer",
+      "hypothesis": "laborer",
+      "reference_context": "and social difference between the capitalist and the labourer was the key to the whole position no",
+      "hypothesis_context": "and social difference between the capitalist and the laborer was the key to the whole position no",
+      "preceding_output_segment": {
+        "line_1_based": 472,
+        "start_seconds": 2215.26,
+        "end_seconds": 2221.78,
+        "text": "capitalist and the laborer, was the key to the whole position. No doubt it will seem grotesque",
+        "normalized": "capitalist and the laborer was the key to the whole position no doubt it will seem grotesque"
+      },
+      "following_output_segment": {
+        "line_1_based": 472,
+        "start_seconds": 2215.26,
+        "end_seconds": 2221.78,
+        "text": "capitalist and the laborer, was the key to the whole position. No doubt it will seem grotesque",
+        "normalized": "capitalist and the laborer was the key to the whole position no doubt it will seem grotesque"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 5812,
+      "hypothesis_word_index_0_based": 5789,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "utilise",
+      "hypothesis": "utilize",
+      "reference_context": "point that way there is a tendency to utilise underground space for the less ornamental purposes of",
+      "hypothesis_context": "point that way there is a tendency to utilize underground space for the less ornamental purposes of",
+      "preceding_output_segment": {
+        "line_1_based": 474,
+        "start_seconds": 2228.6,
+        "end_seconds": 2234.48,
+        "text": "way. There is a tendency to utilize underground space for the less ornamental purposes of",
+        "normalized": "way there is a tendency to utilize underground space for the less ornamental purposes of"
+      },
+      "following_output_segment": {
+        "line_1_based": 474,
+        "start_seconds": 2228.6,
+        "end_seconds": 2234.48,
+        "text": "way. There is a tendency to utilize underground space for the less ornamental purposes of",
+        "normalized": "way there is a tendency to utilize underground space for the less ornamental purposes of"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 5821,
+      "hypothesis_word_index_0_based": 5798,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "civilisation",
+      "hypothesis": "civilization",
+      "reference_context": "underground space for the less ornamental purposes of civilisation there is the metropolitan railway in london for",
+      "hypothesis_context": "underground space for the less ornamental purposes of civilization there is the metropolitan railway in london for",
+      "preceding_output_segment": {
+        "line_1_based": 474,
+        "start_seconds": 2228.6,
+        "end_seconds": 2234.48,
+        "text": "way. There is a tendency to utilize underground space for the less ornamental purposes of",
+        "normalized": "way there is a tendency to utilize underground space for the less ornamental purposes of"
+      },
+      "following_output_segment": {
+        "line_1_based": 475,
+        "start_seconds": 2234.48,
+        "end_seconds": 2239.86,
+        "text": "civilization. There is the Metropolitan Railway in London, for instance. There are the new electric",
+        "normalized": "civilization there is the metropolitan railway in london for instance there are the new electric"
+      }
+    },
+    {
+      "operation": "insert",
+      "reference_word_index_0_based": 5833,
+      "hypothesis_word_index_0_based": 5810,
+      "reference_word_count": 0,
+      "hypothesis_word_count": 1,
+      "reference": "",
+      "hypothesis": "the",
+      "reference_context": "metropolitan railway in london for instance there are new electric railways there are subways there are",
+      "hypothesis_context": "metropolitan railway in london for instance there are the new electric railways there are subways there are",
+      "preceding_output_segment": {
+        "line_1_based": 475,
+        "start_seconds": 2234.48,
+        "end_seconds": 2239.86,
+        "text": "civilization. There is the Metropolitan Railway in London, for instance. There are the new electric",
+        "normalized": "civilization there is the metropolitan railway in london for instance there are the new electric"
+      },
+      "following_output_segment": {
+        "line_1_based": 475,
+        "start_seconds": 2234.48,
+        "end_seconds": 2239.86,
+        "text": "civilization. There is the Metropolitan Railway in London, for instance. There are the new electric",
+        "normalized": "civilization there is the metropolitan railway in london for instance there are the new electric"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 6081,
+      "hypothesis_word_index_0_based": 6059,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "labour",
+      "hypothesis": "labor",
+      "reference_context": "getting continually adapted to the conditions of their labour once they were there they would no doubt",
+      "hypothesis_context": "getting continually adapted to the conditions of their labor once they were there they would no doubt",
+      "preceding_output_segment": {
+        "line_1_based": 492,
+        "start_seconds": 2339.1,
+        "end_seconds": 2344.96,
+        "text": "adapted to the conditions of their labor. Once they were there they would no doubt have to pay",
+        "normalized": "adapted to the conditions of their labor once they were there they would no doubt have to pay"
+      },
+      "following_output_segment": {
+        "line_1_based": 492,
+        "start_seconds": 2339.1,
+        "end_seconds": 2344.96,
+        "text": "adapted to the conditions of their labor. Once they were there they would no doubt have to pay",
+        "normalized": "adapted to the conditions of their labor once they were there they would no doubt have to pay"
+      }
+    },
+    {
+      "operation": "insert",
+      "reference_word_index_0_based": 6162,
+      "hypothesis_word_index_0_based": 6140,
+      "reference_word_count": 0,
+      "hypothesis_word_count": 1,
+      "reference": "",
+      "hypothesis": "upper",
+      "reference_context": "and as happy in their way as the overworld people were to theirs as it seemed",
+      "hypothesis_context": "and as happy in their way as the upper world people were to theirs as it seemed",
+      "preceding_output_segment": {
+        "line_1_based": 497,
+        "start_seconds": 2368.38,
+        "end_seconds": 2375.44,
+        "text": "happy in their way as the upper world people were to theirs. As it seemed to me, the refined",
+        "normalized": "happy in their way as the upper world people were to theirs as it seemed to me the refined"
+      },
+      "following_output_segment": {
+        "line_1_based": 497,
+        "start_seconds": 2368.38,
+        "end_seconds": 2375.44,
+        "text": "happy in their way as the upper world people were to theirs. As it seemed to me, the refined",
+        "normalized": "happy in their way as the upper world people were to theirs as it seemed to me the refined"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 6162,
+      "hypothesis_word_index_0_based": 6141,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "overworld",
+      "hypothesis": "world",
+      "reference_context": "and as happy in their way as the overworld people were to theirs as it seemed to",
+      "hypothesis_context": "as happy in their way as the upper world people were to theirs as it seemed to",
+      "preceding_output_segment": {
+        "line_1_based": 497,
+        "start_seconds": 2368.38,
+        "end_seconds": 2375.44,
+        "text": "happy in their way as the upper world people were to theirs. As it seemed to me, the refined",
+        "normalized": "happy in their way as the upper world people were to theirs as it seemed to me the refined"
+      },
+      "following_output_segment": {
+        "line_1_based": 497,
+        "start_seconds": 2368.38,
+        "end_seconds": 2375.44,
+        "text": "happy in their way as the upper world people were to theirs. As it seemed to me, the refined",
+        "normalized": "happy in their way as the upper world people were to theirs as it seemed to me the refined"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 6209,
+      "hypothesis_word_index_0_based": 6188,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "co",
+      "hypothesis": "cooperation",
+      "reference_context": "no such triumph of moral education and general co operation as i had imagined instead i saw",
+      "hypothesis_context": "no such triumph of moral education and general cooperation as i had imagined instead i saw a",
+      "preceding_output_segment": {
+        "line_1_based": 500,
+        "start_seconds": 2389.98,
+        "end_seconds": 2397.84,
+        "text": "and general cooperation as I had imagined. Instead, I saw a real aristocracy, armed with",
+        "normalized": "and general cooperation as i had imagined instead i saw a real aristocracy armed with"
+      },
+      "following_output_segment": {
+        "line_1_based": 500,
+        "start_seconds": 2389.98,
+        "end_seconds": 2397.84,
+        "text": "and general cooperation as I had imagined. Instead, I saw a real aristocracy, armed with",
+        "normalized": "and general cooperation as i had imagined instead i saw a real aristocracy armed with"
+      }
+    },
+    {
+      "operation": "delete",
+      "reference_word_index_0_based": 6210,
+      "hypothesis_word_index_0_based": 6189,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 0,
+      "reference": "operation",
+      "hypothesis": "",
+      "reference_context": "such triumph of moral education and general co operation as i had imagined instead i saw a",
+      "hypothesis_context": "such triumph of moral education and general cooperation as i had imagined instead i saw a",
+      "preceding_output_segment": {
+        "line_1_based": 500,
+        "start_seconds": 2389.98,
+        "end_seconds": 2397.84,
+        "text": "and general cooperation as I had imagined. Instead, I saw a real aristocracy, armed with",
+        "normalized": "and general cooperation as i had imagined instead i saw a real aristocracy armed with"
+      },
+      "following_output_segment": {
+        "line_1_based": 500,
+        "start_seconds": 2389.98,
+        "end_seconds": 2397.84,
+        "text": "and general cooperation as I had imagined. Instead, I saw a real aristocracy, armed with",
+        "normalized": "and general cooperation as i had imagined instead i saw a real aristocracy armed with"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 6223,
+      "hypothesis_word_index_0_based": 6201,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "a",
+      "hypothesis": "the",
+      "reference_context": "instead i saw a real aristocracy armed with a perfected science and working to a logical conclusion",
+      "hypothesis_context": "instead i saw a real aristocracy armed with the perfected science and working to a logical conclusion",
+      "preceding_output_segment": {
+        "line_1_based": 500,
+        "start_seconds": 2389.98,
+        "end_seconds": 2397.84,
+        "text": "and general cooperation as I had imagined. Instead, I saw a real aristocracy, armed with",
+        "normalized": "and general cooperation as i had imagined instead i saw a real aristocracy armed with"
+      },
+      "following_output_segment": {
+        "line_1_based": 501,
+        "start_seconds": 2397.84,
+        "end_seconds": 2403.48,
+        "text": "the perfected science, and working to a logical conclusion the industrial system of to-day.",
+        "normalized": "the perfected science and working to a logical conclusion the industrial system of to day"
+      }
+    },
+    {
+      "operation": "insert",
+      "reference_word_index_0_based": 6236,
+      "hypothesis_word_index_0_based": 6214,
+      "reference_word_count": 0,
+      "hypothesis_word_count": 1,
+      "reference": "",
+      "hypothesis": "to",
+      "reference_context": "to a logical conclusion the industrial system of today its triumph had not been simply a",
+      "hypothesis_context": "to a logical conclusion the industrial system of to day its triumph had not been simply a",
+      "preceding_output_segment": {
+        "line_1_based": 501,
+        "start_seconds": 2397.84,
+        "end_seconds": 2403.48,
+        "text": "the perfected science, and working to a logical conclusion the industrial system of to-day.",
+        "normalized": "the perfected science and working to a logical conclusion the industrial system of to day"
+      },
+      "following_output_segment": {
+        "line_1_based": 501,
+        "start_seconds": 2397.84,
+        "end_seconds": 2403.48,
+        "text": "the perfected science, and working to a logical conclusion the industrial system of to-day.",
+        "normalized": "the perfected science and working to a logical conclusion the industrial system of to day"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 6236,
+      "hypothesis_word_index_0_based": 6215,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "today",
+      "hypothesis": "day",
+      "reference_context": "to a logical conclusion the industrial system of today its triumph had not been simply a triumph",
+      "hypothesis_context": "a logical conclusion the industrial system of to day its triumph had not been simply a triumph",
+      "preceding_output_segment": {
+        "line_1_based": 501,
+        "start_seconds": 2397.84,
+        "end_seconds": 2403.48,
+        "text": "the perfected science, and working to a logical conclusion the industrial system of to-day.",
+        "normalized": "the perfected science and working to a logical conclusion the industrial system of to day"
+      },
+      "following_output_segment": {
+        "line_1_based": 502,
+        "start_seconds": 2404.4,
+        "end_seconds": 2410.8,
+        "text": "Its triumph had not been simply a triumph over nature, but a triumph over nature and",
+        "normalized": "its triumph had not been simply a triumph over nature but a triumph over nature and"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 6301,
+      "hypothesis_word_index_0_based": 6280,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "civilisation",
+      "hypothesis": "civilization",
+      "reference_context": "one but even on this supposition the balanced civilisation that was at last attained must have long",
+      "hypothesis_context": "one but even on this supposition the balanced civilization that was at least attained must have long",
+      "preceding_output_segment": {
+        "line_1_based": 508,
+        "start_seconds": 2428.76,
+        "end_seconds": 2434.16,
+        "text": "But even on this supposition, the balanced civilization that was at least attained must",
+        "normalized": "but even on this supposition the balanced civilization that was at least attained must"
+      },
+      "following_output_segment": {
+        "line_1_based": 508,
+        "start_seconds": 2428.76,
+        "end_seconds": 2434.16,
+        "text": "But even on this supposition, the balanced civilization that was at least attained must",
+        "normalized": "but even on this supposition the balanced civilization that was at least attained must"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 6305,
+      "hypothesis_word_index_0_based": 6284,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "last",
+      "hypothesis": "least",
+      "reference_context": "this supposition the balanced civilisation that was at last attained must have long since passed its zenith",
+      "hypothesis_context": "this supposition the balanced civilization that was at least attained must have long since passed its zenith",
+      "preceding_output_segment": {
+        "line_1_based": 508,
+        "start_seconds": 2428.76,
+        "end_seconds": 2434.16,
+        "text": "But even on this supposition, the balanced civilization that was at least attained must",
+        "normalized": "but even on this supposition the balanced civilization that was at least attained must"
+      },
+      "following_output_segment": {
+        "line_1_based": 508,
+        "start_seconds": 2428.76,
+        "end_seconds": 2434.16,
+        "text": "But even on this supposition, the balanced civilization that was at least attained must",
+        "normalized": "but even on this supposition the balanced civilization that was at least attained must"
+      }
+    },
+    {
+      "operation": "insert",
+      "reference_word_index_0_based": 6327,
+      "hypothesis_word_index_0_based": 6306,
+      "reference_word_count": 0,
+      "hypothesis_word_count": 1,
+      "reference": "",
+      "hypothesis": "upper",
+      "reference_context": "into decay the too perfect security of the overworlders had led them to a slow movement",
+      "hypothesis_context": "into decay the too perfect security of the upper worlders had led them to a slow movement",
+      "preceding_output_segment": {
+        "line_1_based": 510,
+        "start_seconds": 2439.86,
+        "end_seconds": 2446.7,
+        "text": "The too perfect security of the upper worlders had led them to a slow movement of degeneration,",
+        "normalized": "the too perfect security of the upper worlders had led them to a slow movement of degeneration"
+      },
+      "following_output_segment": {
+        "line_1_based": 510,
+        "start_seconds": 2439.86,
+        "end_seconds": 2446.7,
+        "text": "The too perfect security of the upper worlders had led them to a slow movement of degeneration,",
+        "normalized": "the too perfect security of the upper worlders had led them to a slow movement of degeneration"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 6327,
+      "hypothesis_word_index_0_based": 6307,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "overworlders",
+      "hypothesis": "worlders",
+      "reference_context": "into decay the too perfect security of the overworlders had led them to a slow movement of",
+      "hypothesis_context": "decay the too perfect security of the upper worlders had led them to a slow movement of",
+      "preceding_output_segment": {
+        "line_1_based": 510,
+        "start_seconds": 2439.86,
+        "end_seconds": 2446.7,
+        "text": "The too perfect security of the upper worlders had led them to a slow movement of degeneration,",
+        "normalized": "the too perfect security of the upper worlders had led them to a slow movement of degeneration"
+      },
+      "following_output_segment": {
+        "line_1_based": 510,
+        "start_seconds": 2439.86,
+        "end_seconds": 2446.7,
+        "text": "The too perfect security of the upper worlders had led them to a slow movement of degeneration,",
+        "normalized": "the too perfect security of the upper worlders had led them to a slow movement of degeneration"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 6358,
+      "hypothesis_word_index_0_based": 6338,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "undergrounders",
+      "hypothesis": "underworlders",
+      "reference_context": "clearly enough already what had happened to the undergrounders i did not yet suspect but from what",
+      "hypothesis_context": "clearly enough already what had happened to the underworlders i did not yet suspect but from what",
+      "preceding_output_segment": {
+        "line_1_based": 513,
+        "start_seconds": 2455.0,
+        "end_seconds": 2458.54,
+        "text": "What had happened to the Underworlders I did not yet suspect,",
+        "normalized": "what had happened to the underworlders i did not yet suspect"
+      },
+      "following_output_segment": {
+        "line_1_based": 513,
+        "start_seconds": 2455.0,
+        "end_seconds": 2458.54,
+        "text": "What had happened to the Underworlders I did not yet suspect,",
+        "normalized": "what had happened to the underworlders i did not yet suspect"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 6376,
+      "hypothesis_word_index_0_based": 6356,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "bye",
+      "hypothesis": "way",
+      "reference_context": "had seen of the morlocks that by the bye was the name by which these creatures were",
+      "hypothesis_context": "had seen of the morlocks that by the way was the name by which the creatures were",
+      "preceding_output_segment": {
+        "line_1_based": 515,
+        "start_seconds": 2461.72,
+        "end_seconds": 2464.42,
+        "text": "that, by the way, was the name by which the creatures were called,",
+        "normalized": "that by the way was the name by which the creatures were called"
+      },
+      "following_output_segment": {
+        "line_1_based": 515,
+        "start_seconds": 2461.72,
+        "end_seconds": 2464.42,
+        "text": "that, by the way, was the name by which the creatures were called,",
+        "normalized": "that by the way was the name by which the creatures were called"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 6382,
+      "hypothesis_word_index_0_based": 6362,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "these",
+      "hypothesis": "the",
+      "reference_context": "by the bye was the name by which these creatures were called i could imagine that the",
+      "hypothesis_context": "by the way was the name by which the creatures were called i could imagine that the",
+      "preceding_output_segment": {
+        "line_1_based": 515,
+        "start_seconds": 2461.72,
+        "end_seconds": 2464.42,
+        "text": "that, by the way, was the name by which the creatures were called,",
+        "normalized": "that by the way was the name by which the creatures were called"
+      },
+      "following_output_segment": {
+        "line_1_based": 515,
+        "start_seconds": 2461.72,
+        "end_seconds": 2464.42,
+        "text": "that, by the way, was the name by which the creatures were called,",
+        "normalized": "that by the way was the name by which the creatures were called"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 6439,
+      "hypothesis_word_index_0_based": 6419,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "eloi",
+      "hypothesis": "eloy",
+      "reference_context": "who had taken it why too if the eloi were masters could they not restore the machine",
+      "hypothesis_context": "who had taken it why too if the eloy were masters could they not restore the machine",
+      "preceding_output_segment": {
+        "line_1_based": 522,
+        "start_seconds": 2485.0,
+        "end_seconds": 2490.3,
+        "text": "Why, too, if the Eloy were masters, could they not restore the machine to me?",
+        "normalized": "why too if the eloy were masters could they not restore the machine to me"
+      },
+      "following_output_segment": {
+        "line_1_based": 522,
+        "start_seconds": 2485.0,
+        "end_seconds": 2490.3,
+        "text": "Why, too, if the Eloy were masters, could they not restore the machine to me?",
+        "normalized": "why too if the eloy were masters could they not restore the machine to me"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 6550,
+      "hypothesis_word_index_0_based": 6530,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "her",
+      "hypothesis": "the",
+      "reference_context": "was only concerned in banishing these signs of her human inheritance from weena s eyes and very",
+      "hypothesis_context": "was only concerned in banishing these signs of the human inheritance from weena s eyes and very",
+      "preceding_output_segment": {
+        "line_1_based": 532,
+        "start_seconds": 2529.18,
+        "end_seconds": 2533.84,
+        "text": "and was only concerned in banishing these signs of the human inheritance from Weena's eyes.",
+        "normalized": "and was only concerned in banishing these signs of the human inheritance from weena s eyes"
+      },
+      "following_output_segment": {
+        "line_1_based": 532,
+        "start_seconds": 2529.18,
+        "end_seconds": 2533.84,
+        "text": "and was only concerned in banishing these signs of the human inheritance from Weena's eyes.",
+        "normalized": "and was only concerned in banishing these signs of the human inheritance from weena s eyes"
+      }
+    },
+    {
+      "operation": "substitute",
+      "reference_word_index_0_based": 6570,
+      "hypothesis_word_index_0_based": 6550,
+      "reference_word_count": 1,
+      "hypothesis_word_count": 1,
+      "reference": "burnt",
+      "hypothesis": "burned",
+      "reference_context": "smiling and clapping her hands while i solemnly burnt a match",
+      "hypothesis_context": "smiling and clapping her hands while i solemnly burned a match",
+      "preceding_output_segment": {
+        "line_1_based": 533,
+        "start_seconds": 2534.74,
+        "end_seconds": 2541.46,
+        "text": "And very soon she was smiling and clapping her hands while I solemnly burned a match.",
+        "normalized": "and very soon she was smiling and clapping her hands while i solemnly burned a match"
+      },
+      "following_output_segment": {
+        "line_1_based": 533,
+        "start_seconds": 2534.74,
+        "end_seconds": 2541.46,
+        "text": "And very soon she was smiling and clapping her hands while I solemnly burned a match.",
+        "normalized": "and very soon she was smiling and clapping her hands while i solemnly burned a match"
+      }
+    }
+  ],
+  "limitations": [
+    "The published book body has not been exhaustively reconciled to this reading or edition.",
+    "Introduction/chapter label and closing announcement are excluded from the exploratory metric.",
+    "Timestamp extent and successful process completion do not prove word-level completeness.",
+    "No human listening/adjudication was performed by this audit.",
+    "Do not call the transcript complete, correct, verbatim, or 98.34% accurate from the exploratory agreement ratio."
+  ]
+}

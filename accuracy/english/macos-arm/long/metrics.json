@@ -1,0 +1,12 @@
+{
+  "exit_code": 0,
+  "elapsed_seconds": 2103.209762458,
+  "peak_rss_bytes": 3493838848,
+  "input_bytes": 41603825,
+  "source_sha256_before": "5251d04d8772887bfd82147aba1141abda744f5b69f7b5f7b67092a993702037",
+  "source_sha256_after": "5251d04d8772887bfd82147aba1141abda744f5b69f7b5f7b67092a993702037",
+  "platform": "macOS-15.7.9-arm64-arm-64bit",
+  "python": "3.11.17 (main, Oct 13 2026, 16:38:53) [Clang 21.1.8 ]",
+  "model_directory": "LOCAL_TURBO_MODEL",
+  "output_bytes": 45554
+}

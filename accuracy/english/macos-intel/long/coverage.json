@@ -1,0 +1,12 @@
+{
+  "segment_count": 499,
+  "word_count": 6513,
+  "media_duration_seconds": 2556.41,
+  "first_segment_start": 0.0,
+  "last_segment_end": 2545.2,
+  "unrepresented_tail_seconds": 11.210000000000036,
+  "gaps_over_10_seconds": [],
+  "time_order_monotonic": true,
+  "cyrillic_character_count": 0,
+  "note": "Timestamps and script counts indicate processing extent, not word-level completeness or accuracy."
+}

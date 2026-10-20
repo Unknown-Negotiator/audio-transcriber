@@ -1,0 +1,55 @@
+Independent English benchmark error review (Linux / x86_64)
+
+32 distinct recordings, 31 distinct sentence IDs; 315.58 seconds of public FLEURS English-US read speech.
+WER 7.219251% (54/748); CER 3.410138% (148/4340, spaces included).
+7/32 normalized exact matches. Not perfect recognition. Every clip's WER/CER and the corpus rates were independently recalculated with jiwer 4.0.0.
+
+Representative largest word-error clips (chosen by error count, not used for sample selection):
+
+7489324500816890474.wav | WER 28.57% (8/28)
+Reference: During the struggle for independence organised by the Mau movement, a peaceful gathering in the town resulted in the killing of the paramount chief Tupua Tamasese Lealofi III.
+Hypothesis: During the struggle for independence organized by the Mao movement, a peaceful gathering in the town resulted in the killing of Paramount Chief Tuba Tuba Si'ai Luf III.
+Word edits: substitution: 'organised' -> 'organized'; substitution: 'mau' -> 'mao'; deletion: 'the' -> ''; insertion: '' -> 'tuba'; insertion: '' -> 'tuba'; substitution: 'tupua' -> 'si'; substitution: 'tamasese' -> 'ai'; substitution: 'lealofi' -> 'luf'
+
+11265842188315045636.wav | WER 21.74% (5/23)
+Reference: Vatican City's population is around 800. It is the smallest independent country in the world and the country with the lowest population.
+Hypothesis: Vatican City population is around 800. It is the smallest independent country in the world and the population.
+Word edits: deletion: 's' -> ''; deletion: 'the' -> ''; deletion: 'country' -> ''; deletion: 'with' -> ''; deletion: 'lowest' -> ''
+
+15842229443202938478.wav | WER 18.52% (5/27)
+Reference: A simple popular dinner, especially during the summer, is the Pa amb Oli: Bread with olive oil, tomato, and any available condiments such as cheese, tunafish, etc.
+Hypothesis: A simple, popular dimmer, especially during the summer, is Pa'am Oli,
+bread with olive oil, tomato, and any available condiments such as cheese, tuna fish, etc.
+Word edits: substitution: 'dinner' -> 'dimmer'; deletion: 'the' -> ''; substitution: 'amb' -> 'am'; insertion: '' -> 'tuna'; substitution: 'tunafish' -> 'fish'
+
+11483786862560523973.wav | WER 12.12% (4/33)
+Reference: To the north and within easy reach is the romantic and fascinating town of Sintra and which was made famous to foreigners after a glowing account of its splendours recorded by Lord Byron.
+Hypothesis: To the north and within easy reach is the romantic and fascinating town of Cintra,
+in which was made famous to foreigners after a glowing account of its splendors recorded by Lord Bryan.
+Word edits: substitution: 'sintra' -> 'cintra'; substitution: 'and' -> 'in'; substitution: 'splendours' -> 'splendors'; substitution: 'byron' -> 'bryan'
+
+17559567402304106195.wav | WER 18.75% (3/16)
+Reference: Middle order batsmen, Sachin Tendulkar and Rahul Dravid, performed well and made a hundred-run partnership.
+Hypothesis: Middle Order batsmen Sachin Tugdokar and Rakul Dravid performed well and made a 100-run partnership.
+Word edits: substitution: 'tendulkar' -> 'tugdokar'; substitution: 'rahul' -> 'rakul'; substitution: 'hundred' -> '100'
+
+10614481583312370701.wav | WER 13.64% (3/22)
+Reference: Alloys are basically a mixture of two or more metals. Don't forget that there are many elements on the periodic table.
+Hypothesis: Alloys are basically a mixture of two or more metals. Don't forget there are many elements on the PRI cable.
+Word edits: deletion: 'that' -> ''; substitution: 'periodic' -> 'pri'; substitution: 'table' -> 'cable'
+
+10492135991603561867.wav | WER 12.50% (2/16)
+Reference: In some areas boiling water for a minute is enough, in others several minutes are needed.
+Hypothesis: In some areas, boiling water for a minute is enough and other several minutes are needed.
+Word edits: substitution: 'in' -> 'and'; substitution: 'others' -> 'other'
+
+1046653381869710616.wav | WER 10.53% (2/19)
+Reference: The term safari in popular use refers to overland travel to view the stunning African wildlife, particularly on savanna.
+Hypothesis: The term safari in popular luce refers to overland travel to view the stunning African wildlife, particularly on savannah.
+Word edits: substitution: 'use' -> 'luce'; substitution: 'savanna' -> 'savannah'
+
+Interpretation limits:
+- These are text/reference comparisons, not a fresh human auditory adjudication of the recordings.
+- WER penalizes alternative spellings and lexical/number formatting; this normalization does not equate numeric tokens with number words.
+- Public test membership does not establish exclusion from pretraining. Short read speech does not establish long-recording or spontaneous speech accuracy.
+- Different minimal alignments may allocate the same edit distance differently among substitutions/deletions/insertions. 2 such per-clip component discrepancies versus jiwer were observed.

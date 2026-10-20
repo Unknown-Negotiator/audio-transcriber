@@ -1,0 +1,12 @@
+{
+  "exit_code": 0,
+  "elapsed_seconds": 565.9881015280007,
+  "peak_rss_bytes": 3858280448,
+  "input_bytes": 41603833,
+  "source_sha256_before": "2f12213ab40d92693451669f3d6c5ad6a2db6aa923f7d21316730e65037c7e04",
+  "source_sha256_after": "2f12213ab40d92693451669f3d6c5ad6a2db6aa923f7d21316730e65037c7e04",
+  "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+  "python": "3.11.17 (main, Oct 13 2026, 16:45:47) [GCC 15.3.0]",
+  "model_directory": "LOCAL_TURBO_MODEL",
+  "output_bytes": 45857
+}

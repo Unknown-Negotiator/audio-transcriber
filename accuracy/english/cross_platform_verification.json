@@ -1,0 +1,124 @@
+{
+  "arm": {
+    "accuracy_checks": 444,
+    "cross_platform": {
+      "status": "passed",
+      "exact_saved_transcript_matches_linux": 29,
+      "normalized_transcript_matches_linux": 31
+    },
+    "long_checks": {
+      "successful_exit": true,
+      "source_unchanged_as_recorded": true,
+      "source_bytes_match_input_probe": true,
+      "output_bytes_match_metrics": true,
+      "timestamp_bounds": true,
+      "timestamp_order_nonoverlapping": true,
+      "coverage_segment_count_matches": true,
+      "source_record_matches_final_app": true,
+      "no_warning_or_error_lines": true,
+      "no_timestamp_gaps_over_10_seconds": true
+    },
+    "long_segment_count": 517,
+    "long_first": {
+      "line_1_based": 1,
+      "start_seconds": 0.0,
+      "end_seconds": 15.1,
+      "text": "V."
+    },
+    "long_last": {
+      "line_1_based": 517,
+      "start_seconds": 2541.46,
+      "end_seconds": 2545.22,
+      "text": "End of chapter 5"
+    },
+    "long_probe_duration": 2556.134,
+    "long_tail_probe": 10.914000000000215,
+    "long_word_book_agreement": {
+      "reference_units": 6573,
+      "hypothesis_units": 6559,
+      "substitutions": 61,
+      "deletions": 25,
+      "insertions": 11,
+      "equal_units": 6487,
+      "edits": 97,
+      "edit_ratio": 0.014757340635934885
+    },
+    "long_character_book_agreement": {
+      "reference_units": 34834,
+      "hypothesis_units": 34720,
+      "substitutions": 45,
+      "deletions": 155,
+      "insertions": 41,
+      "equal_units": 34634,
+      "edits": 241,
+      "edit_ratio": 0.006918527875064592
+    },
+    "repeated_ngram_counts": {
+      "12": 0,
+      "20": 0
+    },
+    "long_15word_clause_missing": true,
+    "warnings": []
+  },
+  "intel": {
+    "accuracy_checks": 444,
+    "cross_platform": {
+      "status": "passed",
+      "exact_saved_transcript_matches_linux": 24,
+      "normalized_transcript_matches_linux": 31
+    },
+    "long_checks": {
+      "successful_exit": true,
+      "source_unchanged_as_recorded": true,
+      "source_bytes_match_input_probe": true,
+      "output_bytes_match_metrics": true,
+      "timestamp_bounds": true,
+      "timestamp_order_nonoverlapping": true,
+      "coverage_segment_count_matches": true,
+      "source_record_matches_final_app": true,
+      "no_warning_or_error_lines": true,
+      "no_timestamp_gaps_over_10_seconds": true
+    },
+    "long_segment_count": 499,
+    "long_first": {
+      "line_1_based": 1,
+      "start_seconds": 0.0,
+      "end_seconds": 15.1,
+      "text": "V."
+    },
+    "long_last": {
+      "line_1_based": 499,
+      "start_seconds": 2544.06,
+      "end_seconds": 2545.2,
+      "text": "End of chapter 5"
+    },
+    "long_probe_duration": 2556.134,
+    "long_tail_probe": 10.934000000000196,
+    "long_word_book_agreement": {
+      "reference_units": 6573,
+      "hypothesis_units": 6563,
+      "substitutions": 62,
+      "deletions": 24,
+      "insertions": 14,
+      "equal_units": 6487,
+      "edits": 100,
+      "edit_ratio": 0.015213753232922561
+    },
+    "long_character_book_agreement": {
+      "reference_units": 34834,
+      "hypothesis_units": 34743,
+      "substitutions": 48,
+      "deletions": 146,
+      "insertions": 55,
+      "equal_units": 34640,
+      "edits": 249,
+      "edit_ratio": 0.007148188551415284
+    },
+    "repeated_ngram_counts": {
+      "12": 0,
+      "20": 0
+    },
+    "long_15word_clause_missing": true,
+    "warnings": []
+  }
+}

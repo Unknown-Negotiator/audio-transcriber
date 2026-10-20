@@ -1,0 +1,22 @@
+test_existing_output_preserved (test_cli.CLITests.test_existing_output_preserved) ... Error: Output exists: /private/var/folders/20/jp1_0n3n7kndh6rnbqb5344m0000gn/T/tmpwuie8_8g/audio.txt; choose another output or use --force
+ok
+test_missing_model (test_cli.CLITests.test_missing_model) ... Error: Local model is incomplete: missing model.bin. Run download-model during setup.
+ok
+test_missing_source (test_cli.CLITests.test_missing_source) ... Error: Input file does not exist: /does-not-exist.mkv
+ok
+test_offline_flags (test_cli.CLITests.test_offline_flags) ... ok
+test_parser_track (test_cli.CLITests.test_parser_track) ... ok
+test_source_preserved (test_cli.CLITests.test_source_preserved) ... Error: Output must not overwrite the source media
+ok
+test_timestamp_clamps_to_audio_extent (test_cli.CLITests.test_timestamp_clamps_to_audio_extent) ... ok
+test_timestamp_zero_and_nonfinite (test_cli.CLITests.test_timestamp_zero_and_nonfinite) ... ok
+test_turbo_model_option (test_cli.CLITests.test_turbo_model_option) ... ok
+test_decode_unicode_and_preserve_input (test_media.MediaTests.test_decode_unicode_and_preserve_input) ... ok
+test_invalid_track (test_media.MediaTests.test_invalid_track) ... ok
+test_midstream_channel_change (test_media.MediaTests.test_midstream_channel_change) ... ok
+test_no_audio (test_media.MediaTests.test_no_audio) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.682s
+
+OK

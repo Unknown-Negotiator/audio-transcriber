@@ -1,0 +1,242 @@
+{
+  "status": "passed_with_exploratory_text_comparison_limits",
+  "audited_utc": "2026-10-20T23:44:53.471580+00:00",
+  "checks": {
+    "successful_exit": true,
+    "source_unchanged_as_recorded": true,
+    "source_bytes_match_input_probe": true,
+    "output_bytes_match_metrics": true,
+    "timestamp_bounds": true,
+    "timestamp_order_nonoverlapping": true,
+    "coverage_segment_count_matches": true,
+    "source_record_matches_final_app": true,
+    "no_warning_or_error_lines": true,
+    "no_timestamp_gaps_over_10_seconds": true
+  },
+  "platform": "macOS-15.7.9-x86_64-i386-64bit",
+  "source_application_sha256": "532b240122f6a3e1f8d405391bf0a5e864bb9ce6398a968625777415ffad53dd",
+  "output_sha256": "b62c7f307040c0e913332fac4f798a1d6847823b6c131043de087d69d9fb6343",
+  "metrics": {
+    "exit_code": 0,
+    "elapsed_seconds": 1090.0465066470001,
+    "peak_rss_bytes": 3624112128,
+    "input_bytes": 41603825,
+    "source_sha256_before": "256afe4adc536e219a418ffb50236547fb5584eba847f9ba580f8ecb0b4492e3",
+    "source_sha256_after": "256afe4adc536e219a418ffb50236547fb5584eba847f9ba580f8ecb0b4492e3",
+    "platform": "macOS-15.7.9-x86_64-i386-64bit",
+    "python": "3.11.17 (main, Oct 13 2026, 17:06:54) [Clang 21.1.8 ]",
+    "model_directory": "LOCAL_TURBO_MODEL",
+    "output_bytes": 45194
+  },
+  "remote_input_provenance": {
+    "original_mp3_expected_sha256": "2ef1620a2f38f8ac4e4e06c6cee775c148dbb38725cf500f21dac8cb26412aee",
+    "workflow_precondition": "verify_long_input.py asserts original downloaded MP3 size 40902574 and SHA-256 before ffmpeg -c:a copy remux and transcription. This is a check enforced by the inspected successful workflow, not a separate local hash of Mac source bytes.",
+    "tested_mkv_sha256_as_recorded": "256afe4adc536e219a418ffb50236547fb5584eba847f9ba580f8ecb0b4492e3",
+    "tested_mkv_bytes": 41603825,
+    "tested_mkv_bytes_available_for_independent_hash": false,
+    "mac_container_hash_is_not_equal_to_linux_container": true,
+    "interpretation": "Remux container metadata can differ across hosts. Do not claim byte identity of Mac and Linux MKV files. Independently verified Linux compressed/decoded audio equivalence does not constitute rehashing unavailable Mac audio."
+  },
+  "timeline": {
+    "segments": 499,
+    "first_segment": {
+      "line_1_based": 1,
+      "start_seconds": 0.0,
+      "end_seconds": 15.1,
+      "text": "V."
+    },
+    "last_segment": {
+      "line_1_based": 499,
+      "start_seconds": 2544.06,
+      "end_seconds": 2545.2,
+      "text": "End of chapter 5"
+    },
+    "ffprobe_mkv_duration_seconds": 2556.134,
+    "unrepresented_tail_from_mkv_probe_seconds": 10.934000000000196,
+    "provided_coverage_duration_seconds": 2556.41,
+    "provided_coverage_tail_seconds": 11.210000000000036,
+    "duration_note": "Provided coverage uses archive catalog duration 2556.41 s, not MKV ffprobe duration 2556.134 s. Both denominators and resulting tails are retained explicitly.",
+    "gaps_over_10_seconds": [],
+    "warnings": []
+  },
+  "body_selection": {
+    "first_line_1_based": 2,
+    "last_line_1_based": 498,
+    "opening_anchor": "as i stood there musing over this too perfect triumph of man",
+    "closing_anchor": "and very soon she was smiling and clapping her hands while i solemnly",
+    "opening_matches": 1,
+    "closing_matches": 1,
+    "body_segment_start_seconds": 15.1,
+    "body_segment_end_seconds": 2544.06,
+    "excluded_before": [
+      {
+        "line_1_based": 1,
+        "start_seconds": 0.0,
+        "end_seconds": 15.1,
+        "text": "V."
+      }
+    ],
+    "excluded_after": [
+      {
+        "line_1_based": 499,
+        "start_seconds": 2544.06,
+        "end_seconds": 2545.2,
+        "text": "End of chapter 5"
+      }
+    ],
+    "scope": "Book-body anchors only, not manually validated audio boundaries. Closing anchor may share a segment with the preceding sentence, which remains included."
+  },
+  "exploratory_book_text_agreement": {
+    "not_ground_truth_speech_wer_or_cer": true,
+    "not_full_file_verbatim_accuracy": true,
+    "reference_sha256": "e936fcb54b7487109c599e078e4500012375557a5661a72e6ea194d19e566658",
+    "normalization": "NFKC/casefold; letters/marks/numbers retained; punctuation/symbols replaced by spaces; whitespace collapsed. No number-word or alternate spelling equivalence. Character metric includes spaces.",
+    "engine": "jiwer 4.0.0 / optimized RapidFuzz",
+    "word": {
+      "reference_units": 6573,
+      "hypothesis_units": 6563,
+      "substitutions": 62,
+      "deletions": 24,
+      "insertions": 14,
+      "equal_units": 6487,
+      "edits": 100,
+      "edit_ratio": 0.015213753232922561
+    },
+    "character": {
+      "reference_units": 34834,
+      "hypothesis_units": 34743,
+      "substitutions": 48,
+      "deletions": 146,
+      "insertions": 55,
+      "equal_units": 34640,
+      "edits": 249,
+      "edit_ratio": 0.007148188551415284
+    }
+  },
+  "continuity_diagnostics": {
+    "maximum_contiguous_book_only_word_span": 15,
+    "maximum_contiguous_transcript_only_word_span": 2,
+    "excess_repeated_ngrams": {
+      "12": [],
+      "20": []
+    },
+    "largest_differences": [
+      {
+        "type": "delete",
+        "reference_index": 1041,
+        "hypothesis_index": 1040,
+        "reference_word_count": 15,
+        "hypothesis_word_count": 0,
+        "reference": "even anger at the folly of leaving the machine having leaked away with my strength",
+        "hypothesis": ""
+      },
+      {
+        "type": "delete",
+        "reference_index": 1218,
+        "hypothesis_index": 1202,
+        "reference_word_count": 3,
+        "hypothesis_word_count": 0,
+        "reference": "a poor hope",
+        "hypothesis": ""
+      },
+      {
+        "type": "substitute",
+        "reference_index": 2522,
+        "hypothesis_index": 2504,
+        "reference_word_count": 3,
+        "hypothesis_word_count": 3,
+        "reference": "thud thud thud",
+        "hypothesis": "dud dud dud"
+      },
+      {
+        "type": "substitute",
+        "reference_index": 4185,
+        "hypothesis_index": 4166,
+        "reference_word_count": 2,
+        "hypothesis_word_count": 2,
+        "reference": "sombre grey",
+        "hypothesis": "somber gray"
+      },
+      {
+        "type": "insert",
+        "reference_index": 5539,
+        "hypothesis_index": 5522,
+        "reference_word_count": 0,
+        "hypothesis_word_count": 2,
+        "reference": "",
+        "hypothesis": "lived in"
+      },
+      {
+        "type": "substitute",
+        "reference_index": 34,
+        "hypothesis_index": 34,
+        "reference_word_count": 1,
+        "hypothesis_word_count": 1,
+        "reference": "figures",
+        "hypothesis": "figure"
+      },
+      {
+        "type": "delete",
+        "reference_index": 177,
+        "hypothesis_index": 177,
+        "reference_word_count": 1,
+        "hypothesis_word_count": 0,
+        "reference": "but",
+        "hypothesis": ""
+      },
+      {
+        "type": "substitute",
+        "reference_index": 410,
+        "hypothesis_index": 409,
+        "reference_word_count": 1,
+        "hypothesis_word_count": 1,
+        "reference": "that",
+        "hypothesis": "the"
+      },
+      {
+        "type": "substitute",
+        "reference_index": 422,
+        "hypothesis_index": 421,
+        "reference_word_count": 1,
+        "hypothesis_word_count": 1,
+        "reference": "realised",
+        "hypothesis": "realized"
+      },
+      {
+        "type": "substitute",
+        "reference_index": 742,
+        "hypothesis_index": 741,
+        "reference_word_count": 1,
+        "hypothesis_word_count": 1,
+        "reference": "there",
+        "hypothesis": "then"
+      },
+      {
+        "type": "substitute",
+        "reference_index": 821,
+        "hypothesis_index": 820,
+        "reference_word_count": 1,
+        "hypothesis_word_count": 1,
+        "reference": "it",
+        "hypothesis": "i"
+      },
+      {
+        "type": "substitute",
+        "reference_index": 881,
+        "hypothesis_index": 880,
+        "reference_word_count": 1,
+        "hypothesis_word_count": 1,
+        "reference": "behaviour",
+        "hypothesis": "behavior"
+      }
+    ]
+  },
+  "cautions": [
+    "No human auditory adjudication. Successful processing and timestamp bounds do not prove complete/correct words.",
+    "The 15-word book clause also absent from Linux/secondary ASR is not a confirmed recognition omission; narration/edition differences remain possible.",
+    "Number digits and spelling variants contribute to exploratory text distance.",
+    "Opening V. and final chapter announcement are outside body comparison.",
+    "Local Linux signal analysis detected final silence 2545.174512–2556.133878 s on verified source audio. This supports a silent-tail interpretation, but no independent Mac waveform silence check was possible from text-only artifacts.",
+    "Mac model and input bytes were not uploaded; their integrity assertions remain attributed to runner checks."
+  ]
+}

@@ -1,0 +1,127 @@
+{
+  "schema_version": 1,
+  "started_utc": "2026-10-20T22:42:11.232961+00:00",
+  "status": "completed",
+  "inference_performed": true,
+  "dataset": {
+    "dataset": "google/fleurs",
+    "revision": "70bb2e84b976b7e960aa89f1c648e09c59f894dd",
+    "split": "test",
+    "license": "CC-BY-4.0",
+    "selection_rule": "Take the 32 lowest SHA-256 digests of UTF-8 seed + NUL + config + NUL + original filename, without content, duration, quality, or output filtering. Order is ascending digest.",
+    "selection_seed": "local-transcriber-english-2026-10-20-v1"
+  },
+  "manifest_sha256": "ca824547c4c95c52e38de7a3385e8c87f89f1d353ea1c41a6f66e2a265fa7360",
+  "selected_clips": 32,
+  "application": {
+    "source_sha256": "532b240122f6a3e1f8d405391bf0a5e864bb9ce6398a968625777415ffad53dd",
+    "scorer_sha256": "fef7c57213f9a6a5aae81fead5d70e71c3e3de2fd963335f36231a7598c7d222",
+    "runner_sha256": "2232719624f5aa1e3a1a617be486e6cc965fc8bf200077828f9443bca7be3fe0",
+    "cli_template": "python transcribe.py transcribe AUDIO --model MODEL --language en --threads THREADS --output OUTPUT",
+    "settings": {
+      "device": "cpu",
+      "compute_type": "int8",
+      "cpu_threads": 4,
+      "beam_size": 5,
+      "vad_filter": false,
+      "condition_on_previous_text": false,
+      "task": "transcribe",
+      "language": "explicit known language"
+    }
+  },
+  "model": {
+    "name": "large-v3-turbo",
+    "repo_id": "dropbox-dash/faster-whisper-large-v3-turbo",
+    "revision": "0a363e9161cbc7ed1431c9597a8ceaf0c4f78fcf",
+    "files": {
+      "config.json": {
+        "sha256": "b0253ea6c0d3bea6b1e19e91a02acfd3b53f4467362efcb5a3e6b16c9b3a9b7e",
+        "bytes": 2263
+      },
+      "model.bin": {
+        "sha256": "e76620f83d5f5b69efd3d87e3dc180c1bd21df9fbebacfd4335e5e1efcc018da",
+        "bytes": 1617884929
+      },
+      "preprocessor_config.json": {
+        "sha256": "7ccc62c6f2765af1f3b46c00c9b5894426835a05021c8b9c01eecb6dfb542711",
+        "bytes": 340
+      },
+      "tokenizer.json": {
+        "sha256": "297b13372ac43916285644fb9687add3cc62ee2a1adb60da3dc25cc94c1871fd",
+        "bytes": 2710337
+      },
+      "vocabulary.json": {
+        "sha256": "c69260f2ab26d659b7c398f9a2b2b48ed0df16c3b47d7326782fd9cba71690c1",
+        "bytes": 1068114
+      }
+    }
+  },
+  "environment": {
+    "is_macos": false,
+    "system": "Linux",
+    "release": "6.18.55",
+    "version": "#1 SMP Wed Oct 14 19:45:18 UTC 2026",
+    "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+    "machine": "x86_64",
+    "processor": "",
+    "macos_version": "",
+    "python": "3.11.17 (main, Oct 13 2026, 16:45:47) [GCC 15.3.0]",
+    "packages": {
+      "faster-whisper": "1.2.1",
+      "ctranslate2": "4.8.3",
+      "av": "18.1.0",
+      "numpy": "2.4.6",
+      "huggingface-hub": "1.33.0"
+    },
+    "github_actions": false,
+    "github_sha": null,
+    "github_run_id": null,
+    "runner_os": null,
+    "runner_arch": null
+  },
+  "metric_definition": {
+    "WER": "Sum word substitutions + deletions + insertions, divided by summed reference words.",
+    "CER": "Same normalized-string minimum edit distance at character level, including single spaces.",
+    "normalization": "Identical score.py: Unicode NFKC/casefold; letters, marks and numbers retained; punctuation/symbols become spaces; collapse whitespace; accents and Cyrillic ё retained; no number-word conversion."
+  },
+  "execution": "Fresh CLI process per clip, sequential; no previous results reused; CPU int8; offline local model; wall time includes CLI/model startup.",
+  "limits": [
+    "Small fixed short-read-speech sample, not long-recording accuracy.",
+    "Languages explicitly supplied, not language-autodetection accuracy.",
+    "Public test partition is not proof of exclusion from model pretraining.",
+    "Punctuation, case and semantic correctness are not directly scored."
+  ],
+  "completed_clips": 32,
+  "completed_utc": "2026-10-20T22:46:10.606361+00:00",
+  "aggregate": {
+    "turbo": {
+      "en_us": {
+        "word": {
+          "substitutions": 35,
+          "deletions": 11,
+          "insertions": 8,
+          "correct": 702,
+          "reference_units": 748,
+          "hypothesis_units": 745,
+          "errors": 54,
+          "error_rate": 0.07219251336898395
+        },
+        "character": {
+          "substitutions": 38,
+          "deletions": 81,
+          "insertions": 29,
+          "correct": 4221,
+          "reference_units": 4340,
+          "hypothesis_units": 4288,
+          "errors": 148,
+          "error_rate": 0.034101382488479264
+        },
+        "clips": 32,
+        "audio_seconds": 315.5799999999999,
+        "cli_wall_seconds": 239.1906671450015,
+        "normalized_exact_match_clips": 7,
+        "real_time_factor_including_cli_startup": 0.7579398794125152
+      }
+    }
+  }
+}
