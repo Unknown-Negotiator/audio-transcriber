@@ -1,0 +1,245 @@
+{
+  "test_date": "2026-10-20",
+  "dataset": {
+    "id": "google/fleurs",
+    "revision": "70bb2e84b976b7e960aa89f1c648e09c59f894dd",
+    "split": "test",
+    "license": "CC-BY-4.0",
+    "selection_rule": "Take the 12 lowest SHA-256 digests of UTF-8 seed + NUL + config + NUL + original filename, without content, duration, quality, or output filtering. Order is ascending digest.",
+    "selection_seed": "local-transcriber-accuracy-2026-10-20-v1"
+  },
+  "application": {
+    "source_sha256": "d57234cdd27a55a79da2980e2a85e5797c9699d9bf2655f04b1868708de8eade",
+    "cli": "python transcribe.py transcribe AUDIO --model MODELS/MODEL --language ru|fr --threads 4 --output OUTPUT --force",
+    "settings": {
+      "device": "cpu",
+      "compute_type": "int8",
+      "cpu_threads": 4,
+      "beam_size": 5,
+      "vad_filter": false,
+      "condition_on_previous_text": false,
+      "task": "transcribe",
+      "language": "explicit known language, not autodetected"
+    }
+  },
+  "environment": {
+    "python": "3.11.17 (main, Oct 13 2026, 16:45:47) [GCC 15.3.0]",
+    "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+    "packages": {
+      "faster-whisper": "1.2.1",
+      "ctranslate2": "4.8.3",
+      "av": "18.1.0",
+      "numpy": "2.4.6",
+      "huggingface-hub": "1.33.0"
+    },
+    "processor": "INTEL(R) XEON(R) PLATINUM 8573C; shared cloud VM; not user Mac"
+  },
+  "metric_definition": {
+    "reference": "Official FLEURS transcription column; raw_transcription retained separately",
+    "normalization": "Unicode NFKC and casefold; keep Unicode letters, marks, numbers; replace punctuation/symbols with spaces; collapse whitespace. Accents and Cyrillic ё preserved. No number-word conversion or phonetic correction.",
+    "WER": "Sum of minimum word-level substitutions+deletions+insertions divided by sum of reference words (micro-average, not mean clip WER).",
+    "CER": "Same at Unicode character level on normalized strings, including their single word-separator spaces.",
+    "tie_breaking": "When several alignments have same minimum cost: prefer substitution, then deletion, then insertion."
+  },
+  "aggregate": {
+    "small": {
+      "ru_ru": {
+        "word": {
+          "substitutions": 13,
+          "deletions": 4,
+          "insertions": 0,
+          "correct": 189,
+          "reference_units": 206,
+          "hypothesis_units": 202,
+          "errors": 17,
+          "error_rate": 0.0825242718446602
+        },
+        "character": {
+          "substitutions": 14,
+          "deletions": 16,
+          "insertions": 2,
+          "correct": 1386,
+          "reference_units": 1416,
+          "hypothesis_units": 1402,
+          "errors": 32,
+          "error_rate": 0.022598870056497175
+        },
+        "clips": 12,
+        "audio_seconds": 121.68,
+        "cli_wall_seconds": 29.486035128000367,
+        "normalized_exact_match_clips": 2,
+        "real_time_factor_including_cli_startup": 0.24232441755424364
+      },
+      "fr_fr": {
+        "word": {
+          "substitutions": 38,
+          "deletions": 3,
+          "insertions": 7,
+          "correct": 297,
+          "reference_units": 338,
+          "hypothesis_units": 342,
+          "errors": 48,
+          "error_rate": 0.14201183431952663
+        },
+        "character": {
+          "substitutions": 51,
+          "deletions": 35,
+          "insertions": 25,
+          "correct": 1868,
+          "reference_units": 1954,
+          "hypothesis_units": 1944,
+          "errors": 111,
+          "error_rate": 0.05680655066530194
+        },
+        "clips": 12,
+        "audio_seconds": 133.02,
+        "cli_wall_seconds": 31.78946690599969,
+        "normalized_exact_match_clips": 2,
+        "real_time_factor_including_cli_startup": 0.23898261093068476
+      }
+    },
+    "medium": {
+      "ru_ru": {
+        "word": {
+          "substitutions": 7,
+          "deletions": 1,
+          "insertions": 0,
+          "correct": 198,
+          "reference_units": 206,
+          "hypothesis_units": 205,
+          "errors": 8,
+          "error_rate": 0.038834951456310676
+        },
+        "character": {
+          "substitutions": 5,
+          "deletions": 12,
+          "insertions": 2,
+          "correct": 1399,
+          "reference_units": 1416,
+          "hypothesis_units": 1406,
+          "errors": 19,
+          "error_rate": 0.013418079096045197
+        },
+        "clips": 12,
+        "audio_seconds": 121.68,
+        "cli_wall_seconds": 83.32835240199984,
+        "normalized_exact_match_clips": 6,
+        "real_time_factor_including_cli_startup": 0.6848155194115699
+      },
+      "fr_fr": {
+        "word": {
+          "substitutions": 23,
+          "deletions": 2,
+          "insertions": 2,
+          "correct": 313,
+          "reference_units": 338,
+          "hypothesis_units": 338,
+          "errors": 27,
+          "error_rate": 0.07988165680473373
+        },
+        "character": {
+          "substitutions": 16,
+          "deletions": 20,
+          "insertions": 19,
+          "correct": 1918,
+          "reference_units": 1954,
+          "hypothesis_units": 1953,
+          "errors": 55,
+          "error_rate": 0.028147389969293755
+        },
+        "clips": 12,
+        "audio_seconds": 133.02,
+        "cli_wall_seconds": 84.86886256399976,
+        "normalized_exact_match_clips": 2,
+        "real_time_factor_including_cli_startup": 0.6380158063749793
+      }
+    },
+    "turbo": {
+      "ru_ru": {
+        "word": {
+          "substitutions": 2,
+          "deletions": 1,
+          "insertions": 0,
+          "correct": 203,
+          "reference_units": 206,
+          "hypothesis_units": 205,
+          "errors": 3,
+          "error_rate": 0.014563106796116505
+        },
+        "character": {
+          "substitutions": 1,
+          "deletions": 11,
+          "insertions": 0,
+          "correct": 1404,
+          "reference_units": 1416,
+          "hypothesis_units": 1405,
+          "errors": 12,
+          "error_rate": 0.00847457627118644
+        },
+        "clips": 12,
+        "audio_seconds": 121.68,
+        "cli_wall_seconds": 79.88936369700059,
+        "normalized_exact_match_clips": 9,
+        "real_time_factor_including_cli_startup": 0.6565529560897484
+      },
+      "fr_fr": {
+        "word": {
+          "substitutions": 15,
+          "deletions": 1,
+          "insertions": 1,
+          "correct": 322,
+          "reference_units": 338,
+          "hypothesis_units": 338,
+          "errors": 17,
+          "error_rate": 0.05029585798816568
+        },
+        "character": {
+          "substitutions": 15,
+          "deletions": 17,
+          "insertions": 5,
+          "correct": 1922,
+          "reference_units": 1954,
+          "hypothesis_units": 1942,
+          "errors": 37,
+          "error_rate": 0.018935516888433982
+        },
+        "clips": 12,
+        "audio_seconds": 133.02,
+        "cli_wall_seconds": 89.97555068599968,
+        "normalized_exact_match_clips": 4,
+        "real_time_factor_including_cli_startup": 0.6764061846789932
+      }
+    }
+  },
+  "validation": {
+    "metric_unit_checks": "passed",
+    "all_audio_sample_counts_match_manifest": true,
+    "all_raw_references_normalize_identically_to_dataset_transcription": true,
+    "all_72_cli_runs_exit_zero": true,
+    "model_inferences": "sequential; fresh CLI process for every clip; 4 CPU threads each",
+    "reference_source": "Official paired test.tsv records, not recognizer- or LLM-generated labels",
+    "independent_metric_verification": {
+      "status": "passed",
+      "jiwer_version": "4.0.0",
+      "rapidfuzz_version": "3.14.6",
+      "per_clip_pairs_checked": 72,
+      "model_language_aggregates_checked": 6,
+      "checks": [
+        "All word and character total edit distances agree with independent jiwer calculation",
+        "All per-clip WER/CER values agree within 1e-12",
+        "All six micro-averaged WER/CER pairs agree within 1e-12",
+        "All hypotheses match the saved application output files",
+        "Raw and corpus-normalized references agree under the scoring normalization",
+        "Exactly 72 unique model/language/clip results"
+      ]
+    }
+  },
+  "limits": [
+    "Small deterministic sample, not a full corpus evaluation or statistical proof of one model being best.",
+    "Public official test split, not guaranteed unseen by pretrained Whisper. No model tuning was performed.",
+    "Short human read-speech utterances, not long recordings, dialogue, overlapping speakers, accents, poor microphones or noisy videos.",
+    "Known languages were specified; this does not measure auto-detection accuracy.",
+    "WER/CER assess lexical transcription after the stated normalization, not punctuation, casing, timestamps, or semantic correctness.",
+    "No private user audio was accessed or uploaded. Models ran locally on the assistant cloud VM, sequentially; wall time includes fresh CLI/model loading per clip."
+  ]
+}

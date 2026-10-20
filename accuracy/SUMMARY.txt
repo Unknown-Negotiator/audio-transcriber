@@ -1,0 +1,12 @@
+Accuracy validation completed: 24 public human-recorded FLEURS test clips, 12 Russian and 12 French, each tested with small, medium and large-v3-turbo (72 successful CLI runs). The references were the official paired transcripts, not generated labels.
+
+Normalized word error rate / character error rate:
+small: Russian 8.25% / 2.26%; French 14.20% / 5.68%.
+medium: Russian 3.88% / 1.34%; French 7.99% / 2.81%.
+large-v3-turbo: Russian 1.46% / 0.85%; French 5.03% / 1.89%.
+
+All outputs, reference pairs, substitutions/deletions/insertions, sample IDs and hashes are included. An independent jiwer 4.0.0 check agreed with all 72 per-clip edit distances and all six aggregates. Selection was fixed before inference, with no filtering or cherry-picking.
+
+Turbo performed best on this sample but was not error-free. This is a small short-read-speech check with explicitly supplied languages, not proof of accuracy on long, noisy, overlapping or user-specific recordings. Public test-set membership does not establish exclusion from Whisper pretraining. Punctuation and case were not scored.
+
+See REPORT.md for methods, reproducibility commands, sources, licensing, representative errors and further limits.
