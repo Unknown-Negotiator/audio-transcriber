@@ -1,0 +1,60 @@
+name: Real macOS transcription validation
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/macos.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: macos-validation-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  transcribe:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-15, macos-15-intel]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 60
+    defaults:
+      run:
+        shell: bash -el {0}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: conda-incubator/setup-miniconda@v3
+        with:
+          miniforge-version: latest
+          environment-file: environment.yml
+          activate-environment: local-transcriber
+          auto-activate-base: false
+      - name: Prepare isolated media tool and run regression tests
+        run: |
+          conda install -n local-transcriber -c conda-forge ffmpeg -y
+          mkdir -p ci-results
+          uname -a > ci-results/platform.txt
+          python -m pip freeze > ci-results/dependencies.txt
+          python -m unittest discover -s tests -v 2>&1 | tee ci-results/unit-tests.txt
+      - name: Download public model and public human-read audio
+        run: |
+          python transcribe.py download-model --size large-v3-turbo --directory "$RUNNER_TEMP/models/turbo"
+          curl -fL --retry 2 --max-time 300 'https://archive.org/download/white_nights_librivox/2-fm-dostoevsky-belye-nochi-night2-part1.mp3' -o "$RUNNER_TEMP/ru1.mp3"
+          curl -fL --retry 2 --max-time 300 'https://archive.org/download/white_nights_librivox/3-fm-dostoevsky-belye-nochi-night2-part2.mp3' -o "$RUNNER_TEMP/ru2.mp3"
+          curl -fL --retry 2 --max-time 300 'https://archive.org/download/madame_bovary_neb_librivox/madamebovary_17_flaubert.mp3' -o "$RUNNER_TEMP/fr.mp3"
+          printf "file '%s/ru1.mp3'\nfile '%s/ru2.mp3'\n" "$RUNNER_TEMP" "$RUNNER_TEMP" > "$RUNNER_TEMP/concat.txt"
+          ffmpeg -v error -f concat -safe 0 -i "$RUNNER_TEMP/concat.txt" -c:a copy "$RUNNER_TEMP/ru.mkv"
+          ffmpeg -v error -i "$RUNNER_TEMP/fr.mp3" -c:a copy "$RUNNER_TEMP/fr.mkv"
+      - name: Transcribe full real Russian and French recordings locally
+        run: |
+          python tests/benchmark.py "$RUNNER_TEMP/ru.mkv" "$RUNNER_TEMP/models/turbo" ru ci-results/ru.txt ci-results/ru.json
+          python tests/benchmark.py "$RUNNER_TEMP/fr.mkv" "$RUNNER_TEMP/models/turbo" fr ci-results/fr.txt ci-results/fr.json
+          test -s ci-results/ru.txt
+          test -s ci-results/fr.txt
+          python tests/analyze_transcript.py ci-results/ru.txt 1964.93 > ci-results/ru-coverage.json
+          python tests/analyze_transcript.py ci-results/fr.txt 3159.85 > ci-results/fr-coverage.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: validation-${{ matrix.os }}
+          path: ci-results/
+          retention-days: 1
