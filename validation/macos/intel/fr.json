@@ -1,0 +1,14 @@
+{
+  "exit_code": 0,
+  "elapsed_seconds": 2180.675668291,
+  "peak_rss_bytes": 4206329856,
+  "input_bytes": 51429472,
+  "source_sha256_before": "a408da2cfe575c7ac9e3381ad3126cf77a775e91c56bde32edfdb840f59c7444",
+  "source_sha256_after": "a408da2cfe575c7ac9e3381ad3126cf77a775e91c56bde32edfdb840f59c7444",
+  "platform": "macOS-15.7.9-x86_64-i386-64bit",
+  "python": "3.11.17 (main, Oct 13 2026, 17:06:54) [Clang 21.1.8 ]",
+  "model_directory": "local model directory (runner path omitted)",
+  "output_bytes": 52674,
+  "model": "large-v3-turbo",
+  "application_sha256": "d57234cdd27a55a79da2980e2a85e5797c9699d9bf2655f04b1868708de8eade"
+}
