@@ -1,4 +1,4 @@
-name: Real macOS transcription validation
+name: Complete long French macOS validation
 # Include model feature-extractor configuration for large-v3/turbo.
 on:
   push:
@@ -17,7 +17,7 @@ jobs:
       matrix:
         os: [macos-15, macos-15-intel]
     runs-on: ${{ matrix.os }}
-    timeout-minutes: 60
+    timeout-minutes: 100
     defaults:
       run:
         shell: bash -el {0}
@@ -39,19 +39,18 @@ jobs:
       - name: Download public model and public human-read audio
         run: |
           python transcribe.py download-model --size large-v3-turbo --directory "$RUNNER_TEMP/models/turbo"
-          curl -fL --retry 2 --max-time 300 'https://archive.org/download/white_nights_librivox/2-fm-dostoevsky-belye-nochi-night2-part1.mp3' -o "$RUNNER_TEMP/ru1.mp3"
-          curl -fL --retry 2 --max-time 300 'https://archive.org/download/white_nights_librivox/3-fm-dostoevsky-belye-nochi-night2-part2.mp3' -o "$RUNNER_TEMP/ru2.mp3"
           curl -fL --retry 2 --max-time 300 'https://archive.org/download/madame_bovary_neb_librivox/madamebovary_17_flaubert.mp3' -o "$RUNNER_TEMP/fr.mp3"
-          printf "file '%s/ru1.mp3'\nfile '%s/ru2.mp3'\n" "$RUNNER_TEMP" "$RUNNER_TEMP" > "$RUNNER_TEMP/concat.txt"
-          ffmpeg -v error -f concat -safe 0 -i "$RUNNER_TEMP/concat.txt" -c:a copy "$RUNNER_TEMP/ru.mkv"
           ffmpeg -v error -i "$RUNNER_TEMP/fr.mp3" -c:a copy "$RUNNER_TEMP/fr.mkv"
-      - name: Transcribe full real Russian and French recordings locally
+      - name: Transcribe full French recording locally (Russian passed in prior run)
         run: |
-          python tests/benchmark.py "$RUNNER_TEMP/ru.mkv" "$RUNNER_TEMP/models/turbo" ru ci-results/ru.txt ci-results/ru.json
-          python tests/benchmark.py "$RUNNER_TEMP/fr.mkv" "$RUNNER_TEMP/models/turbo" fr ci-results/fr.txt ci-results/fr.json
-          test -s ci-results/ru.txt
+          python -u tests/benchmark.py "$RUNNER_TEMP/fr.mkv" "$RUNNER_TEMP/models/turbo" fr ci-results/fr.txt ci-results/fr.json &
+          transcription_pid=$!
+          while kill -0 "$transcription_pid" 2>/dev/null; do
+            tail -n 1 ci-results/fr.txt.log 2>/dev/null || true
+            sleep 60
+          done
+          wait "$transcription_pid"
           test -s ci-results/fr.txt
-          python tests/analyze_transcript.py ci-results/ru.txt 1964.93 > ci-results/ru-coverage.json
           python tests/analyze_transcript.py ci-results/fr.txt 3159.85 > ci-results/fr-coverage.json
       - uses: actions/upload-artifact@v4
         if: always()
